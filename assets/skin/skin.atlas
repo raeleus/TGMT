@@ -1,0 +1,230 @@
+
+skin.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bg
+  rotate: false
+  xy: 1, 222
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+button-delete
+  rotate: false
+  xy: 234, 375
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-delete-pressed
+  rotate: false
+  xy: 282, 375
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-delete-text
+  rotate: false
+  xy: 103, 50
+  size: 14, 15
+  orig: 14, 15
+  offset: 0, 0
+  index: -1
+button-delete-text-pressed
+  rotate: false
+  xy: 338, 441
+  size: 14, 15
+  orig: 14, 15
+  offset: 0, 0
+  index: -1
+button-home
+  rotate: false
+  xy: 105, 317
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-home-pressed
+  rotate: false
+  xy: 153, 317
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-image
+  rotate: false
+  xy: 103, 267
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-image-pressed
+  rotate: false
+  xy: 103, 217
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-menu
+  rotate: false
+  xy: 442, 494
+  size: 18, 15
+  orig: 18, 15
+  offset: 0, 0
+  index: -1
+button-menu-pressed
+  rotate: false
+  xy: 1, 1
+  size: 18, 15
+  orig: 18, 15
+  offset: 0, 0
+  index: -1
+button-music
+  rotate: false
+  xy: 151, 267
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-music-pressed
+  rotate: false
+  xy: 103, 167
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-normal
+  rotate: false
+  xy: 1, 439
+  size: 231, 70
+  orig: 231, 70
+  offset: 0, 0
+  index: -1
+button-normal-pressed
+  rotate: false
+  xy: 1, 367
+  size: 231, 70
+  orig: 231, 70
+  offset: 0, 0
+  index: -1
+button-text
+  rotate: false
+  xy: 151, 217
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-text-pressed
+  rotate: false
+  xy: 103, 117
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-zoom-out
+  rotate: false
+  xy: 151, 167
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-zoom-out-pressed
+  rotate: false
+  xy: 103, 67
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+connector-bg
+  rotate: false
+  xy: 442, 480
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+connector-fg
+  rotate: false
+  xy: 462, 497
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+icon-key
+  rotate: false
+  xy: 338, 458
+  size: 19, 8
+  orig: 19, 8
+  offset: 0, 0
+  index: -1
+icon-left-arrow
+  rotate: false
+  xy: 201, 354
+  size: 15, 11
+  orig: 15, 11
+  offset: 0, 0
+  index: -1
+icon-right-arrow
+  rotate: false
+  xy: 151, 154
+  size: 15, 11
+  orig: 15, 11
+  offset: 0, 0
+  index: -1
+panel
+  rotate: false
+  xy: 1, 120
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+pop-table
+  rotate: false
+  xy: 1, 18
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+scroll-pane-horizontal
+  rotate: false
+  xy: 234, 368
+  size: 16, 5
+  orig: 16, 5
+  offset: 0, 0
+  index: -1
+scroll-pane-vertical
+  rotate: false
+  xy: 330, 407
+  size: 5, 16
+  orig: 5, 16
+  offset: 0, 0
+  index: -1
+text-field-audio
+  rotate: false
+  xy: 234, 468
+  size: 102, 41
+  orig: 102, 41
+  offset: 0, 0
+  index: -1
+text-field-image
+  rotate: false
+  xy: 1, 324
+  size: 102, 41
+  orig: 102, 41
+  offset: 0, 0
+  index: -1
+text-field-room-name
+  rotate: false
+  xy: 234, 425
+  size: 102, 41
+  orig: 102, 41
+  offset: 0, 0
+  index: -1
+text-field-text
+  rotate: false
+  xy: 338, 468
+  size: 102, 41
+  orig: 102, 41
+  offset: 0, 0
+  index: -1
