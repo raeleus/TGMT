@@ -4,11 +4,14 @@
 	<source path="" />
 	<inherits name="com.badlogic.gdx.backends.gdx_backends_gwt" />
 	<inherits name="com.ray3k.liftoff.Core" />
+	<inherits name="regexodus" />
+	<inherits name="textratypist" />
+	<inherits name="com.badlogic.gdx.graphics.g2d.freetype.freetype-gwt" />
+	<inherits name="com.ray3k.tenpatch.tenpatch"/>
+	<inherits name="com.ray3k.stripe" />
 	<entry-point class="com.ray3k.liftoff.gwt.GwtLauncher" />
 	<set-configuration-property name="gdx.assetpath" value="../assets" />
 	<set-configuration-property name="xsiframe.failIfScriptTag" value="FALSE"/>
-	<!-- These two lines reduce the work GWT has to do during compilation and also shrink output size. -->
 	<set-property name="user.agent" value="gecko1_8, safari"/>
 	<collapse-property name="user.agent" values="*" />
-	<!-- Remove the "user.agent" lines above if you encounter issues with Safari or other Gecko browsers. -->
 </module>

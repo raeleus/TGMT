@@ -23,21 +23,21 @@ gwt {
 
 	compiler.strict = true
 	compiler.disableCastChecking = true
-	//// The next line can be useful to uncomment if you want output that hasn't been obfuscated.
-//	compiler.style = org.wisepersist.gradle.plugins.gwt.Style.DETAILED
+	compiler.style = org.wisepersist.gradle.plugins.gwt.Style.DETAILED
+	sourceLevel = 1.11
 }
 
 dependencies {
-	implementation "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
-	implementation "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+	implementation "com.github.tommyettinger:gdx-backend-gwt:1.100.1"
+	implementation "com.github.tommyettinger:gdx-backend-gwt:1.100.1:sources"
 	implementation "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
 	implementation project(':core')
-
-//// You can use the lines below instead of the "com.badlogicgames.gdx:gdx-backend-gwt" dependencies.
-//// If you do, follow the steps at https://github.com/tommyettinger/gdx-backends#gwt-290-support
-//// and you can use GWT 2.9.0, which gives you access to Java 11 language features.
-//	implementation "com.github.tommyettinger:gdx-backend-gwt:1.100.1"
-//	implementation "com.github.tommyettinger:gdx-backend-gwt:1.100.1:sources"
+	implementation "com.github.tommyettinger:textratypist:0.1.1:sources"
+	implementation "com.github.tommyettinger:regexodus:0.1.13:sources"
+	api 'com.github.raeleus.TenPatch:tenpatch:5.2.2:sources'
+	api "com.github.intrigus.gdx-freetype-gwt:gdx-freetype-gwt:1.9.10.1"
+	api "com.github.intrigus.gdx-freetype-gwt:gdx-freetype-gwt:1.9.10.1:sources"
+	implementation 'com.github.raeleus:stripe:0.2.0:sources'
 }
 
 import org.akhikhl.gretty.AppBeforeIntegrationTestTask
