@@ -1,0 +1,86 @@
+{
+  "banana": {
+    "story": [
+      "image:image/woman.jpg",
+      "text:bananas are tasty",
+      "image:image/woman.jpg",
+      "text:bananas are tasty",
+      "music:bgm/music.mp3",
+      "sound:sfx/sound.mp3"
+    ],
+    "actions": {
+      "Ride Horse": {
+        "targetRoom": "horse",
+        "requiredKeys": [
+          "saddle"
+        ],
+        "giveKeys": [
+          "poo"
+        ],
+        "removeKeys": [
+          "salad"
+        ]
+      },
+      "Kill Horse": {
+        "targetRoom": "horse",
+        "requiredKeys": [
+          "saddle"
+        ],
+        "giveKeys": [
+          "poo"
+        ],
+        "removeKeys": [
+          "salad"
+        ]
+      },
+      "Murder Horse": {
+        "targetRoom": "horse",
+        "requiredKeys": [
+          "saddle"
+        ],
+        "giveKeys": [
+          "poo"
+        ],
+        "removeKeys": [
+          "salad"
+        ]
+      },
+      "Eat Horse": {
+        "targetRoom": "horse",
+        "requiredKeys": [
+          "saddle"
+        ],
+        "giveKeys": [
+          "poo"
+        ],
+        "removeKeys": [
+          "salad"
+        ]
+      }
+    }
+  },
+  "horse": {
+    "story": [
+      "image:image/woman.jpg",
+      "text:bananas are tasty",
+      "image:image/woman.jpg",
+      "text:bananas are tasty",
+      "music:bgm/music.mp3",
+      "sound:sfx/sound.mp3"
+    ],
+    "actions": {
+      "Eat Banana": {
+        "targetRoom": "banana",
+        "requiredKeys": [
+          
+        ],
+        "giveKeys": [
+          
+        ],
+        "removeKeys": [
+          
+        ]
+      }
+    }
+  }
+}
