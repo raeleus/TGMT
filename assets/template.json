@@ -1,78 +1,117 @@
 {
-  "banana": {
+  "home": {
     "story": [
+      "text:You are outside your childhood home. You see a kindly womand smiling at you",
       "image:image/woman.jpg",
-      "text:bananas are tasty",
-      "image:image/woman.jpg",
-      "text:bananas are tasty",
-      "music:bgm/music.mp3",
-      "sound:sfx/sound.mp3"
+      "music:bgm/music.mp3"
     ],
     "actions": {
-      "Ride Horse": {
-        "targetRoom": "horse",
+      "Hug her": {
+        "targetRoom": "rejected",
         "requiredKeys": [
-          "saddle"
+          
+        ],
+        "bannedKeys": [
+          "name"
         ],
         "giveKeys": [
-          "poo"
+          
         ],
         "removeKeys": [
-          "salad"
+          
         ]
       },
-      "Kill Horse": {
-        "targetRoom": "horse",
+      "Ask for her name": {
+        "targetRoom": "ask name",
         "requiredKeys": [
-          "saddle"
+          
+        ],
+        "bannedKeys": [
+          "name"
         ],
         "giveKeys": [
-          "poo"
+          "name"
         ],
         "removeKeys": [
-          "salad"
+          
         ]
       },
-      "Murder Horse": {
-        "targetRoom": "horse",
+      "Hug Sally": {
+        "targetRoom": "validated",
         "requiredKeys": [
-          "saddle"
+          "name"
+        ],
+        "bannedKeys": [
+          
         ],
         "giveKeys": [
-          "poo"
+          
         ],
         "removeKeys": [
-          "salad"
-        ]
-      },
-      "Eat Horse": {
-        "targetRoom": "horse",
-        "requiredKeys": [
-          "saddle"
-        ],
-        "giveKeys": [
-          "poo"
-        ],
-        "removeKeys": [
-          "salad"
+          "name"
         ]
       }
     }
   },
-  "horse": {
+  "rejected": {
     "story": [
-      "image:image/woman.jpg",
-      "text:bananas are tasty",
-      "image:image/woman.jpg",
-      "text:bananas are tasty",
-      "music:bgm/music.mp3",
+      "text:\"Usually guys ask me my name first!\" she says as she pushes you away.",
       "sound:sfx/sound.mp3"
     ],
     "actions": {
-      "Eat Banana": {
-        "targetRoom": "banana",
+      "OK": {
+        "targetRoom": "home",
         "requiredKeys": [
           
+        ],
+        "bannedKeys": [
+          
+        ],
+        "giveKeys": [
+          
+        ],
+        "removeKeys": [
+          
+        ]
+      }
+    }
+  },
+  "validated": {
+    "story": [
+      "text:\"Mmmm, your hugs are so yummy!\".\nAs you draw away, you have subsequently forgot her name.",
+      "sound:sfx/sound.mp3"
+    ],
+    "actions": {
+      "OK": {
+        "targetRoom": "home",
+        "requiredKeys": [
+          
+        ],
+        "bannedKeys": [
+          
+        ],
+        "giveKeys": [
+          
+        ],
+        "removeKeys": [
+          
+        ]
+      }
+    }
+  },
+  "ask name": {
+    "story": [
+      "text:\"Hi, I'm Sally. Nice to meet you.\"",
+      "sound:sfx/sound.mp3"
+    ],
+    "actions": {
+      "OK": {
+        "targetRoom": "home",
+        "requiredKeys": [
+          
+        ],
+        "bannedKeys": [
+
         ],
         "giveKeys": [
           

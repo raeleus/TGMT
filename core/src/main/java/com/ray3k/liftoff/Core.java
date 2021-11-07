@@ -15,10 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.ray3k.liftoff.Room.ImageElement;
-import com.ray3k.liftoff.Room.MusicElement;
-import com.ray3k.liftoff.Room.SoundElement;
-import com.ray3k.liftoff.Room.TextElement;
+import com.ray3k.liftoff.Room.*;
 import com.ray3k.stripe.FreeTypeSkin;
 import com.ray3k.stripe.ScrollFocusListener;
 
@@ -30,6 +27,7 @@ public class Core extends ApplicationAdapter {
     public static final Array<Room> rooms = new Array<>();
     public static Music music;
     public static AssetManager assetManager;
+    public final static Array<Key> playerKeys = new Array<>();
     
     @Override
     public void create() {
@@ -118,6 +116,12 @@ public class Core extends ApplicationAdapter {
                     action.requiredKeys.add(key);
                 }
     
+                for (var keyString : actionValue.get("bannedKeys").asStringArray()) {
+                    var key = new Room.Key();
+                    key.name = keyString;
+                    action.bannedKeys.add(key);
+                }
+    
                 for (var keyString : actionValue.get("giveKeys").asStringArray()) {
                     var key = new Room.Key();
                     key.name = keyString;
@@ -144,6 +148,8 @@ public class Core extends ApplicationAdapter {
         var room = rooms.get(index);
     
         var table = new Table();
+        table.pad(20);
+        table.align(Align.top);
         var top = new ScrollPane(table, skin, "panel");
         top.setFadeScrollBars(false);
         top.setScrollingDisabled(true, false);
@@ -161,7 +167,7 @@ public class Core extends ApplicationAdapter {
                 
                 var image = new Image(assetManager.get(imageElement.image, Texture.class));
                 image.setScaling(Scaling.fit);
-                table.add(image);
+                table.add(image).left();
             } else if (element instanceof MusicElement) {
                 var musicElement = (MusicElement) element;
     
@@ -182,6 +188,7 @@ public class Core extends ApplicationAdapter {
         }
     
         var horizontalGroup = new HorizontalGroup();
+        horizontalGroup.pad(20);
         horizontalGroup.wrap();
         horizontalGroup.rowAlign(Align.center);
         horizontalGroup.align(Align.center);
@@ -190,14 +197,34 @@ public class Core extends ApplicationAdapter {
         bottom.addListener(new ScrollFocusListener(stage));
     
         for (var action : room.actions) {
-            var textButton = new TextButton(action.name, skin);
-            textButton.addListener(new ChangeListener() {
-                @Override
-                public void changed(ChangeEvent event, Actor actor) {
-                    openRoom(action.targetRoom);
+            boolean hasKeys = true;
+            
+            for (var requiredKey : action.requiredKeys) {
+                if (!playerKeys.contains(requiredKey, false)) {
+                    hasKeys = false;
+                    break;
                 }
-            });
-            horizontalGroup.addActor(textButton);
+            }
+            
+            if (hasKeys) for (var bannedKey : action.bannedKeys) {
+                if (playerKeys.contains(bannedKey, false)) {
+                    hasKeys = false;
+                    break;
+                }
+            }
+            
+            if (hasKeys) {
+                var textButton = new TextButton(action.name, skin);
+                textButton.addListener(new ChangeListener() {
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+                        openRoom(action.targetRoom);
+                        playerKeys.removeAll(action.removeKeys, false);
+                        playerKeys.addAll(action.giveKeys);
+                    }
+                });
+                horizontalGroup.addActor(textButton);
+            }
         }
     
         var splitPane = new SplitPane(top, bottom, true, skin);

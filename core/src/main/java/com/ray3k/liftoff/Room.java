@@ -33,6 +33,7 @@ public class Room {
         public String name;
         public String targetRoom;
         public final Array<Key> requiredKeys = new Array<>();
+        public final Array<Key> bannedKeys = new Array<>();
         public final Array<Key> giveKeys = new Array<>();
         public final Array<Key> removeKeys = new Array<>();
         public FileHandle sound;
@@ -40,5 +41,11 @@ public class Room {
     
     public static class Key {
         public String name;
+    
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof Key) return ((Key)obj).name.equals(name);
+            return false;
+        }
     }
 }
