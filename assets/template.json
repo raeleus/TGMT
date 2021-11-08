@@ -79,7 +79,7 @@
   },
   "validated": {
     "story": [
-      "text:\"Mmmm, your hugs are so yummy!\".\nAs you draw away, you have subsequently forgot her name.",
+      "text:\"Mmmm, your hugs are so yummy!\".\nAs you draw away, you have subsequently forgotten her name.",
       "sound:sfx/sound.mp3"
     ],
     "actions": {

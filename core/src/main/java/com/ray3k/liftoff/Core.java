@@ -237,6 +237,7 @@ public class Core extends ApplicationAdapter {
         }
     
         var splitPane = new SplitPane(top, bottom, true, skin);
+        splitPane.setSplitAmount(.75f);
         root.add(splitPane).grow();
     }
     
