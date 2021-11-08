@@ -9,6 +9,7 @@ public class AspectRatioContainer<T extends Actor> extends WidgetGroup {
     private boolean prefSizeInvalid;
     private float prefWidth;
     private float prefHeight;
+    private float lastPrefHeight;
     private Actor actor;
     private float ratio;
     private boolean bindToWidth = true;
@@ -38,9 +39,9 @@ public class AspectRatioContainer<T extends Actor> extends WidgetGroup {
         prefSizeInvalid = false;
         if (bindToWidth) {
             prefWidth = 0;
-            prefHeight = getWidth() / ratio;
+            prefHeight = Math.round(getWidth() / ratio);
         } else {
-            prefWidth = getHeight() * ratio;
+            prefWidth = Math.round(getHeight() * ratio);
             prefHeight = 0;
         }
     }
@@ -60,6 +61,12 @@ public class AspectRatioContainer<T extends Actor> extends WidgetGroup {
     @Override
     public void layout() {
         if (actor == null) return;
+        
+        if (prefSizeInvalid) calcPrefSize();
+        if (prefHeight != lastPrefHeight) {
+            lastPrefHeight = prefHeight;
+            invalidateHierarchy();
+        }
         
         actor.setBounds(0, 0, getWidth(), getHeight());
         if (actor instanceof Layout) ((Layout)actor).validate();
