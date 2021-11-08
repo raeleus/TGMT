@@ -36,7 +36,7 @@ public class Room {
         public final Array<Key> bannedKeys = new Array<>();
         public final Array<Key> giveKeys = new Array<>();
         public final Array<Key> removeKeys = new Array<>();
-        public FileHandle sound;
+        public String sound;
     }
     
     public static class Key {

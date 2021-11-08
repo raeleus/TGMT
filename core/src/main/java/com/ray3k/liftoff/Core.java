@@ -74,7 +74,7 @@ public class Core extends ApplicationAdapter {
             Room room = new Room();
             room.name = child.name;
             
-            for (var storyString : child.get("story").asStringArray()) {
+            if (child.has("story")) for (var storyString : child.get("story").asStringArray()) {
                 int colonIndex = storyString.indexOf(':');
                 String type = storyString.substring(0, colonIndex);
                 String value = storyString.substring(colonIndex + 1);
@@ -105,33 +105,38 @@ public class Core extends ApplicationAdapter {
                 }
             }
             
-            for (var actionValue : child.get("actions").iterator()) {
+            if (child.has("actions")) for (var actionValue : child.get("actions").iterator()) {
                 var action = new Room.Action();
                 action.name = actionValue.name;
                 action.targetRoom = actionValue.getString("targetRoom");
                 
-                for (var keyString : actionValue.get("requiredKeys").asStringArray()) {
+                if (actionValue.has("requiredKeys")) for (var keyString : actionValue.get("requiredKeys").asStringArray()) {
                     var key = new Room.Key();
                     key.name = keyString;
                     action.requiredKeys.add(key);
                 }
     
-                for (var keyString : actionValue.get("bannedKeys").asStringArray()) {
+                if (actionValue.has("bannedKeys")) for (var keyString : actionValue.get("bannedKeys").asStringArray()) {
                     var key = new Room.Key();
                     key.name = keyString;
                     action.bannedKeys.add(key);
                 }
     
-                for (var keyString : actionValue.get("giveKeys").asStringArray()) {
+                if (actionValue.has("giveKeys")) for (var keyString : actionValue.get("giveKeys").asStringArray()) {
                     var key = new Room.Key();
                     key.name = keyString;
                     action.giveKeys.add(key);
                 }
     
-                for (var keyString : actionValue.get("removeKeys").asStringArray()) {
+                if (actionValue.has("removeKeys")) for (var keyString : actionValue.get("removeKeys").asStringArray()) {
                     var key = new Room.Key();
                     key.name = keyString;
                     action.removeKeys.add(key);
+                }
+                
+                if (actionValue.has("sound")) {
+                    action.sound = actionValue.getString("sound");
+                    assetManager.load(action.sound, Sound.class);
                 }
                 
                 room.actions.add(action);
@@ -218,6 +223,10 @@ public class Core extends ApplicationAdapter {
                 textButton.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
+                        if (action.sound != null) {
+                            Sound sound = assetManager.get(action.sound);
+                            sound.play();
+                        }
                         openRoom(action.targetRoom);
                         playerKeys.removeAll(action.removeKeys, false);
                         playerKeys.addAll(action.giveKeys);

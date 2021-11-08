@@ -8,6 +8,7 @@
     "actions": {
       "Hug her": {
         "targetRoom": "rejected",
+        "sound": "sfx/gun.mp3",
         "requiredKeys": [
           
         ],
@@ -56,7 +57,7 @@
   "rejected": {
     "story": [
       "text:\"Usually guys ask me my name first!\" she says as she pushes you away.",
-      "sound:sfx/sound.mp3"
+      
     ],
     "actions": {
       "OK": {
