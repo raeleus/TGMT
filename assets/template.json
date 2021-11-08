@@ -1,9 +1,10 @@
 {
   "home": {
     "story": [
-      "text:You are outside your childhood home. You see a kindly womand smiling at you",
-      "image:image/woman.jpg",
-      "music:bgm/music.mp3"
+      "text:You are outside your childhood home. You see a kindly woman smiling at you",
+      "image:image/big.jpg",
+      "music:bgm/music.mp3",
+      "text:You have this strange sense that you know her..."
     ],
     "actions": {
       "Hug her": {

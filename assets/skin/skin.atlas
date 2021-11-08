@@ -6,91 +6,91 @@ filter: Linear, Linear
 repeat: none
 bg
   rotate: false
-  xy: 1, 181
+  xy: 1, 134
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 button-delete
   rotate: false
-  xy: 1, 29
+  xy: 238, 358
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 button-delete-pressed
   rotate: false
-  xy: 49, 29
+  xy: 238, 308
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 button-delete-text
   rotate: false
-  xy: 209, 322
+  xy: 21, 15
   size: 14, 15
   orig: 14, 15
   offset: 0, 0
   index: -1
 button-delete-text-pressed
   rotate: false
-  xy: 38, 12
+  xy: 105, 288
   size: 14, 15
   orig: 14, 15
   offset: 0, 0
   index: -1
 button-home
   rotate: false
-  xy: 105, 276
+  xy: 286, 358
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 button-home-pressed
   rotate: false
-  xy: 153, 276
+  xy: 286, 308
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 button-image
   rotate: false
-  xy: 103, 226
+  xy: 238, 258
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 button-image-pressed
   rotate: false
-  xy: 103, 176
+  xy: 286, 258
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 button-menu
   rotate: false
-  xy: 209, 352
+  xy: 1, 15
   size: 18, 15
   orig: 18, 15
   offset: 0, 0
   index: -1
 button-menu-pressed
   rotate: false
-  xy: 1, 12
+  xy: 105, 305
   size: 18, 15
   orig: 18, 15
   offset: 0, 0
   index: -1
 button-music
   rotate: false
-  xy: 151, 226
+  xy: 334, 358
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 button-music-pressed
   rotate: false
-  xy: 103, 126
+  xy: 334, 308
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
@@ -109,135 +109,149 @@ button-normal-pressed
   orig: 231, 70
   offset: 0, 0
   index: -1
+button-small
+  rotate: false
+  xy: 1, 322
+  size: 133, 45
+  orig: 133, 45
+  offset: 0, 0
+  index: -1
+button-small-pressed
+  rotate: false
+  xy: 234, 466
+  size: 133, 45
+  orig: 133, 45
+  offset: 0, 0
+  index: -1
 button-text
   rotate: false
-  xy: 151, 176
+  xy: 334, 258
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 button-text-pressed
   rotate: false
-  xy: 151, 126
+  xy: 103, 186
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 button-zoom-out
   rotate: false
-  xy: 103, 76
+  xy: 103, 136
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 button-zoom-out-pressed
   rotate: false
-  xy: 151, 76
+  xy: 103, 86
   size: 46, 48
   orig: 46, 48
   offset: 0, 0
   index: -1
 connector-bg
   rotate: false
-  xy: 54, 15
+  xy: 1, 1
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 connector-fg
   rotate: false
-  xy: 54, 1
+  xy: 15, 1
   size: 12, 12
   orig: 12, 12
   offset: 0, 0
   index: -1
 icon-key
   rotate: false
-  xy: 344, 503
+  xy: 473, 503
   size: 19, 8
   orig: 19, 8
   offset: 0, 0
   index: -1
 icon-left-arrow
   rotate: false
-  xy: 209, 339
+  xy: 103, 73
   size: 15, 11
   orig: 15, 11
   offset: 0, 0
   index: -1
 icon-right-arrow
   rotate: false
-  xy: 21, 16
+  xy: 473, 490
   size: 15, 11
   orig: 15, 11
   offset: 0, 0
   index: -1
 panel
   rotate: false
-  xy: 1, 79
+  xy: 1, 32
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 pop-table
   rotate: false
-  xy: 234, 353
+  xy: 136, 267
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 scroll-pane-horizontal
   rotate: false
-  xy: 365, 506
+  xy: 344, 459
   size: 16, 5
   orig: 16, 5
   offset: 0, 0
   index: -1
 scroll-pane-vertical
   rotate: false
-  xy: 199, 148
+  xy: 103, 55
   size: 5, 16
   orig: 5, 16
   offset: 0, 0
   index: -1
 split-pane-horizontal
   rotate: false
-  xy: 199, 166
+  xy: 151, 157
   size: 13, 108
   orig: 13, 108
   offset: 0, 0
   index: -1
 split-pane-vertical
   rotate: false
-  xy: 234, 498
+  xy: 234, 451
   size: 108, 13
   orig: 108, 13
   offset: 0, 0
   index: -1
 text-field-audio
   rotate: false
-  xy: 1, 326
+  xy: 369, 470
   size: 102, 41
   orig: 102, 41
   offset: 0, 0
   index: -1
 text-field-image
   rotate: false
-  xy: 234, 455
+  xy: 1, 279
   size: 102, 41
   orig: 102, 41
   offset: 0, 0
   index: -1
 text-field-room-name
   rotate: false
-  xy: 1, 283
+  xy: 234, 408
   size: 102, 41
   orig: 102, 41
   offset: 0, 0
   index: -1
 text-field-text
   rotate: false
-  xy: 105, 326
+  xy: 1, 236
   size: 102, 41
   orig: 102, 41
   offset: 0, 0

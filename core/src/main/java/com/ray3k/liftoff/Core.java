@@ -172,7 +172,9 @@ public class Core extends ApplicationAdapter {
                 
                 var image = new Image(assetManager.get(imageElement.image, Texture.class));
                 image.setScaling(Scaling.fit);
-                table.add(image).left();
+                image.setAlign(Align.left);
+                var container = new AspectRatioContainer<>(image, image.getDrawable().getMinWidth(), image.getDrawable().getMinHeight());
+                table.add(container).growX();
             } else if (element instanceof MusicElement) {
                 var musicElement = (MusicElement) element;
     
