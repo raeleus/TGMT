@@ -1,4 +1,4 @@
-package com.ray3k.liftoff;
+package com.ray3k.liftoff.editor;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Pool;
