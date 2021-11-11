@@ -10,12 +10,14 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
@@ -68,14 +70,14 @@ public class Editor extends ApplicationAdapter {
 		viewport2 = new ScreenViewport();
 		stage2 = new Stage(viewport2);
 		
-		inputMultiplexer = new InputMultiplexer(stage1, stage2);
+		inputMultiplexer = new InputMultiplexer(stage2, stage1);
 		Gdx.input.setInputProcessor(inputMultiplexer);
 		
 		assetManager = new AssetManager(new InternalFileHandleResolver());
 		
 		root = new Table();
 		root.setFillParent(true);
-		root.setBackground(skin.getDrawable("bg-10"));
+		root.setBackground(skin.getDrawable("bg-transparent-10"));
 		stage2.addActor(root);
 		
 		showMenu();
@@ -136,14 +138,50 @@ public class Editor extends ApplicationAdapter {
 		
 		button = new Button(skin, "home");
 		root.add(button);
+		button.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				camera1.position.set(0, 0, 0);
+			}
+		});
 		
 		button = new Button(skin, "zoom-out");
 		root.add(button);
+		
+		textButton = new TextButton("test", skin);
+		stage1.addActor(textButton);
+		
+		var dragListener = new DragListener() {
+			float startX;
+			float startY;
+			
+			@Override
+			public void dragStart(InputEvent event, float x, float y, int pointer) {
+				System.out.println("start " + x + " " + y + " " + pointer);
+				startX = x;
+				startY = y;
+			}
+			
+			@Override
+			public void drag(InputEvent event, float x, float y, int pointer) {
+				System.out.println("drag " + x + " " + y + " " + pointer);
+				camera1.position.set(camera1.position.x - x + startX, camera1.position.y - y + startY, 0);
+//				startX = x;
+//				startY = y;
+			}
+			
+			@Override
+			public void dragStop(InputEvent event, float x, float y, int pointer) {
+				System.out.println("end " + x + " " + y + " " + pointer);
+			}
+		};
+		
+		stage1.addListener(dragListener);
 	}
 	
 	@Override
 	public void render() {
-		ScreenUtils.clear(Color.BLACK);
+		ScreenUtils.clear(skin.getColor("background"));
 		
 		stage1.act();
 		stage2.act();
