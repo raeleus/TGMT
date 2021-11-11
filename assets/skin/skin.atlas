@@ -4,6 +4,13 @@ size: 512, 512
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
+white-pixel
+  rotate: false
+  xy: 234, 405
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
 bg
   rotate: false
   xy: 1, 134
@@ -27,14 +34,14 @@ button-delete-pressed
   index: -1
 button-delete-text
   rotate: false
-  xy: 21, 15
+  xy: 473, 486
   size: 14, 15
   orig: 14, 15
   offset: 0, 0
   index: -1
 button-delete-text-pressed
   rotate: false
-  xy: 105, 288
+  xy: 21, 15
   size: 14, 15
   orig: 14, 15
   offset: 0, 0
@@ -81,6 +88,20 @@ button-menu-pressed
   orig: 18, 15
   offset: 0, 0
   index: -1
+button-menu-pressed_1
+  rotate: false
+  xy: 151, 217
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-menu_1
+  rotate: false
+  xy: 103, 36
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
 button-music
   rotate: false
   xy: 334, 358
@@ -107,6 +128,20 @@ button-normal-pressed
   xy: 1, 369
   size: 231, 70
   orig: 231, 70
+  offset: 0, 0
+  index: -1
+button-save
+  rotate: false
+  xy: 151, 167
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-save-pressed
+  rotate: false
+  xy: 151, 117
+  size: 46, 48
+  orig: 46, 48
   offset: 0, 0
   index: -1
 button-small
@@ -174,14 +209,14 @@ icon-key
   index: -1
 icon-left-arrow
   rotate: false
-  xy: 103, 73
+  xy: 199, 254
   size: 15, 11
   orig: 15, 11
   offset: 0, 0
   index: -1
 icon-right-arrow
   rotate: false
-  xy: 473, 490
+  xy: 151, 104
   size: 15, 11
   orig: 15, 11
   offset: 0, 0
@@ -209,14 +244,14 @@ scroll-pane-horizontal
   index: -1
 scroll-pane-vertical
   rotate: false
-  xy: 103, 55
+  xy: 105, 287
   size: 5, 16
   orig: 5, 16
   offset: 0, 0
   index: -1
 split-pane-horizontal
   rotate: false
-  xy: 151, 157
+  xy: 199, 144
   size: 13, 108
   orig: 13, 108
   offset: 0, 0

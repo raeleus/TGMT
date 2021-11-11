@@ -2,21 +2,27 @@ package com.ray3k.liftoff.editor;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.ray3k.liftoff.Core;
 import com.ray3k.stripe.FreeTypeSkin;
+import com.ray3k.stripe.PopTable.PopTableStyle;
+import com.ray3k.stripe.PopTableClickListener;
 import org.lwjgl.PointerBuffer;
 import org.lwjgl.system.MemoryStack;
 
@@ -28,10 +34,15 @@ import static org.lwjgl.system.MemoryStack.stackPush;
 
 public class Editor extends ApplicationAdapter {
 	public static Skin skin;
-	public static Stage stage;
-	public static ScreenViewport viewport;
+	public static Stage stage1;
+	public static Stage stage2;
+	public static ExtendViewport viewport1;
+	public static OrthographicCamera camera1;
+	public static ScreenViewport viewport2;
+	public static InputMultiplexer inputMultiplexer;
 	public static Table root;
 	public static AssetManager assetManager;
+	public static PopTableStyle popTableStyle;
 	
 	public static void main(String[] args) {
 		Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
@@ -46,21 +57,32 @@ public class Editor extends ApplicationAdapter {
 	@Override
 	public void create() {
 		skin = new FreeTypeSkin(Gdx.files.internal("skin/skin.json"));
-		viewport = new ScreenViewport();
-		stage = new Stage(viewport);
-		Gdx.input.setInputProcessor(stage);
+		popTableStyle = new PopTableStyle();
+		popTableStyle.background = skin.getDrawable("pop-table-10");
+		popTableStyle.stageBackground = skin.getDrawable("pop-table-stage-background");
+		
+		camera1 = new OrthographicCamera();
+		viewport1 = new ExtendViewport(800, 800, camera1);
+		stage1 = new Stage(viewport1);
+		
+		viewport2 = new ScreenViewport();
+		stage2 = new Stage(viewport2);
+		
+		inputMultiplexer = new InputMultiplexer(stage1, stage2);
+		Gdx.input.setInputProcessor(inputMultiplexer);
 		
 		assetManager = new AssetManager(new InternalFileHandleResolver());
 		
 		root = new Table();
 		root.setFillParent(true);
 		root.setBackground(skin.getDrawable("bg-10"));
-		stage.addActor(root);
+		stage2.addActor(root);
 		
 		showMenu();
 	}
 	
 	private void showMenu() {
+		stage1.clear();
 		root.clear();
 		
 		root.defaults().space(25);
@@ -85,27 +107,61 @@ public class Editor extends ApplicationAdapter {
 	}
 	
 	private void showEditor() {
+		stage1.clear();
 		root.clear();
+		root.defaults().reset();
 		
+		root.align(Align.bottomLeft);
+		root.pad(50);
 		
+		var button = new Button(skin, "menu1");
+		root.add(button);
+		var popTableClickListener = new PopTableClickListener(Align.center, Align.topRight, popTableStyle);
+		button.addListener(popTableClickListener);
+		
+		var popTable = popTableClickListener.getPopTable();
+		var textButton = new TextButton("Save to JSON", skin, "small");
+		popTable.add(textButton);
+		
+		popTable.row();
+		textButton = new TextButton("New Project", skin, "small");
+		popTable.add(textButton);
+		
+		popTable.row();
+		textButton = new TextButton("Open Project", skin, "small");
+		popTable.add(textButton);
+		
+		button = new Button(skin, "save");
+		root.add(button);
+		
+		button = new Button(skin, "home");
+		root.add(button);
+		
+		button = new Button(skin, "zoom-out");
+		root.add(button);
 	}
 	
 	@Override
 	public void render() {
 		ScreenUtils.clear(Color.BLACK);
 		
-		stage.act();
-		stage.draw();
+		stage1.act();
+		stage2.act();
+		
+		stage1.draw();
+		stage2.draw();
 	}
 	
 	@Override
 	public void resize(int width, int height) {
-		viewport.update(width, height, true);
+		viewport1.update(width, height);
+		viewport2.update(width, height, true);
 	}
 	
 	@Override
 	public void dispose() {
-		stage.dispose();
+		stage1.dispose();
+		stage2.dispose();
 		skin.dispose();
 	}
 	
