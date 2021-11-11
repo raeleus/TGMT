@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -142,6 +143,7 @@ public class Editor extends ApplicationAdapter {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				camera1.position.set(0, 0, 0);
+				camera1.zoom = 1f;
 			}
 		});
 		
@@ -157,22 +159,25 @@ public class Editor extends ApplicationAdapter {
 			
 			@Override
 			public void dragStart(InputEvent event, float x, float y, int pointer) {
-				System.out.println("start " + x + " " + y + " " + pointer);
 				startX = x;
 				startY = y;
 			}
 			
 			@Override
 			public void drag(InputEvent event, float x, float y, int pointer) {
-				System.out.println("drag " + x + " " + y + " " + pointer);
 				camera1.position.set(camera1.position.x - x + startX, camera1.position.y - y + startY, 0);
-//				startX = x;
-//				startY = y;
 			}
 			
 			@Override
 			public void dragStop(InputEvent event, float x, float y, int pointer) {
-				System.out.println("end " + x + " " + y + " " + pointer);
+			
+			}
+			
+			@Override
+			public boolean scrolled(InputEvent event, float x, float y, float amountX, float amountY) {
+				camera1.zoom += .2f * amountY;
+				camera1.zoom = Math.max(0, camera1.zoom);
+				return false;
 			}
 		};
 		
