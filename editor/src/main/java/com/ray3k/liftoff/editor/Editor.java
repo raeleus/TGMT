@@ -11,6 +11,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -195,15 +196,27 @@ public class Editor extends ApplicationAdapter {
 					stage1.getViewport().project(vector2);
 					canDrag = false;
 					
-					var textButton = new TextButton("Add Room", skin, "small");
-					popTable.add(textButton);
-					cl(textButton, () -> {
-						var roomWidget = new RoomWidget(skin);
-						roomWidget.setPosition(x, y - roomWidget.getHeight() / 2);
-						roomWidgets.add(roomWidget);
-						stage1.addActor(roomWidget);
-						popTable.hide();
-					});
+					var actor = stage1.hit(x, y, false);
+					if (actor == null) {
+						var textButton = new TextButton("Add Room", skin, "small");
+						popTable.add(textButton);
+						cl(textButton, () -> {
+							var roomWidget = new RoomWidget(skin);
+							roomWidget.setPosition(x, y - roomWidget.getHeight() / 2);
+							roomWidgets.add(roomWidget);
+							stage1.addActor(roomWidget);
+							popTable.hide();
+						});
+					} else if (actor instanceof RoomWidget) {
+						var textButton = new TextButton("Delete Room", skin, "small");
+						popTable.add(textButton);
+						cl(textButton, () -> {
+							var roomWidget = (RoomWidget) actor;
+							roomWidgets.removeValue(roomWidget, true);
+							roomWidget.remove();
+							popTable.hide();
+						});
+					}
 					
 					popTable.pack();
 					popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
