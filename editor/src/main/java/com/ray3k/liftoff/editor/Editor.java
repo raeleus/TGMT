@@ -19,9 +19,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.ray3k.liftoff.Room;
+import com.ray3k.liftoff.Utils;
 import com.ray3k.stripe.FreeTypeSkin;
 import com.ray3k.stripe.PopTable;
 import com.ray3k.stripe.PopTable.PopTableStyle;
@@ -33,6 +36,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ray3k.liftoff.Utils.*;
 import static org.lwjgl.system.MemoryStack.stackPush;
 
 public class Editor extends ApplicationAdapter {
@@ -47,6 +51,7 @@ public class Editor extends ApplicationAdapter {
 	public static AssetManager assetManager;
 	public static PopTableStyle popTableStyle;
 	private static final Vector2 vector2 = new Vector2();
+	public static final Array<RoomWidget> roomWidgets = new Array<>();
 	
 	public static void main(String[] args) {
 		Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
@@ -95,6 +100,9 @@ public class Editor extends ApplicationAdapter {
 		textButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				roomWidgets.clear();
+				var roomWidget = new RoomWidget(skin, new Room());
+				roomWidgets.add(roomWidget);
 				showEditor();
 			}
 		});
@@ -151,8 +159,9 @@ public class Editor extends ApplicationAdapter {
 		button = new Button(skin, "zoom-out");
 		root.add(button);
 		
-		textButton = new TextButton("test", skin);
-		stage1.addActor(textButton);
+		for (var roomWidget : roomWidgets) {
+			stage1.addActor(roomWidget);
+		}
 		
 		var dragListener = new DragListener() {
 			float startX;
@@ -204,6 +213,13 @@ public class Editor extends ApplicationAdapter {
 					
 					var textButton = new TextButton("Add Room", skin, "small");
 					popTable.add(textButton);
+					cl(textButton, () -> {
+						var roomWidget = new RoomWidget(skin);
+						roomWidget.setPosition(x, y - roomWidget.getHeight() / 2);
+						roomWidgets.add(roomWidget);
+						stage1.addActor(roomWidget);
+						popTable.hide();
+					});
 					
 					popTable.pack();
 					popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
