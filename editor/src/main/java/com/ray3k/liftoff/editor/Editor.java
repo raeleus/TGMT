@@ -8,7 +8,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
@@ -24,20 +23,12 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.liftoff.Room;
-import com.ray3k.liftoff.Utils;
 import com.ray3k.stripe.FreeTypeSkin;
 import com.ray3k.stripe.PopTable;
 import com.ray3k.stripe.PopTable.PopTableStyle;
 import com.ray3k.stripe.PopTableClickListener;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.ray3k.liftoff.Utils.*;
-import static org.lwjgl.system.MemoryStack.stackPush;
+import static com.ray3k.liftoff.editor.Utils.*;
 
 public class Editor extends ApplicationAdapter {
 	public static Skin skin;
@@ -255,131 +246,4 @@ public class Editor extends ApplicationAdapter {
 		skin.dispose();
 	}
 	
-	public static List<File> openMultipleDialog(String title, String defaultPath,
-										 String[] filterPatterns, String filterDescription) {
-		String result = null;
-		
-		//fix file path characters
-		if (isWindows()) {
-			defaultPath = defaultPath.replace("/", "\\");
-		} else {
-			defaultPath = defaultPath.replace("\\", "/");
-		}
-		if (filterPatterns != null && filterPatterns.length > 0) {
-			try (var stack = stackPush()) {
-				var pointerBuffer = stack.mallocPointer(filterPatterns.length);
-				
-				for (var filterPattern : filterPatterns) {
-					pointerBuffer.put(stack.UTF8(filterPattern));
-				}
-				
-				pointerBuffer.flip();
-				result = org.lwjgl.util.tinyfd.TinyFileDialogs.tinyfd_openFileDialog(title, defaultPath, pointerBuffer, filterDescription, true);
-			}
-		} else {
-			result = org.lwjgl.util.tinyfd.TinyFileDialogs.tinyfd_openFileDialog(title, defaultPath, null, filterDescription, true);
-		}
-		
-		if (result != null) {
-			var paths = result.split("\\|");
-			var returnValue = new ArrayList<File>();
-			for (var path : paths) {
-				returnValue.add(new File(path));
-			}
-			return returnValue;
-		} else {
-			return null;
-		}
-	}
-	
-	public static File openDialog(String title, String defaultPath,
-						   String[] filterPatterns, String filterDescription) {
-		String result = null;
-		
-		//fix file path characters
-		if (isWindows()) {
-			defaultPath = defaultPath.replace("/", "\\");
-		} else {
-			defaultPath = defaultPath.replace("\\", "/");
-		}
-		
-		if (filterPatterns != null && filterPatterns.length > 0) {
-			try (MemoryStack stack = stackPush()) {
-				PointerBuffer pointerBuffer = stack.mallocPointer(filterPatterns.length);
-				
-				for (String filterPattern : filterPatterns) {
-					pointerBuffer.put(stack.UTF8(filterPattern));
-				}
-				
-				pointerBuffer.flip();
-				result = org.lwjgl.util.tinyfd.TinyFileDialogs.tinyfd_openFileDialog(title, defaultPath, pointerBuffer, filterDescription, false);
-			}
-		} else {
-			result = org.lwjgl.util.tinyfd.TinyFileDialogs.tinyfd_openFileDialog(title, defaultPath, null, filterDescription, false);
-		}
-		
-		if (result != null) {
-			return new File(result);
-		} else {
-			return null;
-		}
-	}
-	
-	public static File saveDialog(String title, String defaultPath,
-						   String[] filterPatterns, String filterDescription) {
-		String result = null;
-		
-		//fix file path characters
-		if (isWindows()) {
-			defaultPath = defaultPath.replace("/", "\\");
-		} else {
-			defaultPath = defaultPath.replace("\\", "/");
-		}
-		
-		if (filterPatterns != null && filterPatterns.length > 0) {
-			try (var stack = stackPush()) {
-				PointerBuffer pointerBuffer = null;
-				pointerBuffer = stack.mallocPointer(filterPatterns.length);
-				
-				for (String filterPattern : filterPatterns) {
-					pointerBuffer.put(stack.UTF8(filterPattern));
-				}
-				
-				pointerBuffer.flip();
-				result = org.lwjgl.util.tinyfd.TinyFileDialogs.tinyfd_saveFileDialog(title, defaultPath, pointerBuffer, filterDescription);
-			}
-		} else {
-			result = org.lwjgl.util.tinyfd.TinyFileDialogs.tinyfd_saveFileDialog(title, defaultPath, null, filterDescription);
-		}
-		
-		if (result != null) {
-			return new File(result);
-		} else {
-			return null;
-		}
-	}
-	
-	private static String os;
-	
-	public static boolean isWindows() {
-		if (os == null) {
-			os = System.getProperty("os.name");
-		}
-		
-		return os.startsWith("Windows");
-	}
-	
-	public static boolean isLinux() {
-		if (os == null) {
-			os = System.getProperty("os.name");
-		}
-		return os.startsWith("Linux");
-	}
-	
-	public static boolean isMac() {
-		if (os == null) {
-			os = System.getProperty("os.name");
-		}
-		return os.startsWith("Mac");
-	}
 }
