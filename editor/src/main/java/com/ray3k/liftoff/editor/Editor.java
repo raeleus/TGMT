@@ -10,12 +10,13 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.*;
+import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
@@ -28,7 +29,8 @@ import com.ray3k.stripe.PopTable;
 import com.ray3k.stripe.PopTable.PopTableStyle;
 import com.ray3k.stripe.PopTableClickListener;
 
-import static com.ray3k.liftoff.editor.Utils.*;
+import static com.ray3k.liftoff.editor.Utils.cl;
+import static com.ray3k.liftoff.editor.Utils.openDialog;
 
 public class Editor extends ApplicationAdapter {
 	public static Skin skin;
@@ -88,24 +90,18 @@ public class Editor extends ApplicationAdapter {
 		root.defaults().space(25);
 		var textButton = new TextButton("New Project", skin);
 		root.add(textButton);
-		textButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				roomWidgets.clear();
-				var roomWidget = new RoomWidget(skin, new Room());
-				roomWidgets.add(roomWidget);
-				showEditor();
-			}
+		cl(textButton, () -> {
+			roomWidgets.clear();
+			var roomWidget = new RoomWidget(skin, new Room());
+			roomWidgets.add(roomWidget);
+			showEditor();
 		});
 		
 		textButton = new TextButton("Open Project", skin);
 		root.add(textButton);
-		textButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				var file = openDialog("Open JSON", "", new String[]{"json"}, "JSON Files (*.json)");
-				if (file != null) showEditor();
-			}
+		cl(textButton, () -> {
+			var file = openDialog("Open JSON", "", new String[]{"json"}, "JSON Files (*.json)");
+			if (file != null) showEditor();
 		});
 	}
 	
@@ -139,12 +135,9 @@ public class Editor extends ApplicationAdapter {
 		
 		button = new Button(skin, "home");
 		root.add(button);
-		button.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				camera1.position.set(0, 0, 0);
-				camera1.zoom = 1f;
-			}
+		cl(button, () -> {
+			camera1.position.set(0, 0, 0);
+			camera1.zoom = 1f;
 		});
 		
 		button = new Button(skin, "zoom-out");
