@@ -2,6 +2,7 @@ package com.ray3k.liftoff.editor;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
@@ -9,10 +10,8 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -24,6 +23,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.stripe.FreeTypeSkin;
+import com.ray3k.stripe.PopTable;
 import com.ray3k.stripe.PopTable.PopTableStyle;
 import com.ray3k.stripe.PopTableClickListener;
 import org.lwjgl.PointerBuffer;
@@ -46,6 +46,7 @@ public class Editor extends ApplicationAdapter {
 	public static Table root;
 	public static AssetManager assetManager;
 	public static PopTableStyle popTableStyle;
+	private static final Vector2 vector2 = new Vector2();
 	
 	public static void main(String[] args) {
 		Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
@@ -156,6 +157,7 @@ public class Editor extends ApplicationAdapter {
 		var dragListener = new DragListener() {
 			float startX;
 			float startY;
+			boolean canDrag = true;
 			
 			@Override
 			public void dragStart(InputEvent event, float x, float y, int pointer) {
@@ -165,7 +167,9 @@ public class Editor extends ApplicationAdapter {
 			
 			@Override
 			public void drag(InputEvent event, float x, float y, int pointer) {
-				camera1.position.set(camera1.position.x - x + startX, camera1.position.y - y + startY, 0);
+				if (canDrag) {
+					camera1.position.set(camera1.position.x - x + startX, camera1.position.y - y + startY, 0);
+				}
 			}
 			
 			@Override
@@ -175,9 +179,36 @@ public class Editor extends ApplicationAdapter {
 			
 			@Override
 			public boolean scrolled(InputEvent event, float x, float y, float amountX, float amountY) {
-				camera1.zoom += .2f * amountY;
-				camera1.zoom = Math.max(0, camera1.zoom);
+				if (canDrag) {
+					camera1.zoom += .2f * amountY;
+					camera1.zoom = Math.max(0, camera1.zoom);
+				}
 				return false;
+			}
+			
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+				if (button == Buttons.RIGHT && canDrag) {
+					var popTable = new PopTable(popTableStyle) {
+						@Override
+						public void hide(Action action) {
+							super.hide(action);
+							canDrag = true;
+						}
+					};
+					popTable.setHideOnUnfocus(true);
+					popTable.show(stage2);
+					vector2.set(x, y);
+					stage1.getViewport().project(vector2);
+					canDrag = false;
+					
+					var textButton = new TextButton("Add Room", skin, "small");
+					popTable.add(textButton);
+					
+					popTable.pack();
+					popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
+				}
+				return super.touchDown(event, x, y, pointer, button);
 			}
 		};
 		
