@@ -152,17 +152,27 @@ public class Editor extends ApplicationAdapter {
 			float startX;
 			float startY;
 			boolean canDrag = true;
+			Actor dragTarget;
+			float dragTargetOffsetX;
+			float dragTargetOffsetY;
 			
 			@Override
 			public void dragStart(InputEvent event, float x, float y, int pointer) {
+				dragTarget = stage1.hit(x, y, true);
 				startX = x;
 				startY = y;
+				if (dragTarget != null) {
+					dragTargetOffsetX = x - dragTarget.getX();
+					dragTargetOffsetY = y - dragTarget.getY();
+				}
 			}
 			
 			@Override
 			public void drag(InputEvent event, float x, float y, int pointer) {
-				if (canDrag) {
+				if (canDrag && dragTarget == null) {
 					camera1.position.set(camera1.position.x - x + startX, camera1.position.y - y + startY, 0);
+				} else if (dragTarget instanceof RoomWidget) {
+					dragTarget.setPosition(x - dragTargetOffsetX, y - dragTargetOffsetY);
 				}
 			}
 			
