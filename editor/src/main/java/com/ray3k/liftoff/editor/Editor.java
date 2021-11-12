@@ -14,10 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
@@ -197,8 +194,8 @@ public class Editor extends ApplicationAdapter {
 			}
 			
 			@Override
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if (button == Buttons.RIGHT && canDrag) {
+			public boolean touchDown(InputEvent event, float x, float y, int pointer, int mouseButton) {
+				if (mouseButton == Buttons.RIGHT && canDrag) {
 					var popTable = new PopTable(popTableStyle) {
 						@Override
 						public void hide(Action action) {
@@ -207,6 +204,7 @@ public class Editor extends ApplicationAdapter {
 						}
 					};
 					popTable.setHideOnUnfocus(true);
+					popTable.setKeepSizedWithinStage(true);
 					popTable.show(stage2);
 					vector2.set(x, y);
 					stage1.getViewport().project(vector2);
@@ -224,10 +222,57 @@ public class Editor extends ApplicationAdapter {
 							popTable.hide();
 						});
 					} else if (actor instanceof RoomWidget) {
-						var textButton = new TextButton("Delete Room", skin, "small");
-						popTable.add(textButton);
-						cl(textButton, () -> {
-							var roomWidget = (RoomWidget) actor;
+						var roomWidget = (RoomWidget) actor;
+						popTable.pad(5);
+						
+						var table = new Table();
+						var scrollPane = new ScrollPane(table, skin);
+						popTable.add(scrollPane);
+						
+						var roomNameTextField = new TextField("", skin, "room-name");
+						table.add(roomNameTextField).growX();
+						cl(roomNameTextField, () -> {
+							roomWidget.room.name = roomNameTextField.getText();
+							roomWidget.update();
+						});
+						
+						table.row();
+						var verticalGroup = new VerticalGroup();
+						table.add(verticalGroup);
+						
+						table.row();
+						var subTable = new Table();
+						table.add(subTable);
+						
+						var button = new Button(skin, "delete");
+						subTable.add(button).growX();
+						cl(button, () -> {
+							roomWidgets.removeValue(roomWidget, true);
+							roomWidget.remove();
+							popTable.hide();
+						});
+						
+						button = new Button(skin, "text");
+						subTable.add(button);
+						cl(button, () -> {
+							roomWidgets.removeValue(roomWidget, true);
+							roomWidget.remove();
+							popTable.hide();
+						});
+						
+						subTable.add().growX();
+						
+						button = new Button(skin, "image");
+						subTable.add(button);
+						cl(button, () -> {
+							roomWidgets.removeValue(roomWidget, true);
+							roomWidget.remove();
+							popTable.hide();
+						});
+						
+						button = new Button(skin, "music");
+						subTable.add(button);
+						cl(button, () -> {
 							roomWidgets.removeValue(roomWidget, true);
 							roomWidget.remove();
 							popTable.hide();
@@ -237,7 +282,7 @@ public class Editor extends ApplicationAdapter {
 					popTable.pack();
 					popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
 				}
-				return super.touchDown(event, x, y, pointer, button);
+				return super.touchDown(event, x, y, pointer, mouseButton);
 			}
 		};
 		

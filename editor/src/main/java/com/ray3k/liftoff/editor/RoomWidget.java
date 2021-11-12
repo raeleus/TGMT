@@ -38,4 +38,8 @@ public class RoomWidget extends Table {
         
         this.pack();
     }
+    
+    public void update() {
+        label.setText(room.name);
+    }
 }
