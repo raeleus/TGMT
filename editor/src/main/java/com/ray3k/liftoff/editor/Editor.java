@@ -143,10 +143,16 @@ public class Editor extends ApplicationAdapter {
 		
 		button = new Button(skin, "zoom-out");
 		root.add(button);
+		cl(button, () -> {
+			zoomOut();
+		});
 		
 		for (var roomWidget : roomWidgets) {
 			stage1.addActor(roomWidget);
 		}
+		
+		zoomOut();
+		if (camera1.zoom < 1) camera1.zoom = 1;
 		
 		var dragListener = new DragListener() {
 			float startX;
@@ -236,6 +242,38 @@ public class Editor extends ApplicationAdapter {
 		};
 		
 		stage1.addListener(dragListener);
+	}
+	
+	public void zoomOut() {
+		if (roomWidgets.size == 0) {
+			camera1.position.set(0, 0, 0);
+			camera1.zoom = 1f;
+			return;
+		}
+		
+		float cBottom = Float.MAX_VALUE, cTop = -Float.MAX_VALUE, cLeft = Float.MAX_VALUE, cRight = - Float.MAX_VALUE;
+		float bottom = Float.MAX_VALUE, top = -Float.MAX_VALUE, left = Float.MAX_VALUE, right = - Float.MAX_VALUE;
+		for (var widget : roomWidgets) {
+			if (widget.getX() + widget.getWidth() / 2 < cLeft) cLeft = widget.getX() + widget.getWidth() / 2;
+			if (widget.getX() + widget.getWidth() / 2 > cRight) cRight = widget.getX() + widget.getWidth() / 2;
+			if (widget.getY() + widget.getHeight() / 2 < cBottom) cBottom = widget.getY() + widget.getHeight() / 2;
+			if (widget.getY() + widget.getHeight() / 2 > cTop) cTop = widget.getY() + widget.getHeight() / 2;
+			
+			if (widget.getX() < left) left = widget.getX();
+			if (widget.getX() + widget.getWidth() > right) right = widget.getX() + widget.getWidth();
+			if (widget.getY() < bottom) bottom = widget.getY();
+			if (widget.getY() + widget.getHeight() > top) top = widget.getY() + widget.getHeight();
+		}
+		
+		float cWidth = cRight - cLeft;
+		float cHeight = cTop - cBottom;
+		
+		camera1.position.set(cLeft + cWidth / 2, cBottom + cHeight / 2, 0);
+		
+		float padding = 50f;
+		float width = right - left + padding * 2;
+		float height = top - bottom + padding * 2;
+		camera1.zoom = Math.max(width / camera1.viewportWidth, height / camera1.viewportHeight);
 	}
 	
 	@Override
