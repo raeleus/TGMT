@@ -15,18 +15,38 @@ public class Room {
     
     public static class TextElement implements Element {
         public String text;
+    
+        @Override
+        public String toString() {
+            return text;
+        }
     }
     
     public static class ImageElement implements Element {
         public String image;
+    
+        @Override
+        public String toString() {
+            return image;
+        }
     }
     
     public static class MusicElement implements Element {
         public String music;
+    
+        @Override
+        public String toString() {
+            return music;
+        }
     }
     
     public static class SoundElement implements Element {
         public String sound;
+    
+        @Override
+        public String toString() {
+            return sound;
+        }
     }
     
     public static class Action {
