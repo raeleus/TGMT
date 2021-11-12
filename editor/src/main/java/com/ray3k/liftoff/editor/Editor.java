@@ -93,7 +93,7 @@ public class Editor extends ApplicationAdapter {
 		root.add(textButton);
 		cl(textButton, () -> {
 			roomWidgets.clear();
-			var roomWidget = new RoomWidget(skin, new Room());
+			var roomWidget = new RoomWidget(skin);
 			roomWidgets.add(roomWidget);
 			showEditor();
 		});
@@ -212,7 +212,7 @@ public class Editor extends ApplicationAdapter {
 					stage1.getViewport().project(vector2);
 					canDrag = false;
 					
-					var actor = stage1.hit(x, y, false);
+					var actor = stage1.hit(x, y, true);
 					if (actor == null) {
 						var textButton = new TextButton("Add Room", skin, "small");
 						popTable.add(textButton);
@@ -299,5 +299,15 @@ public class Editor extends ApplicationAdapter {
 		stage2.dispose();
 		skin.dispose();
 	}
-	
+
+	public static boolean doesNameExist(String name) {
+		boolean exists = false;
+		for (var widget : roomWidgets) {
+			if (widget.room.name.equals(name)) {
+				exists = true;
+				break;
+			}
+		}
+		return exists;
+	}
 }
