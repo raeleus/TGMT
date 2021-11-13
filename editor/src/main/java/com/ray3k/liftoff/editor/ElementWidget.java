@@ -59,6 +59,10 @@ public class ElementWidget extends Table {
         });
     }
     
+    public void update() {
+        widgetButton.setText(element.toString());
+    }
+    
     public static abstract class ElementWidgetListener implements EventListener {
         public abstract void clicked();
         public abstract void deleted();
