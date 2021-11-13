@@ -54,7 +54,7 @@ public class Utils {
             var paths = result.split("\\|");
             var returnValue = new ArrayList<FileHandle>();
             for (var path : paths) {
-                returnValue.add(Gdx.files.external(path));
+                returnValue.add(Gdx.files.absolute(path));
             }
             return returnValue;
         } else {
@@ -89,7 +89,7 @@ String[] filterPatterns, String filterDescription) {
         }
         
         if (result != null) {
-            return Gdx.files.external(result);
+            return Gdx.files.absolute(result);
         } else {
             return null;
         }
@@ -108,7 +108,7 @@ String[] filterPatterns, String filterDescription) {
         result =  org.lwjgl.util.tinyfd.TinyFileDialogs.tinyfd_selectFolderDialog(title, defaultPath);
     
         if (result != null) {
-            return Gdx.files.external(result);
+            return Gdx.files.absolute(result + "/");
         } else {
             return null;
         }
@@ -142,7 +142,7 @@ String[] filterPatterns, String filterDescription) {
         }
         
         if (result != null) {
-            return Gdx.files.external(result);
+            return Gdx.files.absolute(result);
         } else {
             return null;
         }

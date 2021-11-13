@@ -31,6 +31,10 @@ import com.ray3k.stripe.PopTable.PopTableStyle;
 import com.ray3k.stripe.PopTableClickListener;
 import com.ray3k.stripe.ScrollFocusListener;
 
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.Locale;
+
 import static com.ray3k.liftoff.editor.Utils.cl;
 import static com.ray3k.liftoff.editor.Utils.openDialog;
 
@@ -288,25 +292,43 @@ public class Editor extends ApplicationAdapter {
                         button = new Button(skin, "image");
                         table.add(button);
                         cl(button, () -> {
-                            var imageElement = new ImageElement();
-                            imageElement.image = "image path/test.png";
-                            createElementWidget(imageElement, roomWidget, verticalGroup);
+                            popTable.setHideOnUnfocus(false);
+                            
+                            if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
+                            
+                            showDetailPop("Select an image", gatherImages(), (string) -> {
+                                var imageElement = new ImageElement();
+                                imageElement.image = string;
+                                createElementWidget(imageElement, roomWidget, verticalGroup);
+                            }, () -> popTable.setHideOnUnfocus(true));
                         });
                         
                         button = new Button(skin, "music");
                         table.add(button);
                         cl(button, () -> {
-                            var musicElement = new MusicElement();
-                            musicElement.music = "music path/test.mp3";
-                            createElementWidget(musicElement, roomWidget, verticalGroup);
+                            popTable.setHideOnUnfocus(false);
+        
+                            if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
+        
+                            showDetailPop("Select a music file", gatherSounds(), (string) -> {
+                                var musicElement = new MusicElement();
+                                musicElement.music = string;
+                                createElementWidget(musicElement, roomWidget, verticalGroup);
+                            }, () -> popTable.setHideOnUnfocus(true));
                         });
                         
                         button = new Button(skin, "sound");
                         table.add(button);
                         cl(button, () -> {
-                            var soundElement = new SoundElement();
-                            soundElement.sound = "sound path/test.mp3";
-                            createElementWidget(soundElement, roomWidget, verticalGroup);
+                            popTable.setHideOnUnfocus(false);
+        
+                            if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
+        
+                            showDetailPop("Select a sound file", gatherSounds(), (string) -> {
+                                var soundElement = new SoundElement();
+                                soundElement.sound = "sound path/test.mp3";
+                                createElementWidget(soundElement, roomWidget, verticalGroup);
+                            }, () -> popTable.setHideOnUnfocus(true));
                         });
                     }
                     
@@ -340,6 +362,74 @@ public class Editor extends ApplicationAdapter {
                 roomWidget.room.elements.removeValue(elementWidget.element, true);
             }
         });
+    }
+    
+    private void showDetailPop(String labelText, Array<String> values, DetailConfirmation onConfirm, Runnable onHide) {
+        var popTable = new PopTable(popTableStyle) {
+            @Override
+            public void hide(Action action) {
+                super.hide(action);
+                onHide.run();
+            }
+        };
+        
+        popTable.setHideOnUnfocus(true);
+        
+        var label = new Label(labelText, skin);
+        popTable.add(label);
+        
+        popTable.row();
+        var list = new List<String>(skin);
+        list.setAlignment(Align.center);
+        list.setItems(values);
+        
+        var scrollPane = new ScrollPane(list, skin);
+        scrollPane.setFadeScrollBars(false);
+        popTable.add(scrollPane).growX();
+        scrollPane.addListener(new ScrollFocusListener(stage2));
+        
+        popTable.row();
+        var textButton = new TextButton("OK", skin, "small");
+        textButton.setDisabled(values.size == 0);
+        popTable.add(textButton);
+        cl(textButton, () -> onConfirm.confirmed(list.getSelected()));
+        cl(textButton, popTable::hide);
+        
+        popTable.show(stage2);
+    }
+    
+    private interface DetailConfirmation {
+        void confirmed(String selection);
+    }
+    
+    private Array<String> gatherImages() {
+        var fileNameFilter = new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase(Locale.ROOT).matches(".*\\.((png)|(jpg))$");
+            }
+        };
+        var array = new Array<String>();
+        for (var fileHandle : resourcesPath.list(fileNameFilter)) {
+            var string = fileHandle.nameWithoutExtension();
+            if (!array.contains(string, false)) array.add(string);
+        }
+        return array;
+    }
+    
+    private Array<String> gatherSounds() {
+        var fileNameFilter = new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase(Locale.ROOT).matches(".*\\.((mp3)|(ogg)|(wav))$");
+            }
+        };
+        var array = new Array<String>();
+        for (var fileHandle : resourcesPath.list(fileNameFilter)) {
+            var string = fileHandle.nameWithoutExtension();
+            if (!array.contains(string, false)) array.add(string);
+        }
+        return array;
     }
     
     public void zoomOut() {
