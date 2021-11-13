@@ -1,5 +1,7 @@
 package com.ray3k.liftoff.editor;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import org.lwjgl.PointerBuffer;
@@ -23,7 +25,7 @@ public class Utils {
         });
     }
     
-    public static List<File> openMultipleDialog(String title, String defaultPath,
+    public static List<FileHandle> openMultipleDialog(String title, String defaultPath,
                                                 String[] filterPatterns, String filterDescription) {
         String result = null;
         
@@ -50,9 +52,9 @@ public class Utils {
         
         if (result != null) {
             var paths = result.split("\\|");
-            var returnValue = new ArrayList<File>();
+            var returnValue = new ArrayList<FileHandle>();
             for (var path : paths) {
-                returnValue.add(new File(path));
+                returnValue.add(Gdx.files.external(path));
             }
             return returnValue;
         } else {
@@ -60,7 +62,7 @@ public class Utils {
         }
     }
     
-    public static File openDialog(String title, String defaultPath,
+    public static FileHandle openDialog(String title, String defaultPath,
 String[] filterPatterns, String filterDescription) {
         String result = null;
         
@@ -87,13 +89,32 @@ String[] filterPatterns, String filterDescription) {
         }
         
         if (result != null) {
-            return new File(result);
+            return Gdx.files.external(result);
         } else {
             return null;
         }
     }
     
-    public static File saveDialog(String title, String defaultPath,
+    public static FileHandle openFolderDialog(String title, String defaultPath) {
+        String result = null;
+    
+        //fix file path characters
+        if (isWindows()) {
+            defaultPath = defaultPath.replace("/", "\\");
+        } else {
+            defaultPath = defaultPath.replace("\\", "/");
+        }
+        
+        result =  org.lwjgl.util.tinyfd.TinyFileDialogs.tinyfd_selectFolderDialog(title, defaultPath);
+    
+        if (result != null) {
+            return Gdx.files.external(result);
+        } else {
+            return null;
+        }
+    }
+    
+    public static FileHandle saveDialog(String title, String defaultPath,
 String[] filterPatterns, String filterDescription) {
         String result = null;
         
@@ -121,7 +142,7 @@ String[] filterPatterns, String filterDescription) {
         }
         
         if (result != null) {
-            return new File(result);
+            return Gdx.files.external(result);
         } else {
             return null;
         }

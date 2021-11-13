@@ -8,6 +8,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -46,6 +47,7 @@ public class Editor extends ApplicationAdapter {
     public static PopTableStyle popTableStyle;
     private static final Vector2 vector2 = new Vector2();
     public static final Array<RoomWidget> roomWidgets = new Array<>();
+    public static FileHandle resourcesPath;
     
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
@@ -145,6 +147,12 @@ public class Editor extends ApplicationAdapter {
         root.add(button);
         cl(button, () -> {
             zoomOut();
+        });
+        
+        button = new Button(skin, "folder");
+        root.add(button);
+        cl(button, () -> {
+            resourcesPath = Utils.openFolderDialog("Select resources path", "");
         });
         
         for (var roomWidget : roomWidgets) {

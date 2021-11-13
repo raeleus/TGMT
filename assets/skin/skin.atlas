@@ -41,7 +41,7 @@ button-delete-pressed
   index: -1
 button-delete-text
   rotate: false
-  xy: 345, 123
+  xy: 247, 73
   size: 14, 15
   orig: 14, 15
   offset: 0, 0
@@ -51,6 +51,20 @@ button-delete-text-pressed
   xy: 473, 470
   size: 14, 15
   orig: 14, 15
+  offset: 0, 0
+  index: -1
+button-folder
+  rotate: false
+  xy: 199, 40
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+button-folder-pressed
+  rotate: false
+  xy: 345, 90
+  size: 46, 48
+  orig: 46, 48
   offset: 0, 0
   index: -1
 button-home
