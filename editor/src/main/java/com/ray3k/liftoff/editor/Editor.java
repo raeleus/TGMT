@@ -401,6 +401,28 @@ public class Editor extends ApplicationAdapter {
                 verticalGroup.removeActor(elementWidget);
                 roomWidget.room.elements.removeValue(elementWidget.element, true);
             }
+    
+            @Override
+            public void movedUp() {
+                int index = roomWidget.room.elements.indexOf(elementWidget.element, true);
+                int newIndex = Math.max(index - 1, 0);
+                roomWidget.room.elements.removeIndex(index);
+                roomWidget.room.elements.insert(newIndex, elementWidget.element);
+                
+                verticalGroup.removeActorAt(index, false);
+                verticalGroup.addActorAt(newIndex, elementWidget);
+            }
+    
+            @Override
+            public void movedDown() {
+                int index = roomWidget.room.elements.indexOf(elementWidget.element, true);
+                int newIndex = Math.min(index + 1, roomWidget.room.elements.size - 1);
+                roomWidget.room.elements.removeIndex(index);
+                roomWidget.room.elements.insert(newIndex, elementWidget.element);
+    
+                verticalGroup.removeActorAt(index, false);
+                verticalGroup.addActorAt(newIndex, elementWidget);
+            }
         });
     }
     
