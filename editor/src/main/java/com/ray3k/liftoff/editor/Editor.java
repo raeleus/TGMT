@@ -23,7 +23,6 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.ray3k.liftoff.Room;
 import com.ray3k.liftoff.Room.*;
 import com.ray3k.liftoff.editor.ElementWidget.ElementWidgetListener;
 import com.ray3k.stripe.FreeTypeSkin;
@@ -31,7 +30,6 @@ import com.ray3k.stripe.PopTable;
 import com.ray3k.stripe.PopTable.PopTableStyle;
 import com.ray3k.stripe.PopTableClickListener;
 import com.ray3k.stripe.ScrollFocusListener;
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -179,7 +177,6 @@ public class Editor extends ApplicationAdapter {
             
             @Override
             public void dragStart(InputEvent event, float x, float y, int pointer) {
-                dragTarget = stage1.hit(x, y, true);
                 startX = x;
                 startY = y;
                 if (dragTarget != null) {
@@ -213,23 +210,24 @@ public class Editor extends ApplicationAdapter {
             
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int mouseButton) {
+                dragTarget = stage1.hit(x, y, true);
+                
                 if (mouseButton == Buttons.RIGHT && canDrag) {
-                    var popTable = new PopTable(popTableStyle) {
-                        @Override
-                        public void hide(Action action) {
-                            super.hide(action);
-                            canDrag = true;
-                        }
-                    };
-                    popTable.setHideOnUnfocus(true);
-                    popTable.setKeepSizedWithinStage(true);
-                    popTable.show(stage2);
-                    vector2.set(x, y);
-                    stage1.getViewport().project(vector2);
-                    canDrag = false;
-                    
-                    var actor = stage1.hit(x, y, true);
-                    if (actor == null) {
+                    if (dragTarget == null) {
+                        var popTable = new PopTable(popTableStyle) {
+                            @Override
+                            public void hide(Action action) {
+                                super.hide(action);
+                                canDrag = true;
+                            }
+                        };
+                        popTable.setHideOnUnfocus(true);
+                        popTable.setKeepSizedWithinStage(true);
+                        popTable.show(stage2);
+                        vector2.set(x, y);
+                        stage1.getViewport().project(vector2);
+                        canDrag = false;
+                        
                         var textButton = new TextButton("Add Room", skin, "small");
                         popTable.add(textButton);
                         cl(textButton, () -> {
@@ -239,8 +237,25 @@ public class Editor extends ApplicationAdapter {
                             stage1.addActor(roomWidget);
                             popTable.hide();
                         });
-                    } else if (actor instanceof RoomWidget) {
-                        var roomWidget = (RoomWidget) actor;
+    
+                        popTable.pack();
+                        popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
+                    } else if (dragTarget instanceof RoomWidget) {
+                        var popTable = new PopTable(popTableStyle) {
+                            @Override
+                            public void hide(Action action) {
+                                super.hide(action);
+                                canDrag = true;
+                            }
+                        };
+                        popTable.setHideOnUnfocus(true);
+                        popTable.setKeepSizedWithinStage(true);
+                        popTable.show(stage2);
+                        vector2.set(x, y);
+                        stage1.getViewport().project(vector2);
+                        canDrag = false;
+                        
+                        var roomWidget = (RoomWidget) dragTarget;
                         popTable.pad(5);
                         
                         var table = new Table();
@@ -353,10 +368,10 @@ public class Editor extends ApplicationAdapter {
                                 createElementWidget(soundElement, roomWidget, verticalGroup, popTable);
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
+    
+                        popTable.pack();
+                        popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
                     }
-                    
-                    popTable.pack();
-                    popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
                 }
                 return super.touchDown(event, x, y, pointer, mouseButton);
             }
@@ -612,7 +627,7 @@ public class Editor extends ApplicationAdapter {
         skin.dispose();
     }
     
-    public static boolean doesNameExist(String name) {
+    public static boolean doesRoomNameExist(String name) {
         boolean exists = false;
         for (var widget : roomWidgets) {
             if (widget.room.name.equals(name)) {
