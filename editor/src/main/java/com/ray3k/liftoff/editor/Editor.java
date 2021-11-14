@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -30,11 +31,15 @@ import com.ray3k.stripe.PopTable;
 import com.ray3k.stripe.PopTable.PopTableStyle;
 import com.ray3k.stripe.PopTableClickListener;
 import com.ray3k.stripe.ScrollFocusListener;
+import org.lwjgl.system.CallbackI.V;
+import space.earlygrey.shapedrawer.JoinType;
+import space.earlygrey.shapedrawer.ShapeDrawer;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.Locale;
 
+import static com.ray3k.liftoff.editor.Utils.*;
 import static com.ray3k.liftoff.editor.Utils.cl;
 import static com.ray3k.liftoff.editor.Utils.openDialog;
 
@@ -52,6 +57,7 @@ public class Editor extends ApplicationAdapter {
     private static final Vector2 vector2 = new Vector2();
     public static final Array<RoomWidget> roomWidgets = new Array<>();
     public static FileHandle resourcesPath;
+    public static ShapeDrawer shapeDrawer;
     
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
@@ -70,9 +76,12 @@ public class Editor extends ApplicationAdapter {
         popTableStyle.background = skin.getDrawable("pop-table-10");
         popTableStyle.stageBackground = skin.getDrawable("pop-table-stage-background");
         
+        
         camera1 = new OrthographicCamera();
         viewport1 = new ExtendViewport(800, 800, camera1);
         stage1 = new Stage(viewport1);
+        
+        shapeDrawer = new ShapeDrawer(stage1.getBatch(), skin.getRegion("white-pixel"));
         
         viewport2 = new ScreenViewport();
         stage2 = new Stage(viewport2);
@@ -156,7 +165,7 @@ public class Editor extends ApplicationAdapter {
         button = new Button(skin, "folder");
         root.add(button);
         cl(button, () -> {
-            resourcesPath = Utils.openFolderDialog("Select resources path", "");
+            resourcesPath = openFolderDialog("Select resources path", "");
         });
         
         for (var roomWidget : roomWidgets) {
@@ -332,7 +341,7 @@ public class Editor extends ApplicationAdapter {
                         cl(button, () -> {
                             popTable.setHideOnUnfocus(false);
                             
-                            if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
+                            if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
                             
                             showDetailPop("Select an image", gatherImages(), (string) -> {
                                 var imageElement = new ImageElement();
@@ -346,7 +355,7 @@ public class Editor extends ApplicationAdapter {
                         cl(button, () -> {
                             popTable.setHideOnUnfocus(false);
         
-                            if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
+                            if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
         
                             showDetailPop("Select a music file", gatherSounds(), (string) -> {
                                 var musicElement = new MusicElement();
@@ -360,7 +369,7 @@ public class Editor extends ApplicationAdapter {
                         cl(button, () -> {
                             popTable.setHideOnUnfocus(false);
         
-                            if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
+                            if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
         
                             showDetailPop("Select a sound file", gatherSounds(), (string) -> {
                                 var soundElement = new SoundElement();
@@ -401,7 +410,7 @@ public class Editor extends ApplicationAdapter {
                 final boolean uniqueName = temp;
                 
                 if (element instanceof SoundElement) {
-                    if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
+                    if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
                     popTable.setHideOnUnfocus(false);
                     
                     var soundElement = (SoundElement) element;
@@ -410,7 +419,7 @@ public class Editor extends ApplicationAdapter {
                         elementWidget.update();
                     }, () -> popTable.setHideOnUnfocus(uniqueName));
                 } else if (element instanceof ImageElement) {
-                    if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
+                    if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
                     popTable.setHideOnUnfocus(false);
                     
                     var imageElement = (ImageElement) element;
@@ -419,7 +428,7 @@ public class Editor extends ApplicationAdapter {
                         elementWidget.update();
                     }, () -> popTable.setHideOnUnfocus(uniqueName));
                 } else if (element instanceof MusicElement) {
-                    if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
+                    if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
                     popTable.setHideOnUnfocus(false);
                     
                     var musicElement = (MusicElement) element;
