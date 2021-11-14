@@ -20,7 +20,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Pool;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -31,8 +30,6 @@ import com.ray3k.stripe.PopTable;
 import com.ray3k.stripe.PopTable.PopTableStyle;
 import com.ray3k.stripe.PopTableClickListener;
 import com.ray3k.stripe.ScrollFocusListener;
-import org.lwjgl.system.CallbackI.V;
-import space.earlygrey.shapedrawer.JoinType;
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
 import java.io.File;
@@ -40,8 +37,6 @@ import java.io.FilenameFilter;
 import java.util.Locale;
 
 import static com.ray3k.liftoff.editor.Utils.*;
-import static com.ray3k.liftoff.editor.Utils.cl;
-import static com.ray3k.liftoff.editor.Utils.openDialog;
 
 public class Editor extends ApplicationAdapter {
     public static Skin skin;
@@ -66,6 +61,7 @@ public class Editor extends ApplicationAdapter {
         configuration.setForegroundFPS(Lwjgl3ApplicationConfiguration.getDisplayMode().refreshRate);
         configuration.setWindowedMode(800, 800);
         configuration.setWindowIcon("libgdx128.png", "libgdx64.png", "libgdx32.png", "libgdx16.png");
+        configuration.setBackBufferConfig(8, 8, 8, 8, 16, 0, 4);
         new Lwjgl3Application(new Editor(), configuration);
     }
     
