@@ -9,6 +9,7 @@ import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -174,6 +175,7 @@ public class Editor extends ApplicationAdapter {
             Actor dragTarget;
             float dragTargetOffsetX;
             float dragTargetOffsetY;
+            boolean uniqueName = true;
             
             @Override
             public void dragStart(InputEvent event, float x, float y, int pointer) {
@@ -255,6 +257,22 @@ public class Editor extends ApplicationAdapter {
                         cl(roomNameTextField, () -> {
                             roomWidget.room.name = roomNameTextField.getText();
                             roomWidget.update();
+                            
+                            uniqueName = true;
+                            for (var other : roomWidgets) {
+                                if (other != roomWidget && other.room.name.equals(roomWidget.room.name)) {
+                                    uniqueName = false;
+                                    break;
+                                }
+                            }
+                            
+                            if (uniqueName) {
+                                roomNameTextField.setColor(Color.WHITE);
+                                popTable.setHideOnUnfocus(true);
+                            } else {
+                                roomNameTextField.setColor(Color.RED);
+                                popTable.setHideOnUnfocus(false);
+                            }
                         });
                         stage2.setKeyboardFocus(roomNameTextField);
                         
@@ -289,7 +307,7 @@ public class Editor extends ApplicationAdapter {
                                 var textElement = new TextElement();
                                 textElement.text = string;
                                 createElementWidget(textElement, roomWidget, verticalGroup, popTable);
-                            }, () -> popTable.setHideOnUnfocus(true));
+                            }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
                         
                         table.add().growX();
@@ -305,7 +323,7 @@ public class Editor extends ApplicationAdapter {
                                 var imageElement = new ImageElement();
                                 imageElement.image = string;
                                 createElementWidget(imageElement, roomWidget, verticalGroup, popTable);
-                            }, () -> popTable.setHideOnUnfocus(true));
+                            }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
                         
                         button = new Button(skin, "music");
@@ -319,7 +337,7 @@ public class Editor extends ApplicationAdapter {
                                 var musicElement = new MusicElement();
                                 musicElement.music = string;
                                 createElementWidget(musicElement, roomWidget, verticalGroup, popTable);
-                            }, () -> popTable.setHideOnUnfocus(true));
+                            }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
                         
                         button = new Button(skin, "sound");
@@ -333,7 +351,7 @@ public class Editor extends ApplicationAdapter {
                                 var soundElement = new SoundElement();
                                 soundElement.sound = string;
                                 createElementWidget(soundElement, roomWidget, verticalGroup, popTable);
-                            }, () -> popTable.setHideOnUnfocus(true));
+                            }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
                     }
                     
@@ -358,6 +376,15 @@ public class Editor extends ApplicationAdapter {
         elementWidget.addListener(new ElementWidgetListener() {
             @Override
             public void clicked() {
+                boolean temp = true;
+                for (var other : roomWidgets) {
+                    if (other != roomWidget && other.room.name.equals(roomWidget.room.name)) {
+                        temp = false;
+                        break;
+                    }
+                }
+                final boolean uniqueName = temp;
+                
                 if (element instanceof SoundElement) {
                     if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
                     popTable.setHideOnUnfocus(false);
@@ -366,7 +393,7 @@ public class Editor extends ApplicationAdapter {
                     showDetailPop("Select a sound file", gatherSounds(), soundElement.sound, (string) -> {
                         soundElement.sound = string;
                         elementWidget.update();
-                    }, () -> popTable.setHideOnUnfocus(true));
+                    }, () -> popTable.setHideOnUnfocus(uniqueName));
                 } else if (element instanceof ImageElement) {
                     if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
                     popTable.setHideOnUnfocus(false);
@@ -375,7 +402,7 @@ public class Editor extends ApplicationAdapter {
                     showDetailPop("Select an image", gatherSounds(), imageElement.image, (string) -> {
                         imageElement.image = string;
                         elementWidget.update();
-                    }, () -> popTable.setHideOnUnfocus(true));
+                    }, () -> popTable.setHideOnUnfocus(uniqueName));
                 } else if (element instanceof MusicElement) {
                     if (resourcesPath == null) resourcesPath = Utils.openFolderDialog("Select resources path", "");
                     popTable.setHideOnUnfocus(false);
@@ -384,7 +411,7 @@ public class Editor extends ApplicationAdapter {
                     showDetailPop("Select a music file", gatherSounds(), musicElement.music, (string) -> {
                         musicElement.music = string;
                         elementWidget.update();
-                    }, () -> popTable.setHideOnUnfocus(true));
+                    }, () -> popTable.setHideOnUnfocus(uniqueName));
                 } else if (element instanceof TextElement) {
                     popTable.setHideOnUnfocus(false);
                     
@@ -392,7 +419,7 @@ public class Editor extends ApplicationAdapter {
                     showTextPop("Enter the text", textElement.text, (string) -> {
                         textElement.text = string;
                         elementWidget.update();
-                    }, () -> popTable.setHideOnUnfocus(true));
+                    }, () -> popTable.setHideOnUnfocus(uniqueName));
                 }
             }
         
