@@ -427,6 +427,7 @@ public class Editor extends ApplicationAdapter {
         
                                 showActionPop(connectorWidget.roomWidget.room, action, () -> {
                                     textButton.setText(action.name);
+                                    connectorWidget.update();
                                 }, () -> {
                                     verticalGroup.removeActor(textButton);
                                     connectorWidget.update();
