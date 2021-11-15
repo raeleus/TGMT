@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.ray3k.liftoff.Room;
 
 public class RoomWidget extends Stack {
-    private static int nameIndex;
+    public static int nameIndex;
     public Room room;
     private Table table;
     private Label label;

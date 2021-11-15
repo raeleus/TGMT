@@ -19,9 +19,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
-import com.badlogic.gdx.utils.Align;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.*;
+import com.badlogic.gdx.utils.JsonWriter.OutputType;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.liftoff.Room;
@@ -35,8 +34,8 @@ import com.ray3k.stripe.PopTableClickListener;
 import com.ray3k.stripe.ScrollFocusListener;
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-import java.io.File;
-import java.io.FilenameFilter;
+import java.io.*;
+import java.lang.StringBuilder;
 import java.util.Locale;
 
 import static com.ray3k.liftoff.editor.Utils.*;
@@ -136,10 +135,22 @@ public class Editor extends ApplicationAdapter {
         var popTable = popTableClickListener.getPopTable();
         var textButton = new TextButton("Save to JSON", skin, "small");
         popTable.add(textButton);
+        cl(textButton, () -> {
+            var fileHandle = Utils.saveDialog("Save to JSON", "", new String[]{"*.json"}, "JSON Files[*.json]");
+            if (fileHandle != null) saveToJson(fileHandle);
+            popTable.hide();
+        });
         
         popTable.row();
         textButton = new TextButton("New Project", skin, "small");
         popTable.add(textButton);
+        cl(textButton, () -> {
+            RoomWidget.nameIndex = 0;
+            roomWidgets.clear();
+            var roomWidget = new RoomWidget(skin);
+            roomWidgets.add(roomWidget);
+            showEditor();
+        });
         
         popTable.row();
         textButton = new TextButton("Open Project", skin, "small");
@@ -147,6 +158,10 @@ public class Editor extends ApplicationAdapter {
         
         button = new Button(skin, "save");
         root.add(button);
+        cl(button, () -> {
+            var fileHandle = Utils.saveDialog("Save to JSON", "", new String[]{"*.json"}, "JSON Files[*.json]");
+            if (fileHandle != null) saveToJson(fileHandle);
+        });
         
         button = new Button(skin, "home");
         root.add(button);
@@ -450,6 +465,84 @@ public class Editor extends ApplicationAdapter {
         };
         
         stage1.addListener(dragListener);
+    }
+    
+    private void saveToJson(FileHandle fileHandle) {
+        var stringWriter = new StringWriter();
+        var jsonWriter = new JsonWriter(stringWriter);
+        jsonWriter.setOutputType(OutputType.json);
+        var json = new Json(OutputType.json);
+        json.setWriter(jsonWriter);
+        json.writeObjectStart();
+        for (var roomWidget : roomWidgets) {
+            var room = roomWidget.room;
+            json.writeObjectStart(roomWidget.room.name);
+            json.writeArrayStart("story");
+            for (var element : room.elements) {
+                var line = "";
+                var requiredKeys = new StringBuilder();
+                boolean first = true;
+                for (var key : element.requiredKeys) {
+                    if (!first) requiredKeys.append("\n");
+                    first = false;
+                    requiredKeys.append(key.name);
+                }
+                var bannedKeys = new StringBuilder();
+                first = true;
+                for (var key : element.bannedKeys) {
+                    if (!first) requiredKeys.append("\n");
+                    first = false;
+                    bannedKeys.append(key.name);
+                }
+                
+                if (element instanceof TextElement) {
+                    var textElement = (TextElement) element;
+                    line += "text:" + requiredKeys + ":" + bannedKeys + ":" + textElement.text;
+                } else if (element instanceof ImageElement) {
+                    var imageElement = (ImageElement) element;
+                    line += "image:" + requiredKeys + ":" + bannedKeys + ":" + imageElement.image;
+                } else if (element instanceof MusicElement) {
+                    var musicElement = (MusicElement) element;
+                    line += "music:" + requiredKeys + ":" + bannedKeys + ":" + musicElement.music;
+                } else if (element instanceof SoundElement) {
+                    var soundElement = (SoundElement) element;
+                    line += "sound:" + requiredKeys + ":" + bannedKeys + ":" + soundElement.sound;
+                }
+                json.writeValue(line);
+            }
+            json.writeArrayEnd();
+            json.writeObjectStart("actions");
+            for (var action : room.actions) {
+                json.writeObjectStart(action.name);
+                json.writeValue("targetRoom", action.targetRoom);
+                if (action.sound != null) json.writeValue("sound", action.sound);
+                json.writeArrayStart("requiredKeys");
+                for (var key : action.requiredKeys) {
+                    json.writeValue(key);
+                }
+                json.writeArrayEnd();
+                json.writeArrayStart("bannedKeys");
+                for (var key : action.bannedKeys) {
+                    json.writeValue(key);
+                }
+                json.writeArrayEnd();
+                json.writeArrayStart("giveKeys");
+                for (var key : action.giveKeys) {
+                    json.writeValue(key);
+                }
+                json.writeArrayEnd();
+                json.writeArrayStart("removeKeys");
+                for (var key : action.removeKeys) {
+                    json.writeValue(key);
+                }
+                json.writeArrayEnd();
+                json.writeObjectEnd();
+            }
+            json.writeObjectEnd();
+            json.writeObjectEnd();
+        }
+        json.writeObjectEnd();
+        fileHandle.writeString(json.prettyPrint(stringWriter.toString()), false, "UTF-8");
     }
     
     private void createElementWidget(Element element, RoomWidget roomWidget, VerticalGroup verticalGroup, PopTable popTable) {
