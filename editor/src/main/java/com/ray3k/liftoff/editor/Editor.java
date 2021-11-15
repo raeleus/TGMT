@@ -17,12 +17,14 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.ray3k.liftoff.Room;
 import com.ray3k.liftoff.Room.*;
 import com.ray3k.liftoff.editor.ElementWidget.ElementWidgetListener;
 import com.ray3k.stripe.FreeTypeSkin;
@@ -261,6 +263,16 @@ public class Editor extends ApplicationAdapter {
                         canDrag = false;
                         
                         var roomWidget = (RoomWidget) dragTarget;
+                        
+                        var linkedActions = new Array<Room.Action>();
+                        for (var other : roomWidgets) {
+                            for (var action : other.room.actions) {
+                                if (action.targetRoom.equals(roomWidget.room.name)) {
+                                    linkedActions.add(action);
+                                }
+                            }
+                        }
+                        
                         popTable.pad(5);
                         
                         var table = new Table();
@@ -277,6 +289,10 @@ public class Editor extends ApplicationAdapter {
                         cl(roomNameTextField, () -> {
                             roomWidget.room.name = roomNameTextField.getText();
                             roomWidget.update();
+                            
+                            for (var action : linkedActions) {
+                                action.targetRoom = roomNameTextField.getText();
+                            }
                             
                             uniqueName = true;
                             for (var other : roomWidgets) {
@@ -373,6 +389,50 @@ public class Editor extends ApplicationAdapter {
                                 createElementWidget(soundElement, roomWidget, verticalGroup, popTable);
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
+    
+                        popTable.pack();
+                        popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
+                    } else if (dragTarget instanceof ConnectorWidget) {
+                        var connectorWidget = (ConnectorWidget) dragTarget;
+                        
+                        var popTable = new PopTable(popTableStyle) {
+                            @Override
+                            public void hide(Action action) {
+                                super.hide(action);
+                                canDrag = true;
+                            }
+                        };
+                        popTable.setHideOnUnfocus(true);
+                        popTable.setKeepSizedWithinStage(true);
+                        popTable.pad(10);
+                        popTable.show(stage2);
+                        vector2.set(x, y);
+                        stage1.getViewport().project(vector2);
+                        canDrag = false;
+    
+                        var label = new Label("Modify Action", skin);
+                        popTable.add(label);
+                        
+                        popTable.row();
+                        var verticalGroup = new VerticalGroup();
+                        var scrollPane = new ScrollPane(verticalGroup, skin);
+                        scrollPane.setFadeScrollBars(false);
+                        popTable.add(scrollPane).grow();
+                        
+                        for (var action : connectorWidget.roomWidget.room.actions) {
+                            var textButton = new TextButton(action.name, skin, "small");
+                            verticalGroup.addActor(textButton);
+                            cl(textButton, () -> {
+                                popTable.setHideOnUnfocus(false);
+        
+                                showActionPop(connectorWidget.roomWidget.room, action, () -> {
+                                    textButton.setText(action.name);
+                                }, () -> {
+                                    verticalGroup.removeActor(textButton);
+                                    connectorWidget.update();
+                                }, () -> popTable.setHideOnUnfocus(uniqueName));
+                            });
+                        }
     
                         popTable.pack();
                         popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
@@ -540,6 +600,176 @@ public class Editor extends ApplicationAdapter {
         popTable.show(stage2);
         textArea.setSelection(0, textArea.getText().length());
         stage2.setKeyboardFocus(textArea);
+    }
+    
+    private void showActionPop(Room room, Room.Action action, Runnable onOK, Runnable onDelete, Runnable onHide) {
+        if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
+        
+        var popTable = new PopTable(popTableStyle) {
+            @Override
+            public void hide(Action action) {
+                super.hide(action);
+                onHide.run();
+            }
+        };
+        
+        popTable.setHideOnUnfocus(true);
+        popTable.setKeepCenteredInWindow(true);
+        popTable.pad(20);
+    
+        popTable.defaults().space(10);
+        var table = new Table();
+        popTable.add(table);
+        
+        table.defaults().space(10).fillX();
+        var actionNameField = new TextField(action.name, skin, "action-name");
+        table.add(actionNameField);
+        
+        table.row();
+        var targetRoomSelectBox = new SelectBox<String>(skin, "target-room");
+        var targetRooms = new Array<String>();
+        for (var roomWidget : roomWidgets) {
+            if (room != roomWidget.room) targetRooms.add(roomWidget.room.name);
+        }
+        targetRoomSelectBox.setItems(targetRooms);
+        targetRoomSelectBox.setSelected(action.targetRoom);
+        table.add(targetRoomSelectBox);
+        targetRoomSelectBox.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                popTable.setHideOnUnfocus(false);
+            }
+        });
+        targetRoomSelectBox.getList().addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                popTable.setHideOnUnfocus(true);
+            }
+        });
+        
+        table.row();
+        var soundSelectBox = new SelectBox<String>(skin, "sound");
+        var sounds = new Array<String>();
+        sounds.add("");
+        for (var sound : gatherSounds()) {
+            sounds.add(sound);
+        }
+        soundSelectBox.setItems(sounds);
+        System.out.println("action.sound = " + action.sound);
+        soundSelectBox.setSelected(action.sound == null ? "" : action.sound);
+        table.add(soundSelectBox);
+        soundSelectBox.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                popTable.setHideOnUnfocus(false);
+            }
+        });
+        soundSelectBox.getList().addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                popTable.setHideOnUnfocus(true);
+            }
+        });
+        
+        popTable.row();
+        table = new Table();
+        popTable.add(table).grow();
+        
+        table.defaults().space(10);
+        StringBuilder text = new StringBuilder();
+        for (var key : action.requiredKeys) {
+            text.append(key.name).append("\n");
+        }
+        var requiredKeysField = new TextArea(text.toString(), skin, "required-keys");
+        requiredKeysField.setPrefRows(10);
+        table.add(requiredKeysField);
+    
+        text = new StringBuilder();
+        for (var key : action.bannedKeys) {
+            text.append(key.name).append("\n");
+        }
+        var bannedKeysField = new TextArea(text.toString(), skin, "banned-keys");
+        bannedKeysField.setPrefRows(10);
+        table.add(bannedKeysField);
+    
+        text = new StringBuilder();
+        for (var key : action.giveKeys) {
+            text.append(key.name).append("\n");
+        }
+        var giveKeysField = new TextArea(text.toString(), skin, "give-keys");
+        giveKeysField.setPrefRows(10);
+        table.add(giveKeysField);
+    
+        text = new StringBuilder();
+        for (var key : action.removeKeys) {
+            text.append(key.name).append("\n");
+        }
+        var removeKeysField = new TextArea(text.toString(), skin, "remove-keys");
+        removeKeysField.setPrefRows(10);
+        table.add(removeKeysField);
+        
+        popTable.row();
+        table = new Table();
+        popTable.add(table);
+        
+        var textButton = new TextButton("OK", skin, "small");
+        table.add(textButton);
+        cl(textButton, () -> {
+            action.name = actionNameField.getText();
+            action.targetRoom = targetRoomSelectBox.getSelected();
+            action.sound = soundSelectBox.getSelected().equals("") ? null : soundSelectBox.getSelected();
+            
+            action.requiredKeys.clear();
+            for (var value : requiredKeysField.getText().split("\\n")) {
+                if (value.length() > 0) {
+                    var key = new Key();
+                    key.name = value;
+                    action.requiredKeys.add(key);
+                }
+            }
+    
+            action.bannedKeys.clear();
+            for (var value : bannedKeysField.getText().split("\\n")) {
+                if (value.length() > 0) {
+                    var key = new Key();
+                    key.name = value;
+                    action.bannedKeys.add(key);
+                }
+            }
+    
+            action.giveKeys.clear();
+            for (var value : giveKeysField.getText().split("\\n")) {
+                if (value.length() > 0) {
+                    var key = new Key();
+                    key.name = value;
+                    action.giveKeys.add(key);
+                }
+            }
+    
+            action.removeKeys.clear();
+            for (var value : removeKeysField.getText().split("\\n")) {
+                if (value.length() > 0) {
+                    var key = new Key();
+                    key.name = value;
+                    action.removeKeys.add(key);
+                }
+            }
+            
+            popTable.hide();
+            onOK.run();
+        });
+    
+        textButton = new TextButton("DELETE", skin, "small");
+        table.add(textButton);
+        cl(textButton, () -> {
+            room.actions.removeValue(action, true);
+            popTable.hide();
+            onDelete.run();
+        });
+        
+        popTable.show(stage2);
+        actionNameField.setSelection(0, actionNameField.getText().length());
+        stage2.setKeyboardFocus(actionNameField);
     }
     
     private interface DetailConfirmation {

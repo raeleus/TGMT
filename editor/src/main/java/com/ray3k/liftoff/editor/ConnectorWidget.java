@@ -18,7 +18,7 @@ import static com.ray3k.liftoff.editor.Editor.*;
 
 public class ConnectorWidget extends Table  {
     private Skin skin;
-    private RoomWidget roomWidget;
+    public RoomWidget roomWidget;
     private static int actionIndex;
     private static Vector2 temp = new Vector2();
     private static Vector2 temp2 = new Vector2();
@@ -36,6 +36,7 @@ public class ConnectorWidget extends Table  {
         setTouchable(Touchable.enabled);
         
         var image = new Image(skin, "connector-fg");
+        image.setTouchable(Touchable.disabled);
         image.setColor(color);
         add(image);
         
