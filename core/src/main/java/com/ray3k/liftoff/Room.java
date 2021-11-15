@@ -9,11 +9,12 @@ public class Room {
     public final Array<Element> elements = new Array<>();
     public final Array<Action> actions = new Array<>();
     
-    public interface Element {
-    
+    public static class Element {
+        public final Array<String> requiredKeys = new Array<>();
+        public final Array<String> bannedKeys = new Array<>();
     }
     
-    public static class TextElement implements Element {
+    public static class TextElement extends Element {
         public String text;
     
         @Override
@@ -22,7 +23,7 @@ public class Room {
         }
     }
     
-    public static class ImageElement implements Element {
+    public static class ImageElement extends Element {
         public String image;
     
         @Override
@@ -31,7 +32,7 @@ public class Room {
         }
     }
     
-    public static class MusicElement implements Element {
+    public static class MusicElement extends Element {
         public String music;
     
         @Override
@@ -40,7 +41,7 @@ public class Room {
         }
     }
     
-    public static class SoundElement implements Element {
+    public static class SoundElement extends Element {
         public String sound;
     
         @Override

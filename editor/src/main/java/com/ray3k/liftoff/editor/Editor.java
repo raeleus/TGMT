@@ -340,9 +340,8 @@ public class Editor extends ApplicationAdapter {
                         cl(button, () -> {
                             popTable.setHideOnUnfocus(false);
                             
-                            showTextPop("Enter the text", "", (string) -> {
-                                var textElement = new TextElement();
-                                textElement.text = string;
+                            var textElement = new TextElement();
+                            showTextPop("Enter the text", textElement, () -> {
                                 createElementWidget(textElement, roomWidget, verticalGroup, popTable);
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
@@ -356,9 +355,8 @@ public class Editor extends ApplicationAdapter {
                             
                             if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
                             
-                            showDetailPop("Select an image", gatherImages(), (string) -> {
-                                var imageElement = new ImageElement();
-                                imageElement.image = string;
+                            var imageElement = new ImageElement();
+                            showDetailPop("Select an image", gatherImages(), imageElement, () -> {
                                 createElementWidget(imageElement, roomWidget, verticalGroup, popTable);
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
@@ -370,9 +368,8 @@ public class Editor extends ApplicationAdapter {
         
                             if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
         
-                            showDetailPop("Select a music file", gatherSounds(), (string) -> {
-                                var musicElement = new MusicElement();
-                                musicElement.music = string;
+                            var musicElement = new MusicElement();
+                            showDetailPop("Select a music file", gatherSounds(), musicElement, () -> {
                                 createElementWidget(musicElement, roomWidget, verticalGroup, popTable);
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
@@ -384,9 +381,8 @@ public class Editor extends ApplicationAdapter {
         
                             if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
         
-                            showDetailPop("Select a sound file", gatherSounds(), (string) -> {
-                                var soundElement = new SoundElement();
-                                soundElement.sound = string;
+                            var soundElement = new SoundElement();
+                            showDetailPop("Select a sound file", gatherSounds(), soundElement, () -> {
                                 createElementWidget(soundElement, roomWidget, verticalGroup, popTable);
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
@@ -481,36 +477,28 @@ public class Editor extends ApplicationAdapter {
                     popTable.setHideOnUnfocus(false);
                     
                     var soundElement = (SoundElement) element;
-                    showDetailPop("Select a sound file", gatherSounds(), soundElement.sound, (string) -> {
-                        soundElement.sound = string;
-                        elementWidget.update();
-                    }, () -> popTable.setHideOnUnfocus(uniqueName));
+                    showDetailPop("Select a sound file", gatherSounds(), soundElement.sound, soundElement,
+                            elementWidget::update, () -> popTable.setHideOnUnfocus(uniqueName));
                 } else if (element instanceof ImageElement) {
                     if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
                     popTable.setHideOnUnfocus(false);
                     
                     var imageElement = (ImageElement) element;
-                    showDetailPop("Select an image", gatherSounds(), imageElement.image, (string) -> {
-                        imageElement.image = string;
-                        elementWidget.update();
-                    }, () -> popTable.setHideOnUnfocus(uniqueName));
+                    showDetailPop("Select an image", gatherImages(), imageElement.image, imageElement,
+                            elementWidget::update, () -> popTable.setHideOnUnfocus(uniqueName));
                 } else if (element instanceof MusicElement) {
                     if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
                     popTable.setHideOnUnfocus(false);
                     
                     var musicElement = (MusicElement) element;
-                    showDetailPop("Select a music file", gatherSounds(), musicElement.music, (string) -> {
-                        musicElement.music = string;
-                        elementWidget.update();
-                    }, () -> popTable.setHideOnUnfocus(uniqueName));
+                    showDetailPop("Select a music file", gatherSounds(), musicElement.music, musicElement,
+                            elementWidget::update, () -> popTable.setHideOnUnfocus(uniqueName));
                 } else if (element instanceof TextElement) {
                     popTable.setHideOnUnfocus(false);
                     
                     var textElement = (TextElement) element;
-                    showTextPop("Enter the text", textElement.text, (string) -> {
-                        textElement.text = string;
-                        elementWidget.update();
-                    }, () -> popTable.setHideOnUnfocus(uniqueName));
+                    showTextPop("Enter the text", textElement, elementWidget::update,
+                            () -> popTable.setHideOnUnfocus(uniqueName));
                 }
             }
         
@@ -544,11 +532,11 @@ public class Editor extends ApplicationAdapter {
         });
     }
     
-    private void showDetailPop(String labelText, Array<String> values, DetailConfirmation onConfirm, Runnable onHide) {
-        showDetailPop(labelText, values, null, onConfirm, onHide);
+    private void showDetailPop(String labelText, Array<String> values, Element element, Runnable onConfirm, Runnable onHide) {
+        showDetailPop(labelText, values, null, element, onConfirm, onHide);
     }
     
-    private void showDetailPop(String labelText, Array<String> values, String selection, DetailConfirmation onConfirm, Runnable onHide) {
+    private void showDetailPop(String labelText, Array<String> values, String selection, Element element, Runnable onConfirm, Runnable onHide) {
         var popTable = new PopTable(popTableStyle) {
             @Override
             public void hide(Action action) {
@@ -558,6 +546,7 @@ public class Editor extends ApplicationAdapter {
         };
         
         popTable.setHideOnUnfocus(true);
+        popTable.pad(20);
         
         var label = new Label(labelText, skin);
         popTable.add(label);
@@ -572,18 +561,59 @@ public class Editor extends ApplicationAdapter {
         scrollPane.setFadeScrollBars(false);
         popTable.add(scrollPane).growX();
         scrollPane.addListener(new ScrollFocusListener(stage2));
+    
+        popTable.row();
+        var table = new Table();
+        popTable.add(table);
+    
+        table.defaults().space(5);
+        StringBuilder value = new StringBuilder();
+        for (var requiredKey : element.requiredKeys) {
+            value.append(requiredKey + "\n");
+        }
+        var requiredKeysField = new TextArea(value.toString(), skin, "required-keys");
+        requiredKeysField.setPrefRows(5);
+        table.add(requiredKeysField);
+    
+        value = new StringBuilder();
+        for (var bannedKeys : element.bannedKeys) {
+            value.append(bannedKeys + "\n");
+        }
+        var bannedKeysField = new TextArea(value.toString(), skin, "banned-keys");
+        bannedKeysField.setPrefRows(5);
+        table.add(bannedKeysField);
         
         popTable.row();
         var textButton = new TextButton("OK", skin, "small");
         textButton.setDisabled(values.size == 0);
         popTable.add(textButton);
-        cl(textButton, () -> onConfirm.confirmed(list.getSelected()));
+        cl(textButton, () -> {
+            if (element instanceof ImageElement) ((ImageElement) element).image = list.getSelected();
+            if (element instanceof SoundElement) ((SoundElement) element).sound = list.getSelected();
+            if (element instanceof MusicElement) ((MusicElement) element).music = list.getSelected();
+            
+            element.requiredKeys.clear();
+            for (var key : requiredKeysField.getText().split("\\n")) {
+                if (key.length() > 0) {
+                    element.requiredKeys.add(key);
+                }
+            }
+    
+            element.bannedKeys.clear();
+            for (var key : bannedKeysField.getText().split("\\n")) {
+                if (key.length() > 0) {
+                    element.bannedKeys.add(key);
+                }
+            }
+            
+            onConfirm.run();
+        });
         cl(textButton, popTable::hide);
         
         popTable.show(stage2);
     }
     
-    private void showTextPop(String title, String text, DetailConfirmation onConfirm, Runnable onHide) {
+    private void showTextPop(String title, TextElement textElement, Runnable onConfirm, Runnable onHide) {
         var popTable = new PopTable(popTableStyle) {
             @Override
             public void hide(Action action) {
@@ -594,23 +624,63 @@ public class Editor extends ApplicationAdapter {
     
         popTable.setHideOnUnfocus(true);
         popTable.setKeepCenteredInWindow(true);
+        popTable.pad(20);
     
         var label = new Label(title, skin);
         popTable.add(label);
     
         popTable.row();
-        var textArea = new TextArea(text, skin, "text");
-        popTable.add(textArea).prefSize(800);
+        var textTextArea = new TextArea(textElement.text, skin, "text");
+        popTable.add(textTextArea).prefSize(800);
+        
+        popTable.row();
+        var table = new Table();
+        popTable.add(table);
+        
+        table.defaults().space(5);
+        StringBuilder value = new StringBuilder();
+        for (var requiredKey : textElement.requiredKeys) {
+            value.append(requiredKey + "\n");
+        }
+        var requiredKeysField = new TextArea(value.toString(), skin, "required-keys");
+        requiredKeysField.setPrefRows(5);
+        table.add(requiredKeysField);
+    
+        value = new StringBuilder();
+        for (var bannedKeys : textElement.bannedKeys) {
+            value.append(bannedKeys + "\n");
+        }
+        var bannedKeysField = new TextArea(value.toString(), skin, "banned-keys");
+        bannedKeysField.setPrefRows(5);
+        table.add(bannedKeysField);
     
         popTable.row();
         var textButton = new TextButton("OK", skin, "small");
         popTable.add(textButton);
-        cl(textButton, () -> onConfirm.confirmed(textArea.getText()));
+        cl(textButton, () -> {
+            textElement.text = textTextArea.getText();
+    
+            textElement.requiredKeys.clear();
+            for (var key : requiredKeysField.getText().split("\\n")) {
+                if (key.length() > 0) {
+                    textElement.requiredKeys.add(key);
+                }
+            }
+    
+            textElement.bannedKeys.clear();
+            for (var key : bannedKeysField.getText().split("\\n")) {
+                if (key.length() > 0) {
+                    textElement.bannedKeys.add(key);
+                }
+            }
+            
+            onConfirm.run();
+        });
         cl(textButton, popTable::hide);
     
         popTable.show(stage2);
-        textArea.setSelection(0, textArea.getText().length());
-        stage2.setKeyboardFocus(textArea);
+        textTextArea.setSelection(0, textTextArea.getText().length());
+        stage2.setKeyboardFocus(textTextArea);
     }
     
     private void showActionPop(Room room, Room.Action action, Runnable onOK, Runnable onDelete, Runnable onHide) {
