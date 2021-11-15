@@ -26,6 +26,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.liftoff.Room;
 import com.ray3k.liftoff.Room.*;
+import com.ray3k.liftoff.editor.ConnectorWidget.ConnectorLabel;
 import com.ray3k.liftoff.editor.ElementWidget.ElementWidgetListener;
 import com.ray3k.stripe.FreeTypeSkin;
 import com.ray3k.stripe.PopTable;
@@ -437,6 +438,15 @@ public class Editor extends ApplicationAdapter {
     
                         popTable.pack();
                         popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
+                    } else if (dragTarget instanceof ConnectorLabel) {
+                        var connectorLabel = (ConnectorLabel) dragTarget;
+                        showActionPop(connectorLabel.parent.room, connectorLabel.action, () -> {
+                            connectorLabel.parent.update();
+                        }, () -> {
+                            connectorLabel.parent.update();
+                        }, () -> {
+                        
+                        });
                     }
                 }
                 return super.touchDown(event, x, y, pointer, mouseButton);
@@ -656,7 +666,6 @@ public class Editor extends ApplicationAdapter {
             sounds.add(sound);
         }
         soundSelectBox.setItems(sounds);
-        System.out.println("action.sound = " + action.sound);
         soundSelectBox.setSelected(action.sound == null ? "" : action.sound);
         table.add(soundSelectBox);
         soundSelectBox.addListener(new ClickListener() {

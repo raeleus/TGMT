@@ -11,6 +11,7 @@ public class RoomWidget extends Stack {
     private Table table;
     private Label label;
     private Skin skin;
+    public ConnectorWidget connectorWidget;
     
     public RoomWidget(Skin skin, Room room) {
         this.skin = skin;
@@ -45,14 +46,15 @@ public class RoomWidget extends Stack {
         container.right();
         add(container);
         
-        var connector = new ConnectorWidget(skin, this);
-        connector.setPosition(Gdx.input.getX(), Gdx.input.getY());
-        container.setActor(connector);
+        connectorWidget = new ConnectorWidget(skin, this);
+        connectorWidget.setPosition(Gdx.input.getX(), Gdx.input.getY());
+        container.setActor(connectorWidget);
         
         this.pack();
     }
     
     public void update() {
         label.setText(room.name);
+        connectorWidget.update();
     }
 }

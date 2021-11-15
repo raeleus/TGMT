@@ -94,7 +94,7 @@ public class ConnectorWidget extends Table  {
         for (var action : roomWidget.room.actions) {
             for (var other : roomWidgets) {
                 if (action.targetRoom.equals(other.room.name)) {
-                    var connectorLabel = new ConnectorLabel(other, action, skin);
+                    var connectorLabel = new ConnectorLabel(roomWidget, other, action, skin);
                     stage1.addActor(connectorLabel);
                     connectorLabels.add(connectorLabel);
                 }
@@ -131,12 +131,18 @@ public class ConnectorWidget extends Table  {
     
     public static class ConnectorLabel extends Container {
         private Label label;
+        public RoomWidget parent;
         private RoomWidget targetRoom;
-        public ConnectorLabel(RoomWidget targetRoom, Action action, Skin skin) {
+        public Action action;
+        public ConnectorLabel(RoomWidget parent, RoomWidget targetRoom, Action action, Skin skin) {
             setTouchable(Touchable.enabled);
             label = new Label(action.name, skin);
+            label.setTouchable(Touchable.disabled);
             setActor(label);
             this.targetRoom = targetRoom;
+            this.action = action;
+            this.parent = parent;
+            pack();
         }
     }
 }
