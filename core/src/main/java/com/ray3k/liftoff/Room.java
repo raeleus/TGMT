@@ -10,8 +10,8 @@ public class Room {
     public final Array<Action> actions = new Array<>();
     
     public static class Element {
-        public final Array<String> requiredKeys = new Array<>();
-        public final Array<String> bannedKeys = new Array<>();
+        public final Array<Key> requiredKeys = new Array<>();
+        public final Array<Key> bannedKeys = new Array<>();
     }
     
     public static class TextElement extends Element {

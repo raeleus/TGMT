@@ -1,10 +1,11 @@
 {
   "home": {
     "story": [
-      "text:You are outside your childhood home. You see a kindly woman smiling at you. The sweet smell of her perfume invades your senses. You seem to be falling in love with her and yet you do not even know her. She almost knowingly grins at you while she side eyes you from her phone. You have decided that you want to hug her. Go get her!",
-      "image:image/big.jpg",
-      "music:bgm/music.mp3",
-      "text:You have this strange sense that you know her..."
+      "text:::You are outside your childhood home. You see a kindly woman smiling at you. The sweet smell of her perfume invades your senses. You seem to be falling in love with her and yet you do not even know her. She almost knowingly grins at you while she side eyes you from her phone. You have decided that you want to hug her. Go get her!",
+      "image:::image/big.jpg",
+      "music:::bgm/music.mp3",
+      "text::name:You have this strange sense that you know her...",
+      "text:name::At least you know her name is Sally..."
     ],
     "actions": {
       "Hug her": {
@@ -57,7 +58,7 @@
   },
   "rejected": {
     "story": [
-      "text:\"Usually guys ask me my name first!\" she says as she pushes you away.",
+      "text:::\"Usually guys ask me my name first!\" she says as she pushes you away.",
       
     ],
     "actions": {
@@ -80,8 +81,8 @@
   },
   "validated": {
     "story": [
-      "text:\"Mmmm, your hugs are so yummy!\".\nAs you draw away, you have subsequently forgotten her name.",
-      "sound:sfx/sound.mp3"
+      "text:::\"Mmmm, your hugs are so yummy!\".\nAs you draw away, you have subsequently forgotten her name.",
+      "sound:::sfx/sound.mp3"
     ],
     "actions": {
       "OK": {
@@ -103,8 +104,8 @@
   },
   "ask name": {
     "story": [
-      "text:\"Hi, I'm Sally. Nice to meet you.\"",
-      "sound:sfx/sound.mp3"
+      "text:::\"Hi, I'm Sally. Nice to meet you.\"",
+      "sound:::sfx/sound.mp3"
     ],
     "actions": {
       "OK": {

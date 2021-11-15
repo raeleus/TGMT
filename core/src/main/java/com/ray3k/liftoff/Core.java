@@ -77,30 +77,62 @@ public class Core extends ApplicationAdapter {
             if (child.has("story")) for (var storyString : child.get("story").asStringArray()) {
                 int colonIndex = storyString.indexOf(':');
                 String type = storyString.substring(0, colonIndex);
-                String value = storyString.substring(colonIndex + 1);
+                storyString = storyString.substring(colonIndex + 1);
+    
+                colonIndex = storyString.indexOf(':');
+                Array<Key> requiredKeys = new Array<>();
+                for (var string : storyString.substring(0, colonIndex).split("\\n")) {
+                    if (string.length() > 0) {
+                        var key = new Key();
+                        key.name = string;
+                        requiredKeys.add(key);
+                    }
+                }
+                storyString = storyString.substring(colonIndex + 1);
+    
+                colonIndex = storyString.indexOf(':');
+                Array<Key> bannedKeys = new Array<>();
+                for (var string : storyString.substring(0, colonIndex).split("\\n")) {
+                    if (string.length() > 0) {
+                        var key = new Key();
+                        key.name = string;
+                        bannedKeys.add(key);
+                    }
+                }
+                storyString = storyString.substring(colonIndex + 1);
+                
+                String value = storyString;
                 switch (type) {
                     case "image":
                         var imageElement = new Room.ImageElement();
                         assetManager.load(value, Texture.class);
                         imageElement.image = value;
                         room.elements.add(imageElement);
+                        imageElement.requiredKeys.addAll(requiredKeys);
+                        imageElement.bannedKeys.addAll(bannedKeys);
                         break;
                     case "text":
                         var textElement = new Room.TextElement();
                         textElement.text = value;
                         room.elements.add(textElement);
+                        textElement.requiredKeys.addAll(requiredKeys);
+                        textElement.bannedKeys.addAll(bannedKeys);
                         break;
                     case "music":
                         var musicElement = new Room.MusicElement();
                         assetManager.load(value, Music.class);
                         musicElement.music = value;
                         room.elements.add(musicElement);
+                        musicElement.requiredKeys.addAll(requiredKeys);
+                        musicElement.bannedKeys.addAll(bannedKeys);
                         break;
                     case "sound":
                         var soundElement = new Room.SoundElement();
                         assetManager.load(value, Sound.class);
                         soundElement.sound = value;
                         room.elements.add(soundElement);
+                        soundElement.requiredKeys.addAll(requiredKeys);
+                        soundElement.bannedKeys.addAll(bannedKeys);
                         break;
                 }
             }
@@ -161,37 +193,59 @@ public class Core extends ApplicationAdapter {
         top.addListener(new ScrollFocusListener(stage));
     
         for (var element : room.elements) {
-            if (element instanceof TextElement) {
-                var textElement = (TextElement) element;
+            boolean show = true;
     
-                var label = new Label(textElement.text, skin);
-                label.setWrap(true);
-                table.add(label).growX();
-            } if (element instanceof ImageElement) {
-                var imageElement = (ImageElement) element;
-                
-                var image = new Image(assetManager.get(imageElement.image, Texture.class));
-                image.setScaling(Scaling.fit);
-                image.setAlign(Align.left);
-                var container = new AspectRatioContainer<>(image, image.getDrawable().getMinWidth(), image.getDrawable().getMinHeight());
-                table.add(container).growX();
-            } else if (element instanceof MusicElement) {
-                var musicElement = (MusicElement) element;
-    
-                Music music = assetManager.get(musicElement.music);
-                music.setLooping(true);
-                music.play();
-                if (Core.music != null && Core.music != music) {
-                    Core.music.stop();
+            for (var requiredKey : element.requiredKeys) {
+                if (!playerKeys.contains(requiredKey, false)) {
+                    System.out.println("requiredKey = " + requiredKey.name);
+                    show = false;
+                    break;
                 }
-                Core.music = music;
-            } else if (element instanceof SoundElement) {
-                var soundElement = (SoundElement) element;
-    
-                Sound sound = assetManager.get(soundElement.sound);
-                sound.play();
             }
-            table.row();
+    
+            for (var bannedKey : element.bannedKeys) {
+                if (playerKeys.contains(bannedKey, false)) {
+                    System.out.println("bannedKey = " + bannedKey.name);
+                    show = false;
+                    break;
+                }
+            }
+            
+            if (show) {
+                if (element instanceof TextElement) {
+                    var textElement = (TextElement) element;
+        
+                    var label = new Label(textElement.text, skin);
+                    label.setWrap(true);
+                    table.add(label).growX();
+                }
+                if (element instanceof ImageElement) {
+                    var imageElement = (ImageElement) element;
+        
+                    var image = new Image(assetManager.get(imageElement.image, Texture.class));
+                    image.setScaling(Scaling.fit);
+                    image.setAlign(Align.left);
+                    var container = new AspectRatioContainer<>(image, image.getDrawable().getMinWidth(),
+                            image.getDrawable().getMinHeight());
+                    table.add(container).growX();
+                } else if (element instanceof MusicElement) {
+                    var musicElement = (MusicElement) element;
+        
+                    Music music = assetManager.get(musicElement.music);
+                    music.setLooping(true);
+                    music.play();
+                    if (Core.music != null && Core.music != music) {
+                        Core.music.stop();
+                    }
+                    Core.music = music;
+                } else if (element instanceof SoundElement) {
+                    var soundElement = (SoundElement) element;
+        
+                    Sound sound = assetManager.get(soundElement.sound);
+                    sound.play();
+                }
+                table.row();
+            }
         }
     
         var horizontalGroup = new HorizontalGroup();

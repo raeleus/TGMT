@@ -569,15 +569,15 @@ public class Editor extends ApplicationAdapter {
         table.defaults().space(5);
         StringBuilder value = new StringBuilder();
         for (var requiredKey : element.requiredKeys) {
-            value.append(requiredKey + "\n");
+            value.append(requiredKey.name + "\n");
         }
         var requiredKeysField = new TextArea(value.toString(), skin, "required-keys");
         requiredKeysField.setPrefRows(5);
         table.add(requiredKeysField);
     
         value = new StringBuilder();
-        for (var bannedKeys : element.bannedKeys) {
-            value.append(bannedKeys + "\n");
+        for (var bannedKey : element.bannedKeys) {
+            value.append(bannedKey.name + "\n");
         }
         var bannedKeysField = new TextArea(value.toString(), skin, "banned-keys");
         bannedKeysField.setPrefRows(5);
@@ -593,15 +593,19 @@ public class Editor extends ApplicationAdapter {
             if (element instanceof MusicElement) ((MusicElement) element).music = list.getSelected();
             
             element.requiredKeys.clear();
-            for (var key : requiredKeysField.getText().split("\\n")) {
-                if (key.length() > 0) {
+            for (var keyString : requiredKeysField.getText().split("\\n")) {
+                if (keyString.length() > 0) {
+                    var key = new Key();
+                    key.name = keyString;
                     element.requiredKeys.add(key);
                 }
             }
     
             element.bannedKeys.clear();
-            for (var key : bannedKeysField.getText().split("\\n")) {
-                if (key.length() > 0) {
+            for (var keyString : bannedKeysField.getText().split("\\n")) {
+                if (keyString.length() > 0) {
+                    var key = new Key();
+                    key.name = keyString;
                     element.bannedKeys.add(key);
                 }
             }
@@ -640,15 +644,15 @@ public class Editor extends ApplicationAdapter {
         table.defaults().space(5);
         StringBuilder value = new StringBuilder();
         for (var requiredKey : textElement.requiredKeys) {
-            value.append(requiredKey + "\n");
+            value.append(requiredKey.name + "\n");
         }
         var requiredKeysField = new TextArea(value.toString(), skin, "required-keys");
         requiredKeysField.setPrefRows(5);
         table.add(requiredKeysField);
     
         value = new StringBuilder();
-        for (var bannedKeys : textElement.bannedKeys) {
-            value.append(bannedKeys + "\n");
+        for (var bannedKey : textElement.bannedKeys) {
+            value.append(bannedKey.name + "\n");
         }
         var bannedKeysField = new TextArea(value.toString(), skin, "banned-keys");
         bannedKeysField.setPrefRows(5);
@@ -661,15 +665,19 @@ public class Editor extends ApplicationAdapter {
             textElement.text = textTextArea.getText();
     
             textElement.requiredKeys.clear();
-            for (var key : requiredKeysField.getText().split("\\n")) {
-                if (key.length() > 0) {
+            for (var keyString : requiredKeysField.getText().split("\\n")) {
+                if (keyString.length() > 0) {
+                    var key = new Key();
+                    key.name = keyString;
                     textElement.requiredKeys.add(key);
                 }
             }
     
             textElement.bannedKeys.clear();
-            for (var key : bannedKeysField.getText().split("\\n")) {
-                if (key.length() > 0) {
+            for (var keyString : bannedKeysField.getText().split("\\n")) {
+                if (keyString.length() > 0) {
+                    var key = new Key();
+                    key.name = keyString;
                     textElement.bannedKeys.add(key);
                 }
             }
