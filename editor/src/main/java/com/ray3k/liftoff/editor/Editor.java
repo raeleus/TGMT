@@ -477,6 +477,8 @@ public class Editor extends ApplicationAdapter {
         for (var roomWidget : roomWidgets) {
             var room = roomWidget.room;
             json.writeObjectStart(roomWidget.room.name);
+            json.writeValue("x", roomWidget.getX());
+            json.writeValue("y", roomWidget.getY());
             json.writeArrayStart("story");
             for (var element : room.elements) {
                 var line = "";
@@ -518,22 +520,22 @@ public class Editor extends ApplicationAdapter {
                 if (action.sound != null) json.writeValue("sound", action.sound);
                 json.writeArrayStart("requiredKeys");
                 for (var key : action.requiredKeys) {
-                    json.writeValue(key);
+                    json.writeValue(key.name);
                 }
                 json.writeArrayEnd();
                 json.writeArrayStart("bannedKeys");
                 for (var key : action.bannedKeys) {
-                    json.writeValue(key);
+                    json.writeValue(key.name);
                 }
                 json.writeArrayEnd();
                 json.writeArrayStart("giveKeys");
                 for (var key : action.giveKeys) {
-                    json.writeValue(key);
+                    json.writeValue(key.name);
                 }
                 json.writeArrayEnd();
                 json.writeArrayStart("removeKeys");
                 for (var key : action.removeKeys) {
-                    json.writeValue(key);
+                    json.writeValue(key.name);
                 }
                 json.writeArrayEnd();
                 json.writeObjectEnd();
