@@ -3,7 +3,7 @@ eclipse.project.name = appName + '-core'
 
 dependencies {
 	api "com.badlogicgames.gdx:gdx:$gdxVersion"
-	implementation "com.github.tommyettinger:textratypist:0.1.1"
+	implementation 'com.github.tommyettinger:textratypist:95f67a7289'
 	api 'com.github.raeleus.TenPatch:tenpatch:5.2.2'
 	api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
 	implementation 'com.github.raeleus:stripe:0.2.0'

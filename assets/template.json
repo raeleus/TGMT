@@ -1,7 +1,7 @@
 {
   "home": {
     "story": [
-      "text:::You are outside your childhood home. You see a kindly woman smiling at you. The sweet smell of her perfume invades your senses. You seem to be falling in love with her and yet you do not even know her. She almost knowingly grins at you while she side eyes you from her phone. You have decided that you want to hug her. Go get her!",
+      "text:::You are [*]outside[*] your [/]childhood[/] home. You [^]see[^] a kindly [=]woman[=] smiling at [.]you[.]. [_]The sweet smell of her perfume invades your senses[_]. [~]You seem to be [!]falling[!] in love [,]WITH[,] her and [;]yet[;] you do not even know her.[~]........ She almost [RED]knowingly[WHITE] grins at you while she side eyes you from her phone. You have decided that you want to hug her. Go get her!",
       "image:::image/big.jpg",
       "music:::bgm/music.mp3",
       "text::name:You have this strange sense that you know her...",
