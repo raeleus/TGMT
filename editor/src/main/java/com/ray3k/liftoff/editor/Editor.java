@@ -6,11 +6,14 @@ import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -114,8 +117,11 @@ public class Editor extends ApplicationAdapter {
         textButton = new TextButton("Open Project", skin);
         root.add(textButton);
         cl(textButton, () -> {
-            var file = openDialog("Open JSON", "", new String[]{"json"}, "JSON Files (*.json)");
-            if (file != null) showEditor();
+            var file = openDialog("Open JSON", "", new String[]{"*.json"}, "JSON Files (*.json)");
+            if (file != null) {
+                readFromJson(file);
+                showEditor();
+            }
         });
     }
     
@@ -146,21 +152,35 @@ public class Editor extends ApplicationAdapter {
         popTable.add(textButton);
         cl(textButton, () -> {
             RoomWidget.nameIndex = 0;
+            ConnectorWidget.colorIndex = 0;
             roomWidgets.clear();
             var roomWidget = new RoomWidget(skin);
             roomWidgets.add(roomWidget);
             showEditor();
+            popTable.hide();
         });
         
         popTable.row();
         textButton = new TextButton("Open Project", skin, "small");
         popTable.add(textButton);
+        cl(textButton, () -> {
+            RoomWidget.nameIndex = 0;
+            ConnectorWidget.colorIndex = 0;
+            roomWidgets.clear();
+            var file = openDialog("Open JSON", "", new String[]{"*.json"}, "JSON Files (*.json)");
+            if (file != null) {
+                readFromJson(file);
+                showEditor();
+            }
+            popTable.hide();
+        });
         
         button = new Button(skin, "save");
         root.add(button);
         cl(button, () -> {
             var fileHandle = Utils.saveDialog("Save to JSON", "", new String[]{"*.json"}, "JSON Files[*.json]");
             if (fileHandle != null) saveToJson(fileHandle);
+            popTable.hide();
         });
         
         button = new Button(skin, "home");
@@ -172,9 +192,7 @@ public class Editor extends ApplicationAdapter {
         
         button = new Button(skin, "zoom-out");
         root.add(button);
-        cl(button, () -> {
-            zoomOut();
-        });
+        cl(button, this::zoomOut);
         
         button = new Button(skin, "folder");
         root.add(button);
@@ -465,6 +483,11 @@ public class Editor extends ApplicationAdapter {
         };
         
         stage1.addListener(dragListener);
+    
+        for (int i = 0; i < roomWidgets.size; i++) {
+            var roomWidget = roomWidgets.get(i);
+            roomWidget.update();
+        }
     }
     
     private void saveToJson(FileHandle fileHandle) {
@@ -545,6 +568,120 @@ public class Editor extends ApplicationAdapter {
         }
         json.writeObjectEnd();
         fileHandle.writeString(json.prettyPrint(stringWriter.toString()), false, "UTF-8");
+    }
+    
+    private void readFromJson(FileHandle fileHandle) {
+        var jsonReader = new JsonReader();
+        var root = jsonReader.parse(fileHandle);
+        
+        for (var child : root.iterator()) {
+            var room = new Room();
+            room.name = child.name();
+            
+            var roomWidget = new RoomWidget(skin, room);
+            roomWidget.setPosition(child.getFloat("x"), child.getFloat("y"));
+            stage1.addActor(roomWidget);
+            roomWidgets.add(roomWidget);
+            
+            if (child.has("story")) for (var line : child.get("story").asStringArray()) {
+                int colonIndex = line.indexOf(':');
+                String type = line.substring(0, colonIndex);
+                line = line.substring(colonIndex + 1);
+    
+                colonIndex = line.indexOf(':');
+                Array<Key> requiredKeys = new Array<>();
+                for (var string : line.substring(0, colonIndex).split("\\n")) {
+                    if (string.length() > 0) {
+                        var key = new Key();
+                        key.name = string;
+                        requiredKeys.add(key);
+                    }
+                }
+                line = line.substring(colonIndex + 1);
+    
+                colonIndex = line.indexOf(':');
+                Array<Key> bannedKeys = new Array<>();
+                for (var string : line.substring(0, colonIndex).split("\\n")) {
+                    if (string.length() > 0) {
+                        var key = new Key();
+                        key.name = string;
+                        bannedKeys.add(key);
+                    }
+                }
+                line = line.substring(colonIndex + 1);
+    
+                switch (type) {
+                    case "image":
+                        var imageElement = new Room.ImageElement();
+                        assetManager.load(line, Texture.class);
+                        imageElement.image = line;
+                        room.elements.add(imageElement);
+                        imageElement.requiredKeys.addAll(requiredKeys);
+                        imageElement.bannedKeys.addAll(bannedKeys);
+                        break;
+                    case "text":
+                        var textElement = new Room.TextElement();
+                        textElement.text = line;
+                        room.elements.add(textElement);
+                        textElement.requiredKeys.addAll(requiredKeys);
+                        textElement.bannedKeys.addAll(bannedKeys);
+                        break;
+                    case "music":
+                        var musicElement = new Room.MusicElement();
+                        assetManager.load(line, Music.class);
+                        musicElement.music = line;
+                        room.elements.add(musicElement);
+                        musicElement.requiredKeys.addAll(requiredKeys);
+                        musicElement.bannedKeys.addAll(bannedKeys);
+                        break;
+                    case "sound":
+                        var soundElement = new Room.SoundElement();
+                        assetManager.load(line, Sound.class);
+                        soundElement.sound = line;
+                        room.elements.add(soundElement);
+                        soundElement.requiredKeys.addAll(requiredKeys);
+                        soundElement.bannedKeys.addAll(bannedKeys);
+                        break;
+                }
+            }
+    
+            if (child.has("actions")) for (var actionValue : child.get("actions").iterator()) {
+                var action = new Room.Action();
+                action.name = actionValue.name;
+                action.targetRoom = actionValue.getString("targetRoom");
+        
+                if (actionValue.has("requiredKeys")) for (var keyString : actionValue.get("requiredKeys").asStringArray()) {
+                    var key = new Room.Key();
+                    key.name = keyString;
+                    action.requiredKeys.add(key);
+                }
+        
+                if (actionValue.has("bannedKeys")) for (var keyString : actionValue.get("bannedKeys").asStringArray()) {
+                    var key = new Room.Key();
+                    key.name = keyString;
+                    action.bannedKeys.add(key);
+                }
+        
+                if (actionValue.has("giveKeys")) for (var keyString : actionValue.get("giveKeys").asStringArray()) {
+                    var key = new Room.Key();
+                    key.name = keyString;
+                    action.giveKeys.add(key);
+                }
+        
+                if (actionValue.has("removeKeys")) for (var keyString : actionValue.get("removeKeys").asStringArray()) {
+                    var key = new Room.Key();
+                    key.name = keyString;
+                    action.removeKeys.add(key);
+                }
+        
+                if (actionValue.has("sound")) {
+                    action.sound = actionValue.getString("sound");
+                    assetManager.load(action.sound, Sound.class);
+                }
+        
+                room.actions.add(action);
+            }
+        }
     }
     
     private void createElementWidget(Element element, RoomWidget roomWidget, VerticalGroup verticalGroup, PopTable popTable) {

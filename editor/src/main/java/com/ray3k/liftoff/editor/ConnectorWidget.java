@@ -24,7 +24,7 @@ public class ConnectorWidget extends Table  {
     private static final Array<Color> colors = new Array<>(new Color[] {Color.RED, Color.GREEN, Color.ORANGE, Color.BLUE,
             Color.YELLOW, Color.CYAN, Color.LIME, Color.PINK, Color.CHARTREUSE, Color.FOREST, Color.VIOLET, Color.SALMON,
             Color.PURPLE, Color.SKY, Color.BROWN});
-    private static int colorIndex;
+    public static int colorIndex;
     private Color color;
     private boolean dragging;
     private final Array<ConnectorLabel> connectorLabels = new Array<>();
@@ -87,6 +87,8 @@ public class ConnectorWidget extends Table  {
     }
     
     public void update() {
+        System.out.println("connectorLabels = " + connectorLabels.size);
+        System.out.println("roomWidget.room.actions.size = " + roomWidget.room.actions.size);
         for (var connectorLabel : connectorLabels) {
             connectorLabel.remove();
         }
@@ -97,6 +99,7 @@ public class ConnectorWidget extends Table  {
                     var connectorLabel = new ConnectorLabel(roomWidget, other, action, skin);
                     stage1.addActor(connectorLabel);
                     connectorLabels.add(connectorLabel);
+                    System.out.println("created connector");
                 }
             }
         }
@@ -129,7 +132,7 @@ public class ConnectorWidget extends Table  {
         }
     }
     
-    public static class ConnectorLabel extends Container {
+    public static class ConnectorLabel extends Container<Label> {
         private Label label;
         public RoomWidget parent;
         private RoomWidget targetRoom;
