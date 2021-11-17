@@ -176,6 +176,9 @@ String[] filterPatterns, String filterDescription) {
     public static Pool<Vector2> vector2Pool = new Vector2Pool(60);
     private static final Array<Vector2> tmpResult = new Array<>();
     
+    /**
+     * @author Francesco Marongiu
+     */
     public static Array<Vector2> getCurvedLine(float fromX, float fromY, float toX, float toY, float center1X, float center1Y, float center2X, float center2Y, int segments) {
         tmpResult.clear();
         

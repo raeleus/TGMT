@@ -16,7 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.github.tommyettinger.textra.TextraLabel;
-import com.github.tommyettinger.textra.TypingLabel;
 import com.ray3k.liftoff.Room.*;
 import com.ray3k.stripe.FreeTypeSkin;
 import com.ray3k.stripe.ScrollFocusListener;
