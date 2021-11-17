@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
@@ -37,7 +38,9 @@ import com.ray3k.stripe.PopTableClickListener;
 import com.ray3k.stripe.ScrollFocusListener;
 import space.earlygrey.shapedrawer.ShapeDrawer;
 
-import java.io.*;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.StringWriter;
 import java.lang.StringBuilder;
 import java.util.Locale;
 
@@ -58,6 +61,7 @@ public class Editor extends ApplicationAdapter {
     public static final Array<RoomWidget> roomWidgets = new Array<>();
     public static FileHandle resourcesPath;
     public static ShapeDrawer shapeDrawer;
+    public static Preferences prefs;
     
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
@@ -72,6 +76,7 @@ public class Editor extends ApplicationAdapter {
     
     @Override
     public void create() {
+        prefs = Gdx.app.getPreferences("tgmt editor");
         skin = new FreeTypeSkin(Gdx.files.internal("skin/skin.json"));
         popTableStyle = new PopTableStyle();
         popTableStyle.background = skin.getDrawable("pop-table-10");
@@ -196,9 +201,7 @@ public class Editor extends ApplicationAdapter {
         
         button = new Button(skin, "folder");
         root.add(button);
-        cl(button, () -> {
-            resourcesPath = openFolderDialog("Select resources path", "");
-        });
+        cl(button, () -> chooseResourcesPath(true));
         
         for (var roomWidget : roomWidgets) {
             stage1.addActor(roomWidget);
@@ -385,8 +388,8 @@ public class Editor extends ApplicationAdapter {
                         table.add(button);
                         cl(button, () -> {
                             popTable.setHideOnUnfocus(false);
-                            
-                            if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
+    
+                            chooseResourcesPath();
                             
                             var imageElement = new ImageElement();
                             showDetailPop("Select an image", gatherImages(), imageElement, () -> {
@@ -398,8 +401,8 @@ public class Editor extends ApplicationAdapter {
                         table.add(button);
                         cl(button, () -> {
                             popTable.setHideOnUnfocus(false);
-        
-                            if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
+    
+                            chooseResourcesPath();
         
                             var musicElement = new MusicElement();
                             showDetailPop("Select a music file", gatherSounds(), musicElement, () -> {
@@ -411,8 +414,8 @@ public class Editor extends ApplicationAdapter {
                         table.add(button);
                         cl(button, () -> {
                             popTable.setHideOnUnfocus(false);
-        
-                            if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
+    
+                            chooseResourcesPath();
         
                             var soundElement = new SoundElement();
                             showDetailPop("Select a sound file", gatherSounds(), soundElement, () -> {
@@ -705,21 +708,21 @@ public class Editor extends ApplicationAdapter {
                 final boolean uniqueName = temp;
                 
                 if (element instanceof SoundElement) {
-                    if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
+                    chooseResourcesPath();
                     popTable.setHideOnUnfocus(false);
                     
                     var soundElement = (SoundElement) element;
                     showDetailPop("Select a sound file", gatherSounds(), soundElement.sound, soundElement,
                             elementWidget::update, () -> popTable.setHideOnUnfocus(uniqueName));
                 } else if (element instanceof ImageElement) {
-                    if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
+                    chooseResourcesPath();
                     popTable.setHideOnUnfocus(false);
                     
                     var imageElement = (ImageElement) element;
                     showDetailPop("Select an image", gatherImages(), imageElement.image, imageElement,
                             elementWidget::update, () -> popTable.setHideOnUnfocus(uniqueName));
                 } else if (element instanceof MusicElement) {
-                    if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
+                    chooseResourcesPath();
                     popTable.setHideOnUnfocus(false);
                     
                     var musicElement = (MusicElement) element;
@@ -923,8 +926,20 @@ public class Editor extends ApplicationAdapter {
         stage2.setKeyboardFocus(textTextArea);
     }
     
+    private void chooseResourcesPath() {
+        chooseResourcesPath(false);
+    }
+    
+    private void chooseResourcesPath(boolean force) {
+        if (force || resourcesPath == null) {
+            resourcesPath = openFolderDialog("Select resources path", prefs.getString("resourcesPath", ""));
+            prefs.putString("resourcesPath", resourcesPath.path());
+            prefs.flush();
+        }
+    }
+    
     private void showActionPop(Room room, Room.Action action, Runnable onOK, Runnable onDelete, Runnable onHide) {
-        if (resourcesPath == null) resourcesPath = openFolderDialog("Select resources path", "");
+        chooseResourcesPath();
         
         var popTable = new PopTable(popTableStyle) {
             @Override
