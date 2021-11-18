@@ -87,8 +87,6 @@ public class ConnectorWidget extends Table  {
     }
     
     public void update() {
-        System.out.println("connectorLabels = " + connectorLabels.size);
-        System.out.println("roomWidget.room.actions.size = " + roomWidget.room.actions.size);
         for (var connectorLabel : connectorLabels) {
             connectorLabel.remove();
         }
@@ -99,7 +97,6 @@ public class ConnectorWidget extends Table  {
                     var connectorLabel = new ConnectorLabel(roomWidget, other, action, skin);
                     stage1.addActor(connectorLabel);
                     connectorLabels.add(connectorLabel);
-                    System.out.println("created connector");
                 }
             }
         }

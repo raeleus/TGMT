@@ -198,7 +198,6 @@ public class Core extends ApplicationAdapter {
     
             for (var requiredKey : element.requiredKeys) {
                 if (!playerKeys.contains(requiredKey, false)) {
-                    System.out.println("requiredKey = " + requiredKey.name);
                     show = false;
                     break;
                 }
@@ -206,7 +205,6 @@ public class Core extends ApplicationAdapter {
     
             for (var bannedKey : element.bannedKeys) {
                 if (playerKeys.contains(bannedKey, false)) {
-                    System.out.println("bannedKey = " + bannedKey.name);
                     show = false;
                     break;
                 }
@@ -215,8 +213,7 @@ public class Core extends ApplicationAdapter {
             if (show) {
                 if (element instanceof TextElement) {
                     var textElement = (TextElement) element;
-    
-                    System.out.println("textElement.text = " + textElement.text);
+                    
                     var label = new TextraLabel(textElement.text, skin);
                     label.setWrap(true);
                     table.add(label).growX();

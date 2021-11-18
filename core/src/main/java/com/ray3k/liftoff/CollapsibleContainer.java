@@ -12,7 +12,6 @@ public class CollapsibleContainer extends WidgetGroup {
     
     @Override
     public void layout() {
-        System.out.println("layout");
         Actor selected = getChildren().size > 0 ? getChildren().first() : null;
         
         for (Actor child : getChildren()) {
