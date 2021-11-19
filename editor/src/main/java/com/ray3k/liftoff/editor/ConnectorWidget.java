@@ -59,7 +59,7 @@ public class ConnectorWidget extends Table  {
                 localToStageCoordinates(temp);
                 
                 var actor = stage1.hit(temp.x, temp.y, true);
-                if (actor instanceof RoomWidget) {
+                if (actor != roomWidget && actor instanceof RoomWidget) {
                     var otherWidget = (RoomWidget) actor;
                     var action = new Action();
                     do {
