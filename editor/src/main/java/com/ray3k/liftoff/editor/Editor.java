@@ -933,7 +933,7 @@ public class Editor extends ApplicationAdapter {
     private void chooseResourcesPath(boolean force) {
         if (force || resourcesPath == null) {
             resourcesPath = openFolderDialog("Select resources path", prefs.getString("resourcesPath", ""));
-            prefs.putString("resourcesPath", resourcesPath.path());
+            prefs.putString("resourcesPath", resourcesPath == null ? "" : resourcesPath.path());
             prefs.flush();
         }
     }
