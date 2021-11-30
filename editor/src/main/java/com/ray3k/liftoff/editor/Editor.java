@@ -9,8 +9,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.*;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -46,7 +45,7 @@ import java.util.Locale;
 
 import static com.ray3k.liftoff.editor.Utils.*;
 
-public class Editor extends ApplicationAdapter {
+public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
     public static Skin skin;
     public static Stage stage1;
     public static Stage stage2;
@@ -62,16 +61,21 @@ public class Editor extends ApplicationAdapter {
     public static FileHandle resourcesPath;
     public static ShapeDrawer shapeDrawer;
     public static Preferences prefs;
+    public static boolean madeChanges = true;
+    private PopTable confirmExitPop;
+    public static String title;
     
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
-        configuration.setTitle("tgmt");
+        configuration.setTitle("TGMT");
         configuration.useVsync(true);
         configuration.setForegroundFPS(Lwjgl3ApplicationConfiguration.getDisplayMode().refreshRate);
         configuration.setWindowedMode(800, 800);
         configuration.setWindowIcon("libgdx128.png", "libgdx64.png", "libgdx32.png", "libgdx16.png");
         configuration.setBackBufferConfig(8, 8, 8, 8, 16, 0, 4);
-        new Lwjgl3Application(new Editor(), configuration);
+        var editor = new Editor();
+        configuration.setWindowListener(editor);
+        new Lwjgl3Application(editor, configuration);
     }
     
     @Override
@@ -81,7 +85,6 @@ public class Editor extends ApplicationAdapter {
         popTableStyle = new PopTableStyle();
         popTableStyle.background = skin.getDrawable("pop-table-10");
         popTableStyle.stageBackground = skin.getDrawable("pop-table-stage-background");
-        
         
         camera1 = new OrthographicCamera();
         viewport1 = new ExtendViewport(800, 800, camera1);
@@ -117,6 +120,9 @@ public class Editor extends ApplicationAdapter {
             var roomWidget = new RoomWidget(skin);
             roomWidgets.add(roomWidget);
             showEditor();
+            madeChanges = true;
+            title = "TGMT-New Project";
+            ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
         });
         
         textButton = new TextButton("Open Project", skin);
@@ -163,6 +169,8 @@ public class Editor extends ApplicationAdapter {
             roomWidgets.add(roomWidget);
             showEditor();
             popTable.hide();
+            title = "TGMT-New Project";
+            ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
         });
         
         popTable.row();
@@ -235,6 +243,8 @@ public class Editor extends ApplicationAdapter {
                     camera1.position.set(camera1.position.x - x + startX, camera1.position.y - y + startY, 0);
                 } else if (dragTarget instanceof RoomWidget) {
                     dragTarget.setPosition(x - dragTargetOffsetX, y - dragTargetOffsetY);
+                    madeChanges = true;
+                    ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                 }
             }
             
@@ -280,6 +290,8 @@ public class Editor extends ApplicationAdapter {
                             roomWidgets.add(roomWidget);
                             stage1.addActor(roomWidget);
                             popTable.hide();
+                            madeChanges = true;
+                            ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                         });
     
                         popTable.pack();
@@ -346,6 +358,8 @@ public class Editor extends ApplicationAdapter {
                                 roomNameTextField.setColor(Color.RED);
                                 popTable.setHideOnUnfocus(false);
                             }
+                            madeChanges = true;
+                            ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                         });
                         stage2.setKeyboardFocus(roomNameTextField);
                         
@@ -369,6 +383,7 @@ public class Editor extends ApplicationAdapter {
                             roomWidgets.removeValue(roomWidget, true);
                             roomWidget.remove();
                             popTable.hide();
+                            madeChanges = true;((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                         });
                         
                         button = new Button(skin, "text");
@@ -379,6 +394,8 @@ public class Editor extends ApplicationAdapter {
                             var textElement = new TextElement();
                             showTextPop("Enter the text", textElement, () -> {
                                 createElementWidget(textElement, roomWidget, verticalGroup, popTable);
+                                madeChanges = true;
+                                ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
                         
@@ -394,6 +411,8 @@ public class Editor extends ApplicationAdapter {
                             var imageElement = new ImageElement();
                             showDetailPop("Select an image", gatherImages(), imageElement, () -> {
                                 createElementWidget(imageElement, roomWidget, verticalGroup, popTable);
+                                madeChanges = true;
+                                ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
                         
@@ -407,6 +426,8 @@ public class Editor extends ApplicationAdapter {
                             var musicElement = new MusicElement();
                             showDetailPop("Select a music file", gatherSounds(), musicElement, () -> {
                                 createElementWidget(musicElement, roomWidget, verticalGroup, popTable);
+                                madeChanges = true;
+                                ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
                         
@@ -420,6 +441,8 @@ public class Editor extends ApplicationAdapter {
                             var soundElement = new SoundElement();
                             showDetailPop("Select a sound file", gatherSounds(), soundElement, () -> {
                                 createElementWidget(soundElement, roomWidget, verticalGroup, popTable);
+                                madeChanges = true;
+                                ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
     
@@ -461,9 +484,13 @@ public class Editor extends ApplicationAdapter {
                                 showActionPop(connectorWidget.roomWidget.room, action, () -> {
                                     textButton.setText(action.name);
                                     connectorWidget.update();
+                                    madeChanges = true;
+                                    ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                                 }, () -> {
                                     verticalGroup.removeActor(textButton);
                                     connectorWidget.update();
+                                    madeChanges = true;
+                                    ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                                 }, () -> popTable.setHideOnUnfocus(uniqueName));
                             });
                         }
@@ -474,8 +501,12 @@ public class Editor extends ApplicationAdapter {
                         var connectorLabel = (ConnectorLabel) dragTarget;
                         showActionPop(connectorLabel.parent.room, connectorLabel.action, () -> {
                             connectorLabel.parent.update();
+                            madeChanges = true;
+                            ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                         }, () -> {
                             connectorLabel.parent.update();
+                            madeChanges = true;
+                            ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
                         }, () -> {
                         
                         });
@@ -494,6 +525,10 @@ public class Editor extends ApplicationAdapter {
     }
     
     private void saveToJson(FileHandle fileHandle) {
+        madeChanges = false;
+        title = "TGMT-" + fileHandle.nameWithoutExtension();
+        ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title);
+        
         var stringWriter = new StringWriter();
         var jsonWriter = new JsonWriter(stringWriter);
         jsonWriter.setOutputType(OutputType.json);
@@ -574,6 +609,10 @@ public class Editor extends ApplicationAdapter {
     }
     
     private void readFromJson(FileHandle fileHandle) {
+        madeChanges = false;
+        title = "TGMT-" + fileHandle.nameWithoutExtension();
+        ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title);
+        
         var jsonReader = new JsonReader();
         var root = jsonReader.parse(fileHandle);
         
@@ -765,6 +804,46 @@ public class Editor extends ApplicationAdapter {
                 verticalGroup.addActorAt(newIndex, elementWidget);
             }
         });
+    }
+    
+    private void showConfirmCloseWithoutSavePop() {
+        if (confirmExitPop != null) confirmExitPop.hide();
+        confirmExitPop = new PopTable(popTableStyle);
+        confirmExitPop.setHideOnUnfocus(true);
+        confirmExitPop.setKeepCenteredInWindow(true);
+        
+        var label = new Label("Close without saving changes?", skin);
+        confirmExitPop.add(label);
+        
+        confirmExitPop.row();
+        var table = new Table();
+        confirmExitPop.add(table);
+        
+        var textButton = new TextButton("Save", skin, "small");
+        table.add(textButton).uniform().fill();
+        cl(textButton, () -> {
+            confirmExitPop.hide();
+            confirmExitPop = null;
+            var fileHandle = Utils.saveDialog("Save to JSON", "", new String[]{"*.json"}, "JSON Files[*.json]");
+            if (fileHandle != null) saveToJson(fileHandle);
+        });
+    
+        textButton = new TextButton("Don't Save", skin, "small");
+        table.add(textButton).uniform().fill();
+        cl(textButton, () -> {
+            confirmExitPop.hide();
+            confirmExitPop = null;
+            Gdx.app.exit();
+        });
+    
+        textButton = new TextButton("Cancel", skin, "small");
+        table.add(textButton).uniform().fill();
+        cl(textButton, () -> {
+            confirmExitPop.hide();
+            confirmExitPop = null;
+        });
+        
+        confirmExitPop.show(stage2);
     }
     
     private void showDetailPop(String labelText, Array<String> values, Element element, Runnable onConfirm, Runnable onHide) {
@@ -1206,5 +1285,49 @@ public class Editor extends ApplicationAdapter {
             }
         }
         return exists;
+    }
+    
+    @Override
+    public void created(Lwjgl3Window window) {
+    
+    }
+    
+    @Override
+    public void iconified(boolean isIconified) {
+    
+    }
+    
+    @Override
+    public void maximized(boolean isMaximized) {
+    
+    }
+    
+    @Override
+    public void focusLost() {
+    
+    }
+    
+    @Override
+    public void focusGained() {
+    
+    }
+    
+    @Override
+    public boolean closeRequested() {
+        if (!madeChanges) return true;
+        
+        showConfirmCloseWithoutSavePop();
+        
+        return false;
+    }
+    
+    @Override
+    public void filesDropped(String[] files) {
+    
+    }
+    
+    @Override
+    public void refreshRequested() {
+    
     }
 }
