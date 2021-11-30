@@ -1120,7 +1120,7 @@ public class Editor extends ApplicationAdapter {
         };
         var array = new Array<String>();
         if (resourcesPath != null) for (var fileHandle : resourcesPath.list(fileNameFilter)) {
-            var string = fileHandle.nameWithoutExtension();
+            var string = fileHandle.name();
             if (!array.contains(string, false)) array.add(string);
         }
         return array;
@@ -1135,7 +1135,7 @@ public class Editor extends ApplicationAdapter {
         };
         var array = new Array<String>();
         if (resourcesPath != null) for (var fileHandle : resourcesPath.list(fileNameFilter)) {
-            var string = fileHandle.nameWithoutExtension();
+            var string = fileHandle.name();
             if (!array.contains(string, false)) array.add(string);
         }
         return array;
