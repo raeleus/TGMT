@@ -81,6 +81,9 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
     @Override
     public void create() {
         prefs = Gdx.app.getPreferences("tgmt editor");
+        if (prefs.contains("resourcesPath")) {
+            resourcesPath = Gdx.files.absolute(prefs.getString("resourcesPath"));
+        }
         skin = new FreeTypeSkin(Gdx.files.internal("skin/skin.json"));
         popTableStyle = new PopTableStyle();
         popTableStyle.background = skin.getDrawable("pop-table-10");
