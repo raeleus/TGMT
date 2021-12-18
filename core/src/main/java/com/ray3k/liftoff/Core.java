@@ -282,9 +282,9 @@ public class Core extends ApplicationAdapter {
                             Sound sound = assetManager.get(action.sound);
                             sound.play();
                         }
-                        openRoom(action.targetRoom);
                         playerKeys.removeAll(action.removeKeys, false);
                         playerKeys.addAll(action.giveKeys);
+                        openRoom(action.targetRoom);
                     }
                 });
                 horizontalGroup.addActor(textButton);
