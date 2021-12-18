@@ -58,6 +58,7 @@ public class Room {
         public final Array<Key> giveKeys = new Array<>();
         public final Array<Key> removeKeys = new Array<>();
         public String sound;
+        public boolean removeAllKeys;
     }
     
     public static class Key {

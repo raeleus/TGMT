@@ -283,6 +283,7 @@ public class Core extends ApplicationAdapter {
                             sound.play();
                         }
                         playerKeys.removeAll(action.removeKeys, false);
+                        if (action.removeAllKeys) playerKeys.clear();
                         playerKeys.addAll(action.giveKeys);
                         openRoom(action.targetRoom);
                     }

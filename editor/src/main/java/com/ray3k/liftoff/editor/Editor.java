@@ -602,6 +602,7 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
                     json.writeValue(key.name);
                 }
                 json.writeArrayEnd();
+                json.writeValue("removeAllKeys", action.removeAllKeys);
                 json.writeObjectEnd();
             }
             json.writeObjectEnd();
@@ -722,6 +723,10 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
                 if (actionValue.has("sound")) {
                     action.sound = actionValue.getString("sound");
                     assetManager.load(action.sound, Sound.class);
+                }
+                
+                if (actionValue.has("removeAllKeys")) {
+                    action.removeAllKeys = actionValue.getBoolean("removeAllKeys");
                 }
         
                 room.actions.add(action);
@@ -1126,6 +1131,11 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
         table.add(removeKeysField);
         
         popTable.row();
+        var removeAllKeysButton = new TextButton("Remove All Keys", skin, "toggle");
+        removeAllKeysButton.setChecked(action.removeAllKeys);
+        popTable.add(removeAllKeysButton);
+        
+        popTable.row();
         table = new Table();
         popTable.add(table);
         
@@ -1135,6 +1145,7 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
             action.name = actionNameField.getText();
             action.targetRoom = targetRoomSelectBox.getSelected();
             action.sound = soundSelectBox.getSelected().equals("") ? null : soundSelectBox.getSelected();
+            action.removeAllKeys = removeAllKeysButton.isChecked();
             
             action.requiredKeys.clear();
             for (var value : requiredKeysField.getText().split("\\n")) {
