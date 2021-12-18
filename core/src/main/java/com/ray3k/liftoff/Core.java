@@ -166,6 +166,10 @@ public class Core extends ApplicationAdapter {
                     key.name = keyString;
                     action.removeKeys.add(key);
                 }
+    
+                if (actionValue.has("removeAllKeys")) {
+                    action.removeAllKeys = actionValue.getBoolean("removeAllKeys");
+                }
                 
                 if (actionValue.has("sound")) {
                     action.sound = actionValue.getString("sound");
