@@ -1,128 +1,469 @@
 {
-  "home": {
-    "story": [
-      "text:::You are [*]outside[*] your [/]childhood[/] home. You [^]see[^] a kindly [=]woman[=] smiling at [.]you[.]. [_]The sweet smell of her perfume invades your senses[_]. [~]You seem to be [!]falling[!] in love [,]WITH[,] her and [;]yet[;] you do not even know her.[~]........ She almost [RED]knowingly[WHITE] grins at you while she side eyes you from her phone. You have decided that you want to hug her. Go get her!",
-      "image:::image/big.jpg",
-      "music:::bgm/music.mp3",
-      "text::name:You have this strange sense that you know her...",
-      "text:name::At least you know her name is Sally..."
-    ],
-    "actions": {
-      "Hug her": {
-        "targetRoom": "rejected",
-        "sound": "sfx/gun.mp3",
-        "requiredKeys": [
-          
-        ],
-        "bannedKeys": [
-          "name"
-        ],
-        "giveKeys": [
-          
-        ],
-        "removeKeys": [
-          
-        ]
-      },
-      "Ask for her name": {
-        "targetRoom": "ask name",
-        "requiredKeys": [
-          
-        ],
-        "bannedKeys": [
-          "name"
-        ],
-        "giveKeys": [
-          "name"
-        ],
-        "removeKeys": [
-          
-        ]
-      },
-      "Hug Sally": {
-        "targetRoom": "validated",
-        "requiredKeys": [
-          "name"
-        ],
-        "bannedKeys": [
-          
-        ],
-        "giveKeys": [
-          
-        ],
-        "removeKeys": [
-          "name"
-        ]
-      }
-    }
-  },
-  "rejected": {
-    "story": [
-      "text:::\"Usually guys ask me my name first!\" she says as she pushes you away."
-      
-    ],
-    "actions": {
-      "OK": {
-        "targetRoom": "home",
-        "requiredKeys": [
-          
-        ],
-        "bannedKeys": [
-          
-        ],
-        "giveKeys": [
-          
-        ],
-        "removeKeys": [
-          
-        ]
-      }
-    }
-  },
-  "validated": {
-    "story": [
-      "text:::\"Mmmm, your hugs are so yummy!\".\nAs you draw away, you have subsequently forgotten her name.",
-      "sound:::sfx/sound.mp3"
-    ],
-    "actions": {
-      "OK": {
-        "targetRoom": "home",
-        "requiredKeys": [
-          
-        ],
-        "bannedKeys": [
-          
-        ],
-        "giveKeys": [
-          
-        ],
-        "removeKeys": [
-          
-        ]
-      }
-    }
-  },
-  "ask name": {
-    "story": [
-      "text:::\"Hi, I'm Sally. Nice to meet you.\"",
-      "sound:::sfx/sound.mp3"
-    ],
-    "actions": {
-      "OK": {
-        "targetRoom": "home",
-        "requiredKeys": [
-          
-        ],
-        "bannedKeys": [
-
-        ],
-        "giveKeys": [
-          
-        ],
-        "removeKeys": [
-          
-        ]
-      }
-    }
-  }
+"Logo": {
+	"x": -43,
+	"y": -50.000057,
+	"story": [
+		"image:::logo.png",
+		"sound:::drip.mp3"
+	],
+	"actions": {
+		"Continue": {
+			"targetRoom": "Title",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Title": {
+	"x": 212.00006,
+	"y": -168.00002,
+	"story": [
+		"image:::title-screen.png",
+		"music:::title_music.ogg"
+	],
+	"actions": {
+		"Credits": {
+			"targetRoom": "Credits",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Play Game": {
+			"targetRoom": "Dating Room",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Credits": {
+	"x": 581.00006,
+	"y": 67.99998,
+	"story": [
+		"image:::credits-page.png"
+	],
+	"actions": {
+		"Go Back": {
+			"targetRoom": "Title",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Dating Room": {
+	"x": 576,
+	"y": -72.000015,
+	"story": [
+		"text:::Hey. It's me, Ferocious Z. You all know me and have read my pathetic life story. I know what you're thinking, [/]your life seems so cool, why would you call it pathetic Z?[/] Truth is, I'm tired of doing the same old shit. Yeah, being a kick ass detective, super spy, and all around badass is cool. But, it gets old.....lonely. I'm ready for something new. A different lifestyle. Figured I'd settle down, fall in love, try out this fucking \"domestic\" life everyone seems to enjoy. Maybe have a house, quiet life,[*][FIREBRICK] sexy spouse[*][WHITE], couple of baby zebras? Why the fuck not. I deserve it, I've earned my stripes, pun intended, out there making everyone else fat and rich. Now it's my turn. Anyway, friend of mine lined up these 4 dates. Let's see if I can find [/][MAGENTA]love[/][WHITE] or at least a hookup. [/]sigh[/] Love would be nice....",
+		"image:::dating-room.png",
+		"music:::gameplay_music.ogg"
+	],
+	"actions": {
+		"Blind Date1": {
+			"targetRoom": "Pinda",
+			"requiredKeys": [],
+			"bannedKeys": [
+				"Pee"
+			],
+			"giveKeys": [
+				"Pee"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Blind Date 2": {
+			"targetRoom": "DQ",
+			"requiredKeys": [],
+			"bannedKeys": [
+				"Vomit"
+			],
+			"giveKeys": [
+				"Vomit"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Blind Date 3": {
+			"targetRoom": "Grox",
+			"requiredKeys": [],
+			"bannedKeys": [
+				"Slime"
+			],
+			"giveKeys": [
+				"Slime"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Blind Date 4": {
+			"targetRoom": "Bea",
+			"requiredKeys": [],
+			"bannedKeys": [
+				"Allergy"
+			],
+			"giveKeys": [
+				"Allergy"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Choose your date!": {
+			"targetRoom": "Choose Date",
+			"requiredKeys": [
+				"Pee",
+				"Vomit",
+				"Slime",
+				"Allergy"
+			],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Pinda": {
+	"x": 871.79095,
+	"y": 169.0674,
+	"story": [
+		"text:::The beach for your date is something out of a movie screen. One of those turquoise places with water so clear and clean and sand so perfect it could only exist in a dream or in a picture. Yet here you are. Your dates walks up and introduces himself \"[ORANGE] hello, I'm Pinda[WHITE].\" He has a great smile and his physique indicates he takes care of his body. You talk for a few minutes and find that he has a very pleasant aura around him. Soon, you head to meet your excursion director so you can suit up and get ready to go snorkeling.",
+		"image:::pinda-date.png"
+	],
+	"actions": {
+		"Go snorkeling": {
+			"targetRoom": "Snorkeling",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"DQ": {
+	"x": 914.00916,
+	"y": -19.310638,
+	"story": [
+		"text:::You arrive at the carnival to meet your date, stomach in knots at the anticipation of it all. You find her at the ticket booth. Tall, broad wings, scales, and slightly terrifying. You think to yourself \"this dragon lady is gonna be a bitch\", but as you approach she greets you with a smile and introduces herself \"Hi, I'm [PURPLE] DragonQueen[WHITE]\".  Her voice is pleasant and soothing and the glow of the setting sun makes her absolutuley beautiful. Before long the knot in your stomach is gone as you guys ease into comfortable conversation. You decide you like her and it's time to impress her....",
+		"image:::DQ-date.png"
+	],
+	"actions": {
+		"Win her a prize!": {
+			"targetRoom": "Prize",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Grox": {
+	"x": 932.9565,
+	"y": -167.40584,
+	"story": [
+		"text:::You arrive at the museum to meet your date, \"[CHARTREUSE]Hi, I'm Groxar[WHITE]\" he says excitedly. He's a nice looking bunny-man and you exchange a quick hug with your greeting. His fur is as soft as you expected. After a few moments of talking you gather that he is a nice man and has a calming and sweet disposition. You've come to the museum for a lmited-time installation featuring machines and slime. An odd pairing but your date seems really into it, so you go in with an open mind. ",
+		"image:::grox-date.png"
+	],
+	"actions": {
+		"View machines": {
+			"targetRoom": "Machines",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Bea": {
+	"x": 890.428,
+	"y": -410.37424,
+	"story": [
+		"text:::You pull up to the horse ranch and find your date \"[SKY] Nice to meet you, I'm Beatrix[WHITE]\". He's tall, rugged, smells amazing, and very handsome. You can see why your friend matched the two of you and he's a fellow member of equine kind so that's a plus. The initial thought was to go horseback riding through the woods but something about that just didn't feel right. You turn to Beatrix and say \"a pony and a zebra riding horses seems so weird, I have a crazy idea, what if we just go running through the field instead? I packed us a picnic so we can find a nice spot to eat afterward.\" He looks at you crazy for a second then says \"why the hell not!\" You strap on your picnic basket and take off...",
+		"image:::bea-date.png"
+	],
+	"actions": {
+		"Run like the wind": {
+			"targetRoom": "Field",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Snorkeling": {
+	"x": 1237.4983,
+	"y": 176.96605,
+	"story": [
+		"text:::In the water you see the most beautiful sights you have seen in a very long time. Brightly colored corals and fish with patterns and colors you only see on TV or in the magazines. You are also visited by a school of fish with zebra stripes and snap pictures with them. After two hours in the water, you emerge from the sea and start chatting about all the cool and wonderful things you saw down there, when Pinda spots something on the beach just over your shoulder. You decide to go investigate and get a closer look at what's there.",
+		"image:::snorkeling.jpg"
+	],
+	"actions": {
+		"Investigate": {
+			"targetRoom": "Stingray",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Stingray": {
+	"x": 1556.3328,
+	"y": 209.69807,
+	"story": [
+		"text:::As you guys approach the creature you realize it's a giant stingray that's trying to make it's way back into the water! You grab your phone to call the beach patrol to see if they can help the stingray before it dies. As you hang up, the staingray whips it's tail, you manage to jump out of the way but Pinda isn't so fortunate. The stingrays tail whips him across the top of his foot. You back up into the sand to get away from the stingray and Pinda drops to the ground in agonizing pain. You get your phone to look up ways to help him and as you are typing the words, you know what you must do. You don't want to do it but you look down and see him in agony. Before your brain can fully decide that this is the route you are going to take, you've already whipped it out and begun [GOLDENROD]peeing on his foot[WHITE]! He looks up at you in complete shock and you can't stop the stream so you just keep going and look away, embarrassment won't let you make eye contact with him. After the deed is done, beach patrol arrive and inform the two of you that urine is in fact [*]not[*] how you cure a stingray sting and they treat his foot with the appropriate care. Once his foot is wrapped, you thank him for the date and give him a quick hug before you hastily walk to your vehicle. You don't dare look back...",
+		"image:::stingray.jpg"
+	],
+	"actions": {
+		"Let's never speak of this...": {
+			"targetRoom": "Dating Room",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Prize": {
+	"x": 1315.0853,
+	"y": 20.57946,
+	"story": [
+		"text:::You head over to the prize area and play a few games winning and losing along the way. The final game is a water squirter, you and your date both take seats along with another couple. All four of you race to be the first ones to fill up their ballons with water and win the prize. After a couple rounds the girls get up and it's just you and the next guy, both eager to show off for your girls and be the victor. \"I'm going to smoke this chump\" you think to yourself. The bell rings and you're off! Both laser focused and determined, but your gun is slightly faster than his. You win your date the big prize and walk away feeling joyous (and slightly smug).",
+		"image:::prize.jpg"
+	],
+	"actions": {
+		"Go on the ferris wheel": {
+			"targetRoom": "Ferris Wheel",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Ferris Wheel": {
+	"x": 1646.0431,
+	"y": -49.733727,
+	"story": [
+		"text:::Before the date ends you decide to take a ride on the ferris wheel to round out a great date. As the wheel turns you enjoy seeing the city lights in the night sky and feel the cool air on your cheeks. Soon though, you start to regret that nervous meal you ate before the date; pizza and bubblegum. Your stomach is doing flips, sweat collecting on your brow, and your throat is filling with that familiar sour taste that comes right before the [GREEN][*][/]vomit[/][*][WHITE]! DragonQueen looks at you and asks if you are feeling well and you give her the best reassuring nod you can muster fearing to open your mouth and speak. The wheel is making what feels like its 100th decent around and as your stomach drops you can no longer put off the inevitable. You lean over and let your guts empty, it flies out of you exorcist  style, vomit everywhere. Finally your stomach stops pulsing, your chest stops heaving, the tears and snot stop flowing, and you look up to realize with absolute horror, you never made it to the edge of the wheel. You've just filled your dates lap with everything you have ever eaten since birth. The walk back to the exit is silent, neither of you acknowledging what just happend. She manages a small wave before departing, and you knew with full confidence...",
+		"image:::ferris wheel.jpg"
+	],
+	"actions": {
+		"Yep, fucked that up...": {
+			"targetRoom": "Dating Room",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Machines": {
+	"x": 1255.683,
+	"y": -200.05894,
+	"story": [
+		"text:::In the machines half of the exibit you see all sorts of machines from tiny little programmable robots that can do simple tasks like lift the garbage can lid so you don't have to, to giant automated car manufacturing machines. Your favorite section is one featuring machines making machines. Robots that can be programmed to assemble and program other robots. The future is now!",
+		"image:::machines.jpg"
+	],
+	"actions": {
+		"Play in slime": {
+			"targetRoom": "Slime",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Slime": {
+	"x": 1627.8588,
+	"y": -169.75148,
+	"story": [
+		"text:::The slime part of the exhibit is where all the fun is! It is brighly colored and filled with all sorts of fun activites you can do with slime. There's a station to make your own slime, slime mazes that you can find your way through, glow in the dark slime, an homage to Ghostbusters featuring a hotel lobby splattered with slimer slime, and hanging buckets where you can take a slime shower. The highlight, though, is an area where you can don a rubber suit and goggles and immerse yourself into a vat of slime and take a swim. You and Groxar put on your suits and dive right in. The slime is, well, slimy but feels cold and smells of strawberries. Groxar takes a dive and loses his goggles in the process. You notice a small bit of slime on his face and attempt to wipe it off and at that moment he turns his head and you [YELLOW][/]poke him in the eye[/][WHITE]. He screams how the slime is burning his eye as you try desperately to help get the slime that's stuck to his lashes, only to push the slime further into his eye. \"Please [*]stop[*] trying to help\" he says. You both exit the slime pool and he goes to the bathroom to wash his eye. When he returns it looks as though someone has punched him in the face. He decides it's time for him to go home and rest, you share a quick awkward hug and go your separate ways...",
+		"image:::slime.jpg"
+	],
+	"actions": {
+		"Won't be seeing him again...": {
+			"targetRoom": "Dating Room",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Field": {
+	"x": 1264.169,
+	"y": -409.78674,
+	"story": [
+		"text:::The field is breathtaking and filled with flowers. It's lined on either side with huge trees and you can see beautiful snow-capped mountains in the distance. You guys take off through the field, wind in your hair, filling your lungs with the fresh air, feeling so young and free. You stop every so often to admire the flowers or watch small animals go by. Eventually you decide it's time to eat and stop to setup your picnic.",
+		"image:::field.jpg"
+	],
+	"actions": {
+		"Set up picnic": {
+			"targetRoom": "Picnic",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Picnic": {
+	"x": 1555.1208,
+	"y": -455.85406,
+	"story": [
+		"text:::The picinc is beautiful complete with wine, apples, and all sorts of goodies. You guys are enjoying the scenery, food, and company when you offer Beatrix some of your homemade fruit pie. He takes a couple bites and says that it is delicious. You thank him and start to tell him what's inside \"it's an old family recipe of scratch made dough and the filling is raspberry, rhubarb, and strawberries...\" he interrupts you, \"did you say rhubarb? I'm very allergic to rhubarb!\" Just as he is saying the words you notice that he is turning red and his [TEAL][/]entire face is starting to swell up like a balloon[/][WHITE]! He is gasping for air but manages to tell you to grab the epipen from his bag and jam it into his thigh, you oblige and call 911 so they can transport him to the hospital for treatment. As the paramedics take him away you tell him that you will call him later to check on him and you hang your head in shame and slowly walk to your car...",
+		"image:::picnic.jpg"
+	],
+	"actions": {
+		"Tried to kill my date...": {
+			"targetRoom": "Dating Room",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"Choose Date": {
+	"x": 593.76746,
+	"y": -208.54489,
+	"story": [
+		"image:::date-chooser.png",
+		"music:::silence.mp3"
+	],
+	"actions": {
+		"DQ": {
+			"targetRoom": "DQ No",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Groxar": {
+			"targetRoom": "Grox No",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Pinda": {
+			"targetRoom": "Pinda Yes",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Beatrix": {
+			"targetRoom": "Bea No",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"DQ No": {
+	"x": 293.11746,
+	"y": -278.8584,
+	"story": [
+		"text:::You meet up with DragonQueen in the hotel lodge surprised that she agreed to meet you after what happened on your date. After a few minutes of small talk you muster up the courage to ask her on a second date. You immediately regret your decision as her smile slowly fades from her face. \"I'm sorry Z, you're a nice guy and I enjoyed spending time with you. Even after watching you spew a gallon of vomit into my lap I thought 'hey he must've been nervous he deserves a second chance'. But, while I was taking my third shower I realized you didn't even apologize for throwing up on me, in fact you didn't say anything else at all and you just let me walk away. So, no I'm not interested in going on any more dates, but, we can be friends.\" Your heart drops \"we can be friends\" the words every guy just dreams of hearing from someone they're into. You thank her for her honesty and agree that going separate ways would be best. No love connection was made here today....",
+		"image:::DQ-no.png",
+		"sound:::crying.mp3"
+	],
+	"actions": {
+		"The End!": {
+			"targetRoom": "Title",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": true
+		}
+	}
+},
+"Grox No": {
+	"x": 31.260956,
+	"y": -516.4691,
+	"story": [
+		"text:::A few days after your date you meet up with Groxar in the hotel lodge. He's wearing an eye patch and you silently feel like shit but ask him what happened and he says that his eye got infected from the slime and he has to wear the patch while he's taking antibiotic drops to keep his eye safe and help with the light sensitivity. You apologize and ask if you could take him on a second date to redeem yourself. He pauses for a brief moment and then says \"I like you Z, you seem like a nice person and you were fun to hang out with, but, there was no spark for me and I don't think we connected on a romantic level, I'm sorry.\" You tell him there's no need to apologize and thank him for the fun date you had. After he's gone you slump into a chair bummed that it didn't work out...",
+		"image:::grox-no.png",
+		"sound:::crying.mp3"
+	],
+	"actions": {
+		"The End!": {
+			"targetRoom": "Title",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": true
+		}
+	}
+},
+"Pinda Yes": {
+	"x": 313.72653,
+	"y": -574.6594,
+	"story": [
+		"text:::You call up Pinda and ask him if you can meet up with him again and he tells you to meet him at the beach where you had your date. It's sunset and the beach looks gorgeous. You find Pinda and you guys start to go for a walk down the sand. After asking him how he's been, you finally get the nerve to ask him out for a second date. He stops and faces you staring you right in the eye and for a moment you get a sinking feeling in your stomach, knowing he's about to reject you. He finally speaks and says \"Z, I had more fun with you on our date than I've had in a very long time. I know our date ended really awkwardly, but I was touched that you would put yourself through that embarrassment just to make me feel better. Yes, I would love to go on a second date with you!\" You feel something in your chest that you haven't felt in a long time. Is this what happiness feels like? Is this how normal people with feelings feel? Whatever it is you don't want it to end. You grab Pinda's hand and walk down the beach, glad you finally made a [MAGENTA][/]love[/][WHITE] connection!",
+		"image:::pinda-yes.png",
+		"sound:::chime.mp3"
+	],
+	"actions": {
+		"The End!": {
+			"targetRoom": "Title",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": true
+		}
+	}
+},
+"Bea No": {
+	"x": 605.89056,
+	"y": -517.6814,
+	"story": [
+		"text:::You find Beatrix in the hotel lodge and chat for a bit about nothing in particular and also make sure he is feeling better after the allergic reaction he had on your date. After you feel enough time has passed you ask him if he would like to go on a second date with you. He looks at you pensively and then simply says \"no, I don't think that would be a good idea, a long-distance relationship is not something I want to get myself into. But, you're a nice guy.\" You laugh and thank him for being upfront and agree to hang out again the next time you are in town. Outside you are smiling, but inside, your heart is sad that you didn't make it to date number 2... ",
+		"image:::bea-no.png",
+		"sound:::crying.mp3"
+	],
+	"actions": {
+		"The End!": {
+			"targetRoom": "Title",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": true
+		}
+	}
+}
 }
