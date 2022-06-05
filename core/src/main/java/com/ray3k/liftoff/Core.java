@@ -20,6 +20,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.esotericsoftware.spine.*;
 import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 import com.github.tommyettinger.textra.TextraLabel;
+import com.github.tommyettinger.textra.TypingLabel;
 import com.ray3k.liftoff.Room.*;
 import com.ray3k.stripe.FreeTypeSkin;
 import com.ray3k.stripe.ScrollFocusListener;
@@ -249,7 +250,7 @@ public class Core extends ApplicationAdapter {
                 if (element instanceof TextElement) {
                     var textElement = (TextElement) element;
                     
-                    var label = new TextraLabel(textElement.text, skin);
+                    var label = new TypingLabel(textElement.text, skin);
                     label.setWrap(true);
                     table.add(label).growX();
                 }
