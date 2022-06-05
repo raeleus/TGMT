@@ -32,11 +32,11 @@ public class ElementWidget extends Table {
         } else if (element instanceof SpineElement) {
             widgetButton = new TextButton(element.toString(), skin, "spine");
         }
-        add(widgetButton).growX();
-        
-        widgetButton.getLabelCell().width(150);
         widgetButton.getLabel().setEllipsis("...");
         widgetButton.getLabel().setEllipsis(true);
+        widgetButton.getLabelCell().size(150, 40);
+        add(widgetButton).growX();
+        
         cl(widgetButton, () -> fire(new ElementWidgetClickedEvent()));
         
         var table = new Table();
