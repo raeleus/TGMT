@@ -12,12 +12,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.esotericsoftware.spine.*;
+import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 import com.github.tommyettinger.textra.TextraLabel;
 import com.ray3k.liftoff.Room.*;
 import com.ray3k.stripe.FreeTypeSkin;
@@ -33,13 +34,19 @@ public class Core extends ApplicationAdapter {
     public static AssetManager assetManager;
     public final static Array<Key> playerKeys = new Array<>();
     public static SkeletonRenderer skeletonRenderer;
+    public static Array<SpineDrawable> spineDrawables = new Array<>();
+    public static TwoColorPolygonBatch batch;
+    static final int MAX_VERTEX_SIZE = 32767;
     
     @Override
     public void create() {
+        batch = new TwoColorPolygonBatch(MAX_VERTEX_SIZE);
         skeletonRenderer = new SkeletonRenderer();
+        skeletonRenderer.setPremultipliedAlpha(true);
+        
         skin = new FreeTypeSkin(Gdx.files.internal("skin/skin.json"));
         viewport = new ScreenViewport();
-        stage = new Stage(viewport);
+        stage = new Stage(viewport, batch);
         Gdx.input.setInputProcessor(stage);
         
         assetManager = new AssetManager(new InternalFileHandleResolver());
@@ -49,7 +56,7 @@ public class Core extends ApplicationAdapter {
         root.setBackground(skin.getDrawable("bg-10"));
         stage.addActor(root);
         
-        loadRooms(Gdx.files.internal("template.json"));
+        loadRooms(Gdx.files.local("tester.json"));
         openRoom(0);
     }
     
@@ -61,6 +68,11 @@ public class Core extends ApplicationAdapter {
     @Override
     public void render() {
         ScreenUtils.clear(Color.BLACK);
+        
+        float delta = Gdx.graphics.getDeltaTime();
+        for (var spineDrawable : spineDrawables) {
+            spineDrawable.update(delta);
+        }
         
         viewport.apply();
         stage.act();
@@ -204,6 +216,7 @@ public class Core extends ApplicationAdapter {
     }
     
     public void openRoom(int index) {
+        spineDrawables.clear();
         root.clear();
         var room = rooms.get(index);
     
@@ -265,6 +278,7 @@ public class Core extends ApplicationAdapter {
                     Sound sound = assetManager.get(soundElement.sound);
                     sound.play();
                 } else if (element instanceof SpineElement) {
+                    System.out.println("created spine element");
                     var spineElement = (SpineElement) element;
                     var file = Gdx.files.local(spineElement.spine);
                     
@@ -277,6 +291,8 @@ public class Core extends ApplicationAdapter {
                     var animationState = new AnimationState(animationStateData);
                     
                     var spineDrawable = new SpineDrawable(skeletonRenderer, skeleton, animationState);
+                    spineDrawable.getAnimationState().setAnimation(0, spineElement.animation, true);
+                    spineDrawables.add(spineDrawable);
                     var image = new Image(spineDrawable);
                     image.setScaling(Scaling.fit);
                     image.setAlign(Align.left);
