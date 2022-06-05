@@ -1,128 +1,177 @@
 {
-  "home": {
-    "story": [
-      "text:::You are [*]outside[*] your [/]childhood[/] home. You [^]see[^] a kindly [=]woman[=] smiling at [.]you[.]. [_]The sweet smell of her perfume invades your senses[_]. [~]You seem to be [!]falling[!] in love [,]WITH[,] her and [;]yet[;] you do not even know her.[~]........ She almost [RED]knowingly[WHITE] grins at you while she side eyes you from her phone. You have decided that you want to hug her. Go get her!",
-      "image:::image/big.jpg",
-      "music:::bgm/music.mp3",
-      "text::name:You have this strange sense that you know her...",
-      "text:name::At least you know her name is Sally..."
-    ],
-    "actions": {
-      "Hug her": {
-        "targetRoom": "rejected",
-        "sound": "sfx/gun.mp3",
-        "requiredKeys": [
-          
-        ],
-        "bannedKeys": [
-          "name"
-        ],
-        "giveKeys": [
-          
-        ],
-        "removeKeys": [
-          
-        ]
-      },
-      "Ask for her name": {
-        "targetRoom": "ask name",
-        "requiredKeys": [
-          
-        ],
-        "bannedKeys": [
-          "name"
-        ],
-        "giveKeys": [
-          "name"
-        ],
-        "removeKeys": [
-          
-        ]
-      },
-      "Hug Sally": {
-        "targetRoom": "validated",
-        "requiredKeys": [
-          "name"
-        ],
-        "bannedKeys": [
-          
-        ],
-        "giveKeys": [
-          
-        ],
-        "removeKeys": [
-          "name"
-        ]
-      }
-    }
-  },
-  "rejected": {
-    "story": [
-      "text:::\"Usually guys ask me my name first!\" she says as she pushes you away."
-      
-    ],
-    "actions": {
-      "OK": {
-        "targetRoom": "home",
-        "requiredKeys": [
-          
-        ],
-        "bannedKeys": [
-          
-        ],
-        "giveKeys": [
-          
-        ],
-        "removeKeys": [
-          
-        ]
-      }
-    }
-  },
-  "validated": {
-    "story": [
-      "text:::\"Mmmm, your hugs are so yummy!\".\nAs you draw away, you have subsequently forgotten her name.",
-      "sound:::sfx/sound.mp3"
-    ],
-    "actions": {
-      "OK": {
-        "targetRoom": "home",
-        "requiredKeys": [
-          
-        ],
-        "bannedKeys": [
-          
-        ],
-        "giveKeys": [
-          
-        ],
-        "removeKeys": [
-          
-        ]
-      }
-    }
-  },
-  "ask name": {
-    "story": [
-      "text:::\"Hi, I'm Sally. Nice to meet you.\"",
-      "sound:::sfx/sound.mp3"
-    ],
-    "actions": {
-      "OK": {
-        "targetRoom": "home",
-        "requiredKeys": [
-          
-        ],
-        "bannedKeys": [
-
-        ],
-        "giveKeys": [
-          
-        ],
-        "removeKeys": [
-          
-        ]
-      }
-    }
-  }
+"home": {
+	"x": 25.884583,
+	"y": 220.7001,
+	"story": [
+		"text:::[%375]THE LEVER[%]\n\nA game made by Raeleus in 48 hours for the Themed Horror Game Jam #6\n\nCan you solve the mystery of The Lever?\n\n{FADE}Many have stood in your place.\nMany have failed.\nMany have died....{ENDFADE}\n\nCopyright © 2022 Raymond Buckley"
+	],
+	"actions": {
+		"BEGIN": {
+			"targetRoom": "intro",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"intro": {
+	"x": 424.5805,
+	"y": 234.51942,
+	"story": [
+		"text:::{SLOWER}[*]3 YEARS AGO[*]\n{WAIT}\n{FAST}[#6a86fdff]\"Hey Stephanie. Steph. You haven't eaten any of your food. The simulated beef actually tastes like the real thing here. Well, it's not like I've really had beef. I heard that they used to have steer on Earth.\"\n\n[#ff85f5ff]\"Ugh, there you go again. Talking about Earth. Your fascination with that place is disgusting.\"\n\n[#6a86fdff]\"It's this shit right here that really pisses me off. Look, I just wanted to have a nice sit-down with you and enjoy some lab-engineered meat. I've put up with enough of your crap. Always running your gaw-damned mouth.\"\n\n[#ff85f5ff]\"Don't talk to me like that you little shit. Did they spike your water ration with anti-coagulates again?\"\n\n[#6a86fdff]\"Oh, so you're gonna bring that up again like you had nothing to do with that, bitch.\"\n\n[#ff85f5ff]\"OK. I didn't want to do this right now, but I think we should see other people.\"\n\n[#6a86fdff]\"Huh, that's funny. I already thought we were seeing other people.\"\n\n[#ff85f5ff]\"What the fuck are you talking about?\""
+	],
+	"actions": {
+		"Well...": {
+			"targetRoom": "intro continues",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"intro continues": {
+	"x": 843.8925,
+	"y": 245.39589,
+	"story": [
+		"text:::{FAST}[#6a86fdff]\"Yeah, we have an open relationship. I thought that would make you happier.\"\n\n[#ff85f5ff]\"You're completely delusional. I would never agree to that torp-shit. I knew you just wanted to screw other girls.\"\n\n[#6a86fdff]\"Yeah, maybe I am delusional. It's so weird. See, Steve had the same reaction when I talked to him about this.\"\n\n[#ff85f5ff]\"Who? Steve who? Who the fuck are you talking about?\"\n\n[#6a86fdff]\"Yeah Steve, the guy you're fucking. I've known for awhile now. Anyway, yeah he had no idea you were in an open relationship either.\"\n\n[#ff85f5ff]\"Oh my god. [*]Oh my god![*] what did you fucking say to him? I can't believe this is happening.\"\n\n[#6a86fdff]\"He couldn't believe it either when I told him that he should get himself checked for terra-floids. By the way, I have terra-floids. I thought it was only right you should know since you're the only person I'm having sex with.\"\n\n{CLEARCOLOR}Through tears, she began, \n[#ff85f5ff]\"You ruined my life! You're a monster! You're fucking evil!\"\n\n[#6a86fdff]\"Steve and Steph. You two are so similar. I got the same vibe from him. Nearly the same reaction! You two are meant for each other. Well, you were. I'm pretty sure he doesn't want to have anything to do with you now.\n{CLEARCOLOR}Stephanie runs out of the Beef's-Mash with hands covering her flush-red face. You could almost see the trail of tears following her haphazard course through Venusian station.\n\n[#6a86fdff]\"Huh, that went a lot better than I thought.\"\n\n{CLEARCOLOR}The server, with his astonished expression still plastered on his face, replies, \n[#b46a45ff]\"Damn man, did you have to be that mean? What are you going to do now?\""
+	],
+	"actions": {
+		"Engineer": {
+			"targetRoom": "intro engineer",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [
+				"engineer"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Agriculturist": {
+			"targetRoom": "intro agriculturist",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [
+				"agriculturist"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"intro engineer": {
+	"x": 1175.3967,
+	"y": 402.8226,
+	"story": [
+		"text:::{FAST}[#6a86fdff]\"I was thinking about getting into [_][*]engineering[*][_] and exploring deep space.\"\n\n[#b46a45ff]\"Oh heh heh. You do realize the IFO is just going to use you like a glorified mechanic right?\"\n\n[#6a86fdff]\"Well, anything to get away from this heap is fine by my book.\"\n\n[#b46a45ff]\"You'll wish you were back here in a few years. Mark my words.\""
+	],
+	"actions": {
+		"A few years later...": {
+			"targetRoom": "present day",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"intro agriculturist": {
+	"x": 1167.0712,
+	"y": 81.15748,
+	"story": [
+		"text:::{FAST}[#6a86fdff]\"I was thinking about getting into [_][*]agriculture[*][_] and exploring deep space.\"\n\n[#b46a45ff]\"Oh heh heh. You do realize the IFO is just going to use you like a glorified mechanic right?\"\n\n[#6a86fdff]\"Well, anything to get away from this heap is fine by my book.\"\n\n[#b46a45ff]\"You'll wish you were back here in a few years. Mark my words.\""
+	],
+	"actions": {
+		"A few years later...": {
+			"targetRoom": "present day",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"present day": {
+	"x": 1496.6079,
+	"y": 237.52448,
+	"story": [
+		"text:::{FAST}[#6a86fdff]\"Oh my fucking gaw. I wish I was back on Venusian Station.\"\n\n[#b357ffff]\"It's not so bad, man. You're just gonna be in and out. I'd sooner be doing this than taking another meeting with those high-beefin' aristos in command.\"\n\n{CLEARCOLOR}Nate gestures vaguely at the open porthole peering into the waste reclamation module. You both stand there in despair, trying everything you can to delay the inevitable.\n\n[#6a86fdff]\"Well, why don't you fuckin' do it?\"\n\n[#b357ffff]\"It's your job. The order came straight from the administrator herself. If command tells you to shimmy, you respond with 'what frequency sir!?' And besides, I have more important duties.\"\n\n{CLEARCOLOR}Nate proceeds to point to his badge, tapping his finger with dramatic timing. \"Navigation Specialist\". The red triangle placed at a perfect right angle signifies his rank as an officer."
+	],
+	"actions": {
+		"Clean the shit": {
+			"targetRoom": "waste reclamation",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Make an excuse": {
+			"targetRoom": "waste reclamation",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"waste reclamation": {
+	"x": 1922.2657,
+	"y": 240.17355,
+	"story": [
+		"text:::{FAST}Before you can react, the sudden crackling of the intercom fills the room. As if she was entertained by the sounds she can make with her voice, the adminstrator begins to orate in a petulant and somewhat feigned curiosity.\n\n[#fcfb72ff]\"AtEnTiOn StAfF! RePoRt To ThE CoMmAnD MoDuLe FoR mIsSiOn BrEiF ImMeDiAtLeY!\"\n\n[#b357ffff]\"Saved by the bell, ehh? I guess something came up on their recent scan.\"\n\n[#6a86fdff]\"What do you mean?\"\n\n[#b357ffff]\"They sent a probe out a few nychs ago. Because of time dilation, we are just getting the data right now.\"\n\n[#6a86fdff]\"Naw, I mean what does 'Saved by the bell' mean?\"\n\n[#b357ffff]\"Oh, it's an old earth phrase. It comes from [/]boxing[/], a gladiator sport where two combatants knock each other on the head until one gets a concussion. A very brutal sport.\"\n\n[#6a86fdff]\"Oh, so that means this mission breifing is going to concuss me with boredom?\"\n\n[#b357ffff]\"Yeah, something like that.\"\n\n{CLEARCOLOR}You had no idea that Nate was so knowledgable about Earth history. With each passing nych, you grow to admire him even more. He's the only friend you've had ever since you've been assigned to The Castrominir. Everyone else has acted like a self-absorbed bitch-ass.\n\n[#b357ffff]\"Well, that's enough fraternizing now. I better head up. Don't take too long.\"\n\n{CLEARCOLOR}Nate climbs up the access ladder. You watch him ascend as you absorb his words.\n\n[#6a86fdff]\"[/]Saved by the bell[/], huh?\" {CLEARCOLOR}you whisper to yourself."
+	],
+	"actions": {
+		"Clean the waste": {
+			"targetRoom": "toilets",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [
+				"toilet"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Go to brief": {
+			"targetRoom": "mission brief",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"toilets": {
+	"x": 2247.1147,
+	"y": 372.56854,
+	"story": [
+		"text:::{FAST}You decide to clean the waste reclamation module. Though the system for processing the waste from all the toilets on the ship is automated, grime tends to build up. And especially so on the mechanism that chops up the poo and breaks it down to its component parts to be reused in the crew's meals. A putrid smell invades your nose as you step into the muck despite wearing full radiological and biological protection.\n\n[#6a86fdff]\"[/]Come explore the untamed expanse of space[/] they say. [/]Discover yourself through facing adversity[/] they say.\n\n{CLEARCOLOR}The mess gets all over you, but thankfully you're able to strip off most of your gear and drop it straight into the UV Penetration machine. You step into your casual attire and prepare to head up for the brief. You can't help but notice that some of smell is still lingering..."
+	],
+	"actions": {
+		"Go to brief": {
+			"targetRoom": "mission brief",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"mission brief": {
+	"x": 2586.1877,
+	"y": 237.84766,
+	"story": [
+		"text:toilets::{FAST}[#fcfb72ff]\"It's so good of you to join us. You certainly took your time to get up here ehh?\"\n\n{CLEARCOLOR}You remain silent. You're used to this sort of abuse from the administrator. You did your job and that's enough justification for being late in your mind despite the hazing in front of everyone.",
+		"text:::{FAST}The command module is packed with the entire crew in attendance. You quickly glance at the safety message posted above the entrance: \"Meeting room occupancy must not exceed a maximum of 15\". You smirk and chuckle to yourself quietly.\n\n[#fcfb72ff]\"As you may know, our probe has returned back with some bizarre data about the derilect craft...\"\n\n{CLEARCOLOR}Jennifer, the Adminstrator, begins her speech seeming to not care that everyone else was still in their private conversations. Your focus wanes as your gaze slowly drifts over to your friend, Nate. He is with the rest of the officers, poorly concealing his laughter about something hilarious he just said. The others look like shy school girls, blushing in his presence.\n\n[#fcfb72ff]\"...and of course it's not aliens. It's never aliens...\"\n\n{CLEARCOLOR}Jennifer drones on and on. You pretend to be paying attention, but you know it's not relevant to you. You're [/]the help[/]. Nothing really matters to a temp worker with such a low station like you. All because of a misunderstanding at the academy. The name badge adorning your ship-wear draws your attention. No perfect right-triangle. No symbols. Nothing. Just the label \"MAINTENANCE\".\n\n[#fcfb72ff]\"...though our intercept team has not been able to respond for some time now...\"\n\n[#6a86fdff]\"Lunch. What is lunch? It's supposed to be a meal that is consumed at about midday.\" {CLEARCOLOR}That's what the Earth history book that Nate gave you said. You continue to daydream, thinking to yourself: [#6a86fdff]\"But there is no day or night here. Not in space. Just the constant drone of one nych after the next.\"\n\n[#fcfb72ff]\"...and our current plan is to dock with vessel, but we'll maintain quarantine protocols for now...\"\n\n{CLEARCOLOR}Something she said almost brought you out of your stupor, but you retreat back into your thoughts instead. You imagine what a day with Nate would be like. Outside of duty. Free from responsibility. He must be a swell guy.\n\n[#fcfb72ff]\"That concludes the mission briefing. Any questions?\""
+	],
+	"actions": {}
+}
 }
