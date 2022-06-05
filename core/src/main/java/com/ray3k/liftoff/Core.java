@@ -55,8 +55,8 @@ public class Core extends ApplicationAdapter {
         root.setFillParent(true);
         root.setBackground(skin.getDrawable("bg-10"));
         stage.addActor(root);
-        
-        loadRooms(Gdx.files.local("tester.json"));
+    
+        loadRooms(Gdx.files.internal("template.json"));
         openRoom(0);
     }
     
