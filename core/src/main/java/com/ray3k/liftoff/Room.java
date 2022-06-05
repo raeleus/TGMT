@@ -1,7 +1,5 @@
 package com.ray3k.liftoff;
 
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
 
 public class Room {
@@ -47,6 +45,17 @@ public class Room {
         @Override
         public String toString() {
             return sound;
+        }
+    }
+    
+    public static class SpineElement extends Element {
+        public String spine;
+        public String animation;
+        
+        @Override
+        public String toString() {
+            System.out.println("animation = " + animation);
+            return spine + " : " + animation;
         }
     }
     

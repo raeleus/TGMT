@@ -9,12 +9,15 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.esotericsoftware.spine.*;
 import com.github.tommyettinger.textra.TextraLabel;
 import com.ray3k.liftoff.Room.*;
 import com.ray3k.stripe.FreeTypeSkin;
@@ -29,9 +32,11 @@ public class Core extends ApplicationAdapter {
     public static Music music;
     public static AssetManager assetManager;
     public final static Array<Key> playerKeys = new Array<>();
+    public static SkeletonRenderer skeletonRenderer;
     
     @Override
     public void create() {
+        skeletonRenderer = new SkeletonRenderer();
         skin = new FreeTypeSkin(Gdx.files.internal("skin/skin.json"));
         viewport = new ScreenViewport();
         stage = new Stage(viewport);
@@ -134,6 +139,19 @@ public class Core extends ApplicationAdapter {
                         room.elements.add(soundElement);
                         soundElement.requiredKeys.addAll(requiredKeys);
                         soundElement.bannedKeys.addAll(bannedKeys);
+                        break;
+                    case "spine":
+                        var spineElement = new Room.SpineElement();
+                        
+                        colonIndex = storyString.indexOf(':');
+                        spineElement.spine = storyString.substring(0, colonIndex);
+                        
+                        storyString = storyString.substring(colonIndex + 1);
+                        spineElement.animation = storyString;
+                        
+                        room.elements.add(spineElement);
+                        spineElement.requiredKeys.addAll(requiredKeys);
+                        spineElement.bannedKeys.addAll(bannedKeys);
                         break;
                 }
             }
@@ -246,6 +264,25 @@ public class Core extends ApplicationAdapter {
         
                     Sound sound = assetManager.get(soundElement.sound);
                     sound.play();
+                } else if (element instanceof SpineElement) {
+                    var spineElement = (SpineElement) element;
+                    var file = Gdx.files.local(spineElement.spine);
+                    
+                    var atlas = new TextureAtlas(file.sibling(file.nameWithoutExtension() + ".atlas"));
+                    var skeletonJson = new SkeletonJson(atlas);
+                    
+                    var skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal(spineElement.spine));
+                    var skeleton = new Skeleton(skeletonData);
+                    var animationStateData = new AnimationStateData(skeletonData);
+                    var animationState = new AnimationState(animationStateData);
+                    
+                    var spineDrawable = new SpineDrawable(skeletonRenderer, skeleton, animationState);
+                    var image = new Image(spineDrawable);
+                    image.setScaling(Scaling.fit);
+                    image.setAlign(Align.left);
+                    var container = new AspectRatioContainer<>(image, image.getDrawable().getMinWidth(),
+                            image.getDrawable().getMinHeight());
+                    table.add(container).growX();
                 }
                 table.row();
             }

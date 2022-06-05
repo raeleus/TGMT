@@ -26,6 +26,9 @@ import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.utils.JsonWriter.OutputType;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.esotericsoftware.spine.SkeletonData;
+import com.esotericsoftware.spine.SkeletonJson;
+import com.esotericsoftware.spine.attachments.*;
 import com.ray3k.liftoff.Room;
 import com.ray3k.liftoff.Room.*;
 import com.ray3k.liftoff.editor.ConnectorWidget.ConnectorLabel;
@@ -449,6 +452,21 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
                             }, () -> popTable.setHideOnUnfocus(uniqueName));
                         });
     
+                        button = new Button(skin, "spine");
+                        table.add(button);
+                        cl(button, () -> {
+                            popTable.setHideOnUnfocus(false);
+        
+                            chooseResourcesPath();
+        
+                            var spineElement = new SpineElement();
+                            showSpinePop(gatherSpines(), spineElement, () -> {
+                                createElementWidget(spineElement, roomWidget, verticalGroup, popTable);
+                                madeChanges = true;
+                                ((Lwjgl3Graphics) Gdx.graphics).getWindow().setTitle(title + "*");
+                            }, () -> popTable.setHideOnUnfocus(uniqueName));
+                        });
+    
                         popTable.pack();
                         popTable.setPosition(vector2.x, vector2.y, Align.bottomLeft);
                     } else if (dragTarget instanceof ConnectorWidget) {
@@ -573,6 +591,9 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
                 } else if (element instanceof SoundElement) {
                     var soundElement = (SoundElement) element;
                     line += "sound:" + requiredKeys + ":" + bannedKeys + ":" + soundElement.sound;
+                } else if (element instanceof SpineElement) {
+                    var spineElement = (SpineElement) element;
+                    line += "spine:" + requiredKeys + ":" + bannedKeys + ":" + spineElement.spine + ":" + spineElement.animation;
                 }
                 json.writeValue(line);
             }
@@ -688,6 +709,16 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
                         soundElement.requiredKeys.addAll(requiredKeys);
                         soundElement.bannedKeys.addAll(bannedKeys);
                         break;
+                    case "spine":
+                        var spineElement = new Room.SpineElement();
+                        colonIndex = line.indexOf(':');
+                        spineElement.spine = line.substring(0, colonIndex);
+                        line = line.substring(colonIndex + 1);
+                        spineElement.animation = line;
+                        room.elements.add(spineElement);
+                        spineElement.requiredKeys.addAll(requiredKeys);
+                        spineElement.bannedKeys.addAll(bannedKeys);
+                        break;
                 }
             }
     
@@ -781,6 +812,12 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
                     var textElement = (TextElement) element;
                     showTextPop("Enter the text", textElement, elementWidget::update,
                             () -> popTable.setHideOnUnfocus(uniqueName));
+                } else if (element instanceof SpineElement) {
+                    popTable.setHideOnUnfocus(false);
+    
+                    var spineElement = (SpineElement) element;
+                    showSpinePop(gatherSpines(), spineElement.spine, spineElement.animation,
+                            spineElement, elementWidget::update, () -> popTable.setHideOnUnfocus(uniqueName));
                 }
             }
         
@@ -923,6 +960,109 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
                 }
             }
     
+            element.bannedKeys.clear();
+            for (var keyString : bannedKeysField.getText().split("\\n")) {
+                if (keyString.length() > 0) {
+                    var key = new Key();
+                    key.name = keyString;
+                    element.bannedKeys.add(key);
+                }
+            }
+            
+            onConfirm.run();
+        });
+        cl(textButton, popTable::hide);
+        
+        popTable.show(stage2);
+    }
+    
+    private void showSpinePop(Array<String> names, SpineElement element, Runnable onConfirm, Runnable onHide) {
+        showSpinePop(names, null, null, element, onConfirm, onHide);
+    }
+    
+    private void showSpinePop(Array<String> names, String nameSelection, String animationSelection, SpineElement element, Runnable onConfirm, Runnable onHide) {
+        var popTable = new PopTable(popTableStyle) {
+            @Override
+            public void hide(Action action) {
+                super.hide(action);
+                onHide.run();
+            }
+        };
+        
+        popTable.setHideOnUnfocus(true);
+        popTable.pad(20);
+        
+        var label = new Label("Select a Spine JSON file", skin);
+        popTable.add(label);
+        
+        popTable.row();
+        var nameList = new List<String>(skin);
+        nameList.setAlignment(Align.center);
+        nameList.setItems(names);
+        nameList.setSelected(nameSelection);
+        
+        var scrollPane = new ScrollPane(nameList, skin);
+        scrollPane.setFadeScrollBars(false);
+        popTable.add(scrollPane).growX();
+        scrollPane.addListener(new ScrollFocusListener(stage2));
+    
+        popTable.row();
+        label = new Label("Select an animation", skin);
+        popTable.add(label).spaceTop(10);
+        
+        popTable.row();
+        var animationList = new List<String>(skin);
+        animationList.setAlignment(Align.center);
+        animationList.setItems(gatherSpineAnimations(nameList.getSelected()));
+        animationList.setSelected(animationSelection);
+        
+        cl(nameList, () -> {
+            animationList.setItems(gatherSpineAnimations(nameList.getSelected()));
+        });
+    
+        scrollPane = new ScrollPane(animationList, skin);
+        scrollPane.setFadeScrollBars(false);
+        popTable.add(scrollPane).growX();
+        scrollPane.addListener(new ScrollFocusListener(stage2));
+        
+        popTable.row();
+        var table = new Table();
+        popTable.add(table);
+        
+        table.defaults().space(5);
+        StringBuilder value = new StringBuilder();
+        for (var requiredKey : element.requiredKeys) {
+            value.append(requiredKey.name + "\n");
+        }
+        var requiredKeysField = new TextArea(value.toString(), skin, "required-keys");
+        requiredKeysField.setPrefRows(5);
+        table.add(requiredKeysField);
+        
+        value = new StringBuilder();
+        for (var bannedKey : element.bannedKeys) {
+            value.append(bannedKey.name + "\n");
+        }
+        var bannedKeysField = new TextArea(value.toString(), skin, "banned-keys");
+        bannedKeysField.setPrefRows(5);
+        table.add(bannedKeysField);
+        
+        popTable.row();
+        var textButton = new TextButton("OK", skin, "small");
+        textButton.setDisabled(names.size == 0);
+        popTable.add(textButton);
+        cl(textButton, () -> {
+            element.spine = nameList.getSelected();
+            element.animation = animationList.getSelected();
+            
+            element.requiredKeys.clear();
+            for (var keyString : requiredKeysField.getText().split("\\n")) {
+                if (keyString.length() > 0) {
+                    var key = new Key();
+                    key.name = keyString;
+                    element.requiredKeys.add(key);
+                }
+            }
+            
             element.bannedKeys.clear();
             for (var keyString : bannedKeysField.getText().split("\\n")) {
                 if (keyString.length() > 0) {
@@ -1232,6 +1372,66 @@ public class Editor extends ApplicationAdapter implements Lwjgl3WindowListener {
             if (!array.contains(string, false)) array.add(string);
         }
         return array;
+    }
+    
+    private Array<String> gatherSpines() {
+        var fileNameFilter = new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase(Locale.ROOT).matches(".*\\.json$");
+            }
+        };
+        var array = new Array<String>();
+        if (resourcesPath != null) for (var fileHandle : resourcesPath.list(fileNameFilter)) {
+            var string = fileHandle.name();
+            if (!array.contains(string, false)) array.add(string);
+        }
+        return array;
+    }
+    
+    private Array<String> gatherSpineAnimations(String spine) {
+        var json = new SkeletonJson(new LameDuckAttachmentLoader());
+        var skeletonData = json.readSkeletonData(Gdx.files.absolute(resourcesPath + "/" + spine));
+        var array = new Array<String>();
+        for (var animation : skeletonData.getAnimations()) {
+            array.add(animation.getName());
+        }
+        return array;
+    }
+    
+    private static class LameDuckAttachmentLoader implements AttachmentLoader {
+        @Override
+        public RegionAttachment newRegionAttachment(com.esotericsoftware.spine.Skin skin, String name,
+                                                    String path) {
+            return new RegionAttachment(name);
+        }
+        
+        @Override
+        public MeshAttachment newMeshAttachment(com.esotericsoftware.spine.Skin skin, String name,
+                                                String path) {
+            return new MeshAttachment(name);
+        }
+        
+        @Override
+        public BoundingBoxAttachment newBoundingBoxAttachment(com.esotericsoftware.spine.Skin skin,
+                                                              String name) {
+            return new BoundingBoxAttachment(name);
+        }
+        
+        @Override
+        public ClippingAttachment newClippingAttachment(com.esotericsoftware.spine.Skin skin, String name) {
+            return new ClippingAttachment(name);
+        }
+        
+        @Override
+        public PathAttachment newPathAttachment(com.esotericsoftware.spine.Skin skin, String name) {
+            return new PathAttachment(name);
+        }
+        
+        @Override
+        public PointAttachment newPointAttachment(com.esotericsoftware.spine.Skin skin, String name) {
+            return new PointAttachment(name);
+        }
     }
     
     public void zoomOut() {

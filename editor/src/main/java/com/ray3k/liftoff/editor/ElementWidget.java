@@ -29,6 +29,8 @@ public class ElementWidget extends Table {
             widgetButton = new TextButton(element.toString(), skin, "music");
         } else if (element instanceof SoundElement) {
             widgetButton = new TextButton(element.toString(), skin, "sound");
+        } else if (element instanceof SpineElement) {
+            widgetButton = new TextButton(element.toString(), skin, "spine");
         }
         add(widgetButton).growX();
         
