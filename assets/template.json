@@ -1,9 +1,9 @@
 {
 "home": {
 	"x": 25.884583,
-	"y": 220.7001,
+	"y": 250.97449,
 	"story": [
-		"text:::[%375]THE LEVER[%]\n\nA game made by Raeleus in 48 hours for the Themed Horror Game Jam #6\n\nCan you solve the mystery of The Lever?\n\n{FADE}Many have stood in your place.\nMany have failed.\nMany have died....{ENDFADE}\n\nCopyright © 2022 Raymond Buckley"
+		"text:::[%375]THE LEVER[%]\n\nA game made by Raeleus in 48 hours for the Themed Horror Game Jam #6\n\nCan you solve the mystery of The Lever?\n\n{FADE}Many have stood in your place.\nMany have failed.\nMany have died....{ENDFADE}\n\nWARNING: This game contains PROFANITY, SEXUAL INNUENDOS, PERVERSE THEMES OF A DEVIANT NATURE, and LOTS OF READING.\n\nCopyright © 2022 Raymond \"Raeleus\" Buckley"
 	],
 	"actions": {
 		"BEGIN": {
@@ -17,10 +17,10 @@
 	}
 },
 "intro": {
-	"x": 424.5805,
-	"y": 234.51942,
+	"x": 423.36945,
+	"y": 246.62917,
 	"story": [
-		"text:::{SLOWER}[*]3 YEARS AGO[*]\n{WAIT}\n{FAST}[#6a86fdff]\"Hey Stephanie. Steph. You haven't eaten any of your food. The simulated beef actually tastes like the real thing here. Well, it's not like I've really had beef. I heard that they used to have steer on Earth.\"\n\n[#ff85f5ff]\"Ugh, there you go again. Talking about Earth. Your fascination with that place is disgusting.\"\n\n[#6a86fdff]\"It's this shit right here that really pisses me off. Look, I just wanted to have a nice sit-down with you and enjoy some lab-engineered meat. I've put up with enough of your crap. Always running your gaw-damned mouth.\"\n\n[#ff85f5ff]\"Don't talk to me like that you little shit. Did they spike your water ration with anti-coagulates again?\"\n\n[#6a86fdff]\"Oh, so you're gonna bring that up again like you had nothing to do with that, bitch.\"\n\n[#ff85f5ff]\"OK. I didn't want to do this right now, but I think we should see other people.\"\n\n[#6a86fdff]\"Huh, that's funny. I already thought we were seeing other people.\"\n\n[#ff85f5ff]\"What the fuck are you talking about?\""
+		"text:::{SLOWER}[*]3 YEARS AGO[*]\n{WAIT}\n{FAST}[#6a86fdff]\"Hey Stephanie. Steph. You haven't eaten any of your food. The simulated beef actually tastes like the real thing here. Well, it's not like I've really had beef. I heard that they used to have real living steaks on Earth.\"\n\n[#ff85f5ff]\"Ugh, there you go again. Talking about Earth. Your fascination with that place is disgusting.\"\n\n[#6a86fdff]\"It's this shit right here that really pisses me off. Look, I just wanted to have a nice sit-down with you and enjoy some lab-engineered meat. I've put up with enough of your crap. Always running your gaw-gammed mouth.\"\n\n[#ff85f5ff]\"Don't talk to me like that you little shit. Did they spike your water ration with anti-coagulates again?\"\n\n[#6a86fdff]\"Oh, so you're gonna bring that up again like you had nothing to do with that, bitch.\"\n\n[#ff85f5ff]\"OK. I didn't want to do this right now, but I think we should see other people.\"\n\n[#6a86fdff]\"Huh, that's funny. I already thought we were seeing other people.\"\n\n[#ff85f5ff]\"What the fuck are you talking about?\""
 	],
 	"actions": {
 		"Well...": {
@@ -37,7 +37,7 @@
 	"x": 843.8925,
 	"y": 245.39589,
 	"story": [
-		"text:::{FAST}[#6a86fdff]\"Yeah, we have an open relationship. I thought that would make you happier.\"\n\n[#ff85f5ff]\"You're completely delusional. I would never agree to that torp-shit. I knew you just wanted to screw other girls.\"\n\n[#6a86fdff]\"Yeah, maybe I am delusional. It's so weird. See, Steve had the same reaction when I talked to him about this.\"\n\n[#ff85f5ff]\"Who? Steve who? Who the fuck are you talking about?\"\n\n[#6a86fdff]\"Yeah Steve, the guy you're fucking. I've known for awhile now. Anyway, yeah he had no idea you were in an open relationship either.\"\n\n[#ff85f5ff]\"Oh my god. [*]Oh my god![*] what did you fucking say to him? I can't believe this is happening.\"\n\n[#6a86fdff]\"He couldn't believe it either when I told him that he should get himself checked for terra-floids. By the way, I have terra-floids. I thought it was only right you should know since you're the only person I'm having sex with.\"\n\n{CLEARCOLOR}Through tears, she began, \n[#ff85f5ff]\"You ruined my life! You're a monster! You're fucking evil!\"\n\n[#6a86fdff]\"Steve and Steph. You two are so similar. I got the same vibe from him. Nearly the same reaction! You two are meant for each other. Well, you were. I'm pretty sure he doesn't want to have anything to do with you now.\n{CLEARCOLOR}Stephanie runs out of the Beef's-Mash with hands covering her flush-red face. You could almost see the trail of tears following her haphazard course through Venusian station.\n\n[#6a86fdff]\"Huh, that went a lot better than I thought.\"\n\n{CLEARCOLOR}The server, with his astonished expression still plastered on his face, replies, \n[#b46a45ff]\"Damn man, did you have to be that mean? What are you going to do now?\""
+		"text:::{FAST}[#6a86fdff]\"Yeah, we have an open relationship. I thought that would make you happier.\"\n\n[#ff85f5ff]\"You're completely delusional. I would never agree to that torp-shit. I knew you just wanted to screw other girls.\"\n\n[#6a86fdff]\"Yeah, maybe I am delusional. It's so weird. See, Steve had the same reaction when I talked to him about this.\"\n\n[#ff85f5ff]\"Who? Steve who? Who the fuck are you talking about?\"\n\n[#6a86fdff]\"Yeah Steve, the guy you're fucking. I've known for awhile now. Anyway, yeah he had no idea you were in an open relationship either.\"\n\n[#ff85f5ff]\"Oh my gaw. [*]Oh my gaw![*] what did you fucking say to him? I can't believe this is happening.\"\n\n[#6a86fdff]\"He couldn't believe it either when I told him that he should get himself checked for terra-floids. By the way, I have terra-floids. I thought it was only right you should know since you're the only person I'm having sex with.\"\n\n{CLEARCOLOR}Through tears, she began, \n[#ff85f5ff]\"You ruined my life! You're a monster! You're fucking evil!\"\n\n[#6a86fdff]\"Steve and Steph. You two are so similar. I got the same vibe from him. Nearly the same reaction! You two are meant for each other. Well, you were. I'm pretty sure he doesn't want to have anything to do with you now.\n\n{CLEARCOLOR}Stephanie runs out of the Beef's-Mash with hands covering her flush-red face. You could almost see the trail of tears following her haphazard course through Venusian station.\n\n[#6a86fdff]\"Huh, that went a lot better than I thought.\"\n\n{CLEARCOLOR}The server, with his astonished expression still plastered on his face, replies, \n[#b46a45ff]\"Damn man, did you have to be that mean? What are you going to do now?\""
 	],
 	"actions": {
 		"Engineer": {
@@ -172,6 +172,369 @@
 		"text:toilets::{FAST}[#fcfb72ff]\"It's so good of you to join us. You certainly took your time to get up here ehh?\"\n\n{CLEARCOLOR}You remain silent. You're used to this sort of abuse from the administrator. You did your job and that's enough justification for being late in your mind despite the hazing in front of everyone.",
 		"text:::{FAST}The command module is packed with the entire crew in attendance. You quickly glance at the safety message posted above the entrance: \"Meeting room occupancy must not exceed a maximum of 15\". You smirk and chuckle to yourself quietly.\n\n[#fcfb72ff]\"As you may know, our probe has returned back with some bizarre data about the derilect craft...\"\n\n{CLEARCOLOR}Jennifer, the Adminstrator, begins her speech seeming to not care that everyone else was still in their private conversations. Your focus wanes as your gaze slowly drifts over to your friend, Nate. He is with the rest of the officers, poorly concealing his laughter about something hilarious he just said. The others look like shy school girls, blushing in his presence.\n\n[#fcfb72ff]\"...and of course it's not aliens. It's never aliens...\"\n\n{CLEARCOLOR}Jennifer drones on and on. You pretend to be paying attention, but you know it's not relevant to you. You're [/]the help[/]. Nothing really matters to a temp worker with such a low station like you. All because of a misunderstanding at the academy. The name badge adorning your ship-wear draws your attention. No perfect right-triangle. No symbols. Nothing. Just the label \"MAINTENANCE\".\n\n[#fcfb72ff]\"...though our intercept team has not been able to respond for some time now...\"\n\n[#6a86fdff]\"Lunch. What is lunch? It's supposed to be a meal that is consumed at about midday.\" {CLEARCOLOR}That's what the Earth history book that Nate gave you said. You continue to daydream, thinking to yourself: [#6a86fdff]\"But there is no day or night here. Not in space. Just the constant drone of one nych after the next.\"\n\n[#fcfb72ff]\"...and our current plan is to dock with vessel, but we'll maintain quarantine protocols for now...\"\n\n{CLEARCOLOR}Something she said almost brought you out of your stupor, but you retreat back into your thoughts instead. You imagine what a day with Nate would be like. Outside of duty. Free from responsibility. He must be a swell guy.\n\n[#fcfb72ff]\"That concludes the mission briefing. Any questions?\""
 	],
+	"actions": {
+		"Find Nate": {
+			"targetRoom": "find nate",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Grab a coffee": {
+			"targetRoom": "grab a coffee",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [
+				"coffee"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"find nate": {
+	"x": 2955.6863,
+	"y": 358.94516,
+	"story": [
+		"text:::{FAST}Where is Nate? Or Nathennial as his parents will adoringly call him on his sanctioned calls back to the station. You wouldn't call it eavesdropping, but you happen to know that name makes him coil up like a cute little cratterin. You happen to know a lot about him, actually. The types of things that only best friends would know. Intimate things. You both manage to find the time to run into each other despite living on completely different rungs of the societal ladder.\n\n[#6a86fdff]\"Nate! Hey Nate!\"\n\n[#b357ffff]\"Oh, hey you. Whatcha think about that brief? Very chilling, wouldn't you say?\"\n\n[#6a86fdff]\"Yeah, very chill indeed. Umm... say, are you free to grab some chow with me?\"\n\n[#b357ffff]\"Naw, I've got to prepare for the mission early next nych. Don't you have orders?\"\n\n[#6a86fdff]\"Oh, me? No way. I'm sure they want me right here scraping the faeces off the wall for them. Besides, that mathematic science stuff is your department.\"\n\n[#b357ffff]\"That's a pretty odd thing to joke about considering the dire moods around here, but I appreciate you putting your brave face on. Anyway, I'm gonna gear up for my shift. Catch you around.\"\n\n[#6a86fdff]\"Yeah, I'm probably going to turn in early. Read a few of those books you sent me. Byee!\""
+	],
+	"actions": {
+		"Return to quarters": {
+			"targetRoom": "quarters",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"grab a coffee": {
+	"x": 2962.4983,
+	"y": 139.45601,
+	"story": [
+		"text:::{FAST}At long last, that brief was finally over. You grow sick of being forced to attend these meetings when they could have just as easily been a hologram. It's like they have quotas for wasting people's time. Not that you were going to do anything productive, but they constantly berate you about [/]efficiency[/] and [/]time management[/]. They should take a page out of their own book.\n\nYou find yourself at the coffee mourd. You are not nearly as bothered now by the fact that it's just recycled urine with a mystery blend of herbs and spices. No, the sweet tang is actually something you've grown to appreciate. To crave. Sometimes you wonder if they put anything in there to make it more addictive...\n\nThe coffee slides out of the slick tube and into your cup with a satisfying plop as it lands. It begins to dissolve as soon as it hits the air, but you waste no time to drink it right away. You've found that the texture is more satisfying when it's in a half state of solid and liquid pee held in chemical stasis. As you drink it, the mixture sticks to the sides of your throat, coating it with a distinct synthetic gel. The feeling is just as enthralling as the first time.\n\nYou want to drink more, but decide against it. You look around and see that people are looking pretty aggitated. Something in that meeting really stirred them up, but thankfully none of it is relevant to your line of work. Instead, you take your final ration of coffee and place it in your wrist mount for the next nych. This neat trick will let you have a nice treat when you wake up.\n\nYou decide to call it an early nych and head back to your quarters."
+	],
+	"actions": {
+		"Return to quarters": {
+			"targetRoom": "quarters",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"quarters": {
+	"x": 3375.8945,
+	"y": 256.1635,
+	"story": [
+		"text:::{FAST}You return to your meager living quarters. This is where you spend most of your time while you wait for orders to come through from high command. Or low command. You forget the nuances of your stratum at this late hour.\n\nWith that in mind, you decide to get settled in. You like to end your shift with a nice read before bed. Nate is never far from your thoughts and you recall the time he sent you these books. [#b357ffff]\"Yeah, these are the sort of things I'm into,\"{CLEARCOLOR} he said as he handed you the holographic tapes. Your hand lingered in his briefly before he drew away. A good memory. The three holographic books lay strewn about your sleeping lattice:\n* Ancient Earth Rituals\n* Constellations: The Aggregate Star Systems They Don't Want You To Know About\n* Space Flight Navigations and Where To Find Them\n\n\nYou feel the urge to read them all so that you'll have something to talk about nych-turn, but you really only have the stamina for one..."
+	],
+	"actions": {
+		"Read Ancient Earth Rituals": {
+			"targetRoom": "ancient earth rituals",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [
+				"rituals"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Read Constellations": {
+			"targetRoom": "constellations",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [
+				"constellations"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Read Space Flight Navigation": {
+			"targetRoom": "space flight navigation",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [
+				"navigation"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"ancient earth rituals": {
+	"x": 3817.749,
+	"y": 467.02448,
+	"story": [
+		"text:::{FAST}[%375]Ancient Earth Rituals[%]\nAn exploration of the bizarre eccentricities of Earthern civilizations.\nVol II\n\n...in other words, a true \"fan fiction\" come to life. Similarly, the Earth peoples were known to gather around a single flat black rectangle-stone placed as a centerpiece in their living quarters: a television broadcast visual-audio reproduction system. It is said that they worshipped this rock and ate meals around it to show their gratitude to the great Content Creators of their social medias. \n\nOur oldest records indicate that these stones transmitted thoughts to them and instructed them on how to conduct themselves. They organized these commandments in what they called \"shows\". One such show is \"Saved by the Bell\", which was transmitted in the late 1900's. Though they lacked the technical skills to create their own holograms, the Earth peoples achieved great wonders in this regard that perplex historians to this day. Some speculate that there is no way they could have produced such devices on their own.\n\n[#6a86fdff] \"Huh, why did Nate say that 'Saved by the Bell' was a gladiator thing? This book must be wrong.\"\n\n{CLEARCOLOR}Your eyes grow heavy as you reach for the straps of your sleeping lattice..."
+	],
+	"actions": {
+		"Sleep": {
+			"targetRoom": "quarters2",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"constellations": {
+	"x": 3806.0933,
+	"y": 263.5807,
+	"story": [
+		"text:::{FAST}[%375]Constellations[%]\n\n...which brings us toTextra Tettingerus A.\n\nThe distanct red glow from this star system can be seen from miles away. Ancient peoples used to worship this star as it was consistently visible to the naked eye. Always rising above their world's horizon, it guided them north (the most important cardinal direction). Unfortunately the star was obscured by the many layers of trash they put into orbit with their primitive space flight techniques. Ultimately, the planet's poles flipped thus eliminating the need for cardinal directions and their future was forever changed.\n\n[#6a86fdff] \"That was truly compelling. I can't wait to tell Nate about what I read.\"\n\n{CLEARCOLOR}Your eyes grow heavy as you reach for the straps of your sleeping lattice..."
+	],
+	"actions": {
+		"Sleep": {
+			"targetRoom": "quarters2",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"space flight navigation": {
+	"x": 3812.4507,
+	"y": 20.931671,
+	"story": [
+		"text:::{FAST}[%375]Space Flight Navigation[%]\n\n...thereby nullifying any thrust you hoped to achieve! If I catch any of you rookies trying to pull a Grundyville maneuver, I'll string you up myself and castrate you with my teeth!\"\n\n\"But sir! We were firing those guns at full blast. We nearly melted the gattlin' pods doing it!\"\n\n\"That's why you eject  your heat dampeners behind you and use the shockwave to get the fuck out of there, ca-det!\"\n\n\"Sir, yes sir!\"\n\n[#6a86fdff] \"What the hell did I just read? I have to ask Nate about this nych-turn.\"\n\n{CLEARCOLOR}Your eyes grow heavy as you reach for the straps of your sleeping lattice..."
+	],
+	"actions": {
+		"Sleep": {
+			"targetRoom": "quarters2",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"quarters2": {
+	"x": 4224.636,
+	"y": 259.34235,
+	"story": [
+		"text:::{FAST}That book was a compelling read, but it's time to sleep. You often feel lonely at these times, so you fluff up your pillow and place it beside you. You call it Nate and give it your ritualistic hug good night. You just feel safe in the arms of your best friend, so you pretend to cuddle up with him.Tucking the blanket closely around you makes it feel like you are in his firm grip.\n\nYou squeeze the pillow so you can simulate his pressure against your bare body. Your hips rock back and forth slightly as you try to find your comfy spot. You regularly find that the pillow works its way between your thighs in the middle of the night, so you just give in and wrap your legs around it. Naturally, your body begins to shimmy in step with your breathing. Shimmy shimmy. Faster and faster, the breathing and the shimming. Shimmy shimmy. Faster and faster untill..."
+	],
+	"actions": {
+		"Wake up": {
+			"targetRoom": "wake",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"wake": {
+	"x": 4593.682,
+	"y": 260.1748,
+	"story": [
+		"text:::{FAST}You wake up by your own accord for the first time in years. It's strange that the regular announcement for nych-turn didn't rip you out of your slumber. You check your passive overlay. No commands for today either. Dropping back into your lattice, you begin to ponder,\n\n[#6a86fdff]\"I must have missed something important from that brief.\"\n\n{CLEARCOLOR}The trouble is that those briefs aren't recorded either. More reason for them to send a hologram instead. And abbreviated notes for non-essential personnel like you. You grab your gear for the day: your wrist mount, your bio suit, your trusty scrubber, your nychrometer.\n\n[#6a86fdff]\"Make way for the maintenance master! No stain shall offend my sight. No stink shall prevail these hallowed grounds.\"\n\n{CLEARCOLOR}You find these affirmations to be quite effective in improving your outlook. No, who are you kidding? Your life is miserable outside of those fleeting moments with Nate."
+	],
+	"actions": {
+		"Open the door": {
+			"targetRoom": "hallway",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"hallway": {
+	"x": 4943.6553,
+	"y": 263.80762,
+	"story": [
+		"text:::{FAST}As the door from your living quarters disappears into the ceiling, you darn near slip on a puddle. The trouble seems to have started early today. You investigate closer. Sure, the lighting on the lower levels is somewhat dimmer for energy conservation, making it hard to ascertain any detail here. But you're pretty sure you're stepping in [#ff0000ff]{SICK}blood{ENDSICK}{CLEARCOLOR}.\n\n[#6a86fdff]\"Hello? Is anybody down here?\"\n\n{CLEARCOLOR}No reply, no cries for help, no clue of what's going on. That's an awful lot of blood for any one person to have lost. Your first reaction is to think about how hard it is to remove blood stains.\n\n[#6a86fdff]\"Hello? Did anyone accidentally leave this blood here?\"\n\n{CLEARCOLOR}You then hear a faint sound from down the hallway. You couldn't make it out, but it sounded like it came from the mess hall. This ship is like a maze with hallways inconnected with hallways and ladders going this way and that. You know your way around, however. You certainly know the lower levels better than any of those torp-fuckers in command."
+	],
+	"actions": {
+		"Investigate the sound": {
+			"targetRoom": "mess hall",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"mess hall": {
+	"x": 5371.1284,
+	"y": 262.59668,
+	"story": [
+		"text:::{FAST}[#6a86fdff]\"Hello?\"\n\n{CLEARCOLOR}It's strange. The mess hall is usually bustling at all times of nych. Where is everyone? That faint sound which brought you here reaches your ears again, but much clearer this time. What is that? A snarl? There haven't been live animals on this ship since that jamster incident.\n\n[#ff0000ff]{SHAKE}GGGGRRrrrrRRRRRAAARRRR{ENDSHAKE}{CLEARCOLOR}\n\n{CLEARCOLOR}Okay, that's just fucking scary. You don't appreciate these sorts of hysterics from these eggheads. You're supposed to be the has-been academy dropout. Pranks like this are exactly why didn't get on with the world of academia.\n\n[#ff0000ff]{SHAKE}Grrup! Grrup! GRRRUUUPP!{ENDSHAKE}{CLEARCOLOR}\n\n{CLEARCOLOR}Now that you've had a chance to triangulate the sound, it's clear it's coming from the cold storage.\n\n[#6a86fdff]\"Hey, it's stupid shit like this that gets us both demerits. Come on out\"\n\n{CLEARCOLOR}Approaching the doors of the freezer carefully, you are prepared for someone to leap out.\n\n[#6a86fdff]\"Not funny. Okay? Come on out\"\n\n{CLEARCOLOR}You've reached the door. The handle is so cold it sends an electric shiver up your arm and down your spine. Even with the bio suit, it still is incredibly uncomfortable. With all your might, you pry door open. You are greeted by the pale, blue light of the freezer. Beefs adorn the interior, hanging from hooks suspended from the ceiling. Towards the back, you see a figure crouched down, bobbing up and down. You gingerly move the meat out of the way while you make your slow approach."
+	],
+	"actions": {
+		"Call out": {
+			"targetRoom": "freezer",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"freezer": {
+	"x": 5712.621,
+	"y": 263.80777,
+	"story": [
+		"text:::{FAST}Summoning all of your courage, you call out with the tiniest, faint voice,\n[#6a86fdff]\"Hey...\"\n\n[#ff0000ff]Aggggaahh aggaah aggg aggg!{SHAKE}RAAAAAAAAAAAH{ENDSHAKE}{CLEARCOLOR}\n\nThe figure screeches as it turns to you. You can see clearly now. Peetdrick, security staffer, lies dead in a pool of frozen blood. This... creature... this monster stares at you blankly. Its fangs glisten from the blinking diodes of your suit. Blood gushes from its mouth. It clearly is humonoid in shape. It could even have been human some point. But it just looks... wrong. The sight of this pale, naked body activates every muscle in your body. Its grotesque posture makes you [#4e7942ff]{SICK}sick to your stomach{ENDSICK}{CLEARCOLOR}. You both gape at each other incredulously. A pause that seems to last forever. It is in this moment of sheer terror you realize that Peetdrick is never going to give you back the plasma torch you lent him.\n\n[#ff0000ff]{SHAKE}GUPPPP GUPPP GUPPPPP!{ENDSHAKE}{CLEARCOLOR}\n\nThe monster jumps to its feet, making a pose that seems to indicate it will pounce you at a moment's notice. You know that blood is supposed to stay inside the body and you've noticed this creature's affinity for the contrary. Your primitive, reptile brain is hard at work coming up with a solution for this dilemma."
+	],
+	"actions": {
+		"Get the fuck out": {
+			"targetRoom": "run",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Use your wrist mount": {
+			"targetRoom": "run with coffee",
+			"requiredKeys": [
+				"coffee"
+			],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"run": {
+	"x": 6118.2974,
+	"y": 338.88815,
+	"story": [
+		"text:::{FAST}So, you decide to just get the fuck out. You begin by casually stepping backwards and gently graduating to a full turn and sprint towards the exit. In your panic, you didn't think to close the door behind you. This probably worked to your favor as this monstrosity is fast. Way fast. With every bound you take, it takes two. If it weren't for all the beefs, it surely would have overtaken you. Nevertheless, you make it out of the mess-hall and mash the close button as you fall out the doorway.\n\nTHUMP THUMP THUMP. It sure sounds pissed that you locked it in the room. THUMP THUMP THUMP. These are industrialized doors, but you're not sure if they will withstand such abuse. With the blood crazed horror now behind you, you decide to just keep running. You run your ass off. Down the hall. Where is everybody? Up the ladder to command. Gosh, if only Nate was here. He would protect me..."
+	],
+	"actions": {
+		"Open command door": {
+			"targetRoom": "command",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"run with coffee": {
+	"x": 6114.664,
+	"y": 189.93834,
+	"story": [
+		"text:::{FAST}You're clever. You put that coffee in your wrist mount for a purpose, and that purpose was to save your ass. You aim carefully and hit the eject button. FWIM! Usually it launches right into your mouth like a tasty urine treat, but this time your goal is clear: to smack right into the eye of this villain. And it would have worked too if it weren't for the cramped space of the freezer. The coffee lands ineffectually on the floor, dispersing against the creature's feet. You can hear a faint whimper as it dissolves. The creature looks a little surprised and confused at what just happened.\n\nSo, you decide to just get the fuck out. You begin by casually stepping backwards and gently graduating to a full turn and sprint towards the exit. In your panic, you didn't think to close the door behind you. This probably worked to your favor as this monstrosity is fast. Way fast. With every bound you take, it takes two. If it weren't for all the beefs, it surely would have overtaken you. Nevertheless, you make it out of the mess-hall and mash the close button as you fall out the doorway.\n\nTHUMP THUMP THUMP. It sure sounds pissed that you locked it in the room. THUMP THUMP THUMP. These are industrialized doors, but you're not sure if they will withstand such abuse. With the blood crazed horror now behind you, you decide to just keep running. You run your ass off. Down the hall. Where is everybody? Up the ladder to command. Gosh, if only Nate was here. He would protect me..."
+	],
+	"actions": {
+		"Open command door": {
+			"targetRoom": "command",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"command": {
+	"x": 6525.1855,
+	"y": 291.66013,
+	"story": [
+		"text:::{FAST}[#6a86fdff]\"Come on, come on, open gaw-gamut!\"\n\n{CLEARCOLOR}ACCESS DENIED\n\nThe door to command is sealed.\n\n[#6a86fdff]\"Please!\"\n\n{CLEARCOLOR}ACCESS DENIED\n\nPressing your nechrometer to the door usually opens it. You should have access to the entire ship. Maintenance work knows no bounds. It seems someone has overridden access to the door. So you begin banging.\n\n[#6a86fdff]\"Let me in! Let me in! Or I'll... Or I'll vent the atmosphere in the room!\"\n\n{CLEARCOLOR}And just like that, the door opens abruptly. It seems your bluff has paid off. Truly, the worst you could ever do is make it slightly more toasty by a few degrees.\n\n[#b357ffff]{SHAKE}\"GAW!\"{ENDSHAKE}\n\n{CLEARCOLOR}There is Nate, arms perched over his head with a pipe gripped firmly in his hands.\n\n[#6a86fdff]\"Nate, it's me! What the fuck?\"\n\n[#b357ffff]\"Oh shit, it's you. Come in. Quickly!\"\n\n[#fcfb72ff]\"No! How do you know they're not infected? How do you know that they are not one of {CROWD}THEM!?{ENDCROWD}\n\n[#b357ffff]\"Fuck that. We're friends. Besides, we need them.\"\n\n{CLEARCOLOR}You spend no time for debate. You dash in and punch the close button as you enter."
+	],
+	"actions": {
+		"Embrace nate, your friend": {
+			"targetRoom": "embrace",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"embrace": {
+	"x": 6974.46,
+	"y": 291.66003,
+	"story": [
+		"text:::{FAST}Sobbing, you immediately go in for a hug.\n\n[#6a86fdff]\"Oh gaw, Nate. I don't know what's going on. That thing was chasing me. And Peetdrick... Peetdrick! It was eating him!\"\n\n{CLEARCOLOR}A dribble of snot escapes your nostril. It smears against Nate as you bury your face into his broad chest. Nate reluctantly pats you on the back, not letting go of his pipe. It clangs against the plating of the bio suit.\n\n[#b357ffff]\"I'm glad you made it back here alive. I can't say the same for most of the crew, though.\"\n\n{CLEARCOLOR}You look around. You only see Jennifer with her usual look of disatisfaction on her face. You can see her roll her eyes while your embrace continues beyond the socially acceptable length that one should hug a friend. He's your best friend though, and you missed him dearly in your time of need.\n\n[#6a86fdff]\"What happened to them? Are they all dead? Are we going to die too?\"\n\n[#b357ffff]\"Dead, or they've become one of {CROWD}THEM{ENDCROWD}. Whatever we found on that derelict ship is highly contagious.\"\n\n[#fcfb72ff]\"That's why we should leave them out there! They could be infected already!\"\n\n[#b357ffff]\"They haven't been bitten. We all should stay here. We're safe... for now...\"\n\n{CLEARCOLOR}Whimpering, you begin, [#6a86fdff]\"What do you mean 'for now'?\"\n\n[#b357ffff]\"The ship is dying. Something triggered a melt down of the main drive. We need to reboot the reactor so we can enter FTL and get help from the closest station. That wasn't possible until now.\"\n\n{CLEARCOLOR}Nate looks down at your bio suit. You try to catch his gaze as you look up shyly into his perfect, blue eyes, but he's more interested in the readout on your front panel display."
+	],
+	"actions": {
+		"This is a lot of reading...": {
+			"targetRoom": "embrace continued",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"embrace continued": {
+	"x": 7430.998,
+	"y": 289.23798,
+	"story": [
+		"text:::{FAST}[#b357ffff]\"So that brings us to you. You're the only that can survive in the reactor room. That suit protects you against all forms of radiation. The exposed core would otherwise kill any of us. I'm not sure if it will have an affect on any of {CROWD}THEM{ENDCROWD}, however. You can let go of me now.\"\n\n{CLEARCOLOR}You withdraw, timidly.\n\n[#b357ffff]\"You won't go alone though. Jennifer will join you.\"\n\n[#fcfb72ff]\"Like fuck I'm going with them.\"\n\n{CLEARCOLOR}You've always despised Jennifer. Her slick, blonde hair and plump tits don't nearly compensate for her rotten attitude. Her high-beefin', smug look as she gets all the attention from the men on the ship. It's despicable.\n\n[#b357ffff]\"I'm the ships navigator. I need to stay here to guide the ship.\"\n\n{CLEARCOLOR}You know Jennifer is jealous of what you have with Nate. Sometimes you imagine Nate in bed with her, succumbing to her advances. The thought fills you with anger.\n\n[#6a86fdff]\"I'll go. Jennifer comes too.\"\n\n[#fcfb72ff]\"Okay, hotshot. So how are we getting to the reactor?\""
+	],
+	"actions": {
+		"Fight our way through": {
+			"targetRoom": "room 24",
+			"requiredKeys": [
+				"rituals"
+			],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Space walk": {
+			"targetRoom": "room 25",
+			"requiredKeys": [
+				"constellations"
+			],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Fly the short range fighter": {
+			"targetRoom": "room 26",
+			"requiredKeys": [
+				"navigation"
+			],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"room 24": {
+	"x": 7845.1523,
+	"y": 474.517,
+	"story": [],
+	"actions": {}
+},
+"room 25": {
+	"x": 7851.207,
+	"y": 292.87085,
+	"story": [],
+	"actions": {}
+},
+"room 26": {
+	"x": 7842.73,
+	"y": 91.84906,
+	"story": [],
 	"actions": {}
 }
 }
