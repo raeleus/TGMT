@@ -3,7 +3,7 @@
 	"x": 25.884583,
 	"y": 250.97449,
 	"story": [
-		"text:::[%375]THE LEVER[%]\n\nA game made by Raeleus in 48 hours for the Themed Horror Game Jam #6\n\nCan you solve the mystery of The Lever?\n\n{FADE}Many have stood in your place.\nMany have failed.\nMany have died....{ENDFADE}\n\nWARNING: This game contains PROFANITY, SEXUAL INNUENDOS, PERVERSE THEMES OF A DEVIANT NATURE, and LOTS OF READING.\n\nCopyright © 2022 Raymond \"Raeleus\" Buckley"
+		"text:::[%375]THE LEVER[%]\n\nA game made by Raeleus in 48 hours for the Themed Horror Game Jam #6\n\nCan you solve the mystery of The Lever?\n\n{FADE}Many have stood in your place.\nMany have failed.\nMany have died....{ENDFADE}\n\n{RAINBOW}WARNING: This game contains PROFANITY, SEXUAL INNUENDOS, PERVERSE THEMES OF A DEVIANT NATURE, and LOTS OF READING.{ENDRAINBOW}\n\nCopyright © 2022 Raymond \"Raeleus\" Buckley"
 	],
 	"actions": {
 		"BEGIN": {
@@ -37,7 +37,7 @@
 	"x": 843.8925,
 	"y": 245.39589,
 	"story": [
-		"text:::{FAST}[#6a86fdff]\"Yeah, we have an open relationship. I thought that would make you happier.\"\n\n[#ff85f5ff]\"You're completely delusional. I would never agree to that torp-shit. I knew you just wanted to screw other girls.\"\n\n[#6a86fdff]\"Yeah, maybe I am delusional. It's so weird. See, Steve had the same reaction when I talked to him about this.\"\n\n[#ff85f5ff]\"Who? Steve who? Who the fuck are you talking about?\"\n\n[#6a86fdff]\"Yeah Steve, the guy you're fucking. I've known for awhile now. Anyway, yeah he had no idea you were in an open relationship either.\"\n\n[#ff85f5ff]\"Oh my gaw. [*]Oh my gaw![*] what did you fucking say to him? I can't believe this is happening.\"\n\n[#6a86fdff]\"He couldn't believe it either when I told him that he should get himself checked for terra-floids. By the way, I have terra-floids. I thought it was only right you should know since you're the only person I'm having sex with.\"\n\n{CLEARCOLOR}Through tears, she began, \n[#ff85f5ff]\"You ruined my life! You're a monster! You're fucking evil!\"\n\n[#6a86fdff]\"Steve and Steph. You two are so similar. I got the same vibe from him. Nearly the same reaction! You two are meant for each other. Well, you were. I'm pretty sure he doesn't want to have anything to do with you now.\n\n{CLEARCOLOR}Stephanie runs out of the Beef's-Mash with hands covering her flush-red face. You could almost see the trail of tears following her haphazard course through Venusian station.\n\n[#6a86fdff]\"Huh, that went a lot better than I thought.\"\n\n{CLEARCOLOR}The server, with his astonished expression still plastered on his face, replies, \n[#b46a45ff]\"Damn man, did you have to be that mean? What are you going to do now?\""
+		"text:::{FAST}[#6a86fdff]\"Yeah, we have an open relationship. I thought that would make you happier.\"\n\n[#ff85f5ff]\"You're completely delusional. I would never agree to that torp-shit. I knew you just wanted to screw other girls.\"\n\n[#6a86fdff]\"Yeah, maybe I am delusional. It's so weird. See, Steve had the same reaction when I talked to him about this.\"\n\n[#ff85f5ff]\"Who? Steve who? Who the fuck are you talking about?\"\n\n[#6a86fdff]\"Yeah Steve, the guy you're fucking. I've known for awhile now. Anyway, yeah he had no idea you were in an open relationship either.\"\n\n[#ff85f5ff]\"Oh my gaw. [*]Oh my gaw![*] what did you fucking say to him? I can't believe this is happening.\"\n\n[#6a86fdff]\"He couldn't believe it either when I told him that he should get himself checked for terra-floids. By the way, I have terra-floids. I thought it was only right you should know since you're the only person I'm having sex with.\"\n\n{CLEARCOLOR}Through tears, she began, \n[#ff85f5ff]\"You ruined my life! You're a monster! You're fucking evil!\"\n\n[#6a86fdff]\"Steve and Steph. You two are so similar. I got the same vibe from him. Nearly the same reaction! You two are meant for each other. Well, you were. I'm pretty sure he doesn't want to have anything to do with you now.\n\n{CLEARCOLOR}Stephanie runs out of the Beef's-Mash with hands covering her flush-red face. You could almost see the trail of tears following her haphazard course through Venusian station.\n\n[#6a86fdff]\"Huh, that went a lot better than I thought.\"\n\n{CLEARCOLOR}The server, with his astonished expression still plastered on his face, replies, \n[#b46a45ff]\"Whoa, did you have to be that mean? What are you going to do now?\""
 	],
 	"actions": {
 		"Engineer": {
@@ -100,7 +100,7 @@
 	"x": 1496.6079,
 	"y": 237.52448,
 	"story": [
-		"text:::{FAST}[#6a86fdff]\"Oh my fucking gaw. I wish I was back on Venusian Station.\"\n\n[#b357ffff]\"It's not so bad, man. You're just gonna be in and out. I'd sooner be doing this than taking another meeting with those high-beefin' aristos in command.\"\n\n{CLEARCOLOR}Nate gestures vaguely at the open porthole peering into the waste reclamation module. You both stand there in despair, trying everything you can to delay the inevitable.\n\n[#6a86fdff]\"Well, why don't you fuckin' do it?\"\n\n[#b357ffff]\"It's your job. The order came straight from the administrator herself. If command tells you to shimmy, you respond with 'what frequency sir!?' And besides, I have more important duties.\"\n\n{CLEARCOLOR}Nate proceeds to point to his badge, tapping his finger with dramatic timing. \"Navigation Specialist\". The red triangle placed at a perfect right angle signifies his rank as an officer."
+		"text:::{FAST}[#6a86fdff]\"Oh my fucking gaw. I wish I was back on Venusian Station.\"\n\n[#b357ffff]\"It's not so bad. You're just gonna be in and out. I'd sooner be doing this than taking another meeting with those high-beefin' aristos in command.\"\n\n{CLEARCOLOR}Nate gestures vaguely at the open porthole peering into the waste reclamation module. You both stand there in despair, trying everything you can to delay the inevitable.\n\n[#6a86fdff]\"Well, why don't you fuckin' do it?\"\n\n[#b357ffff]\"It's your job. The order came straight from the administrator herself. If command tells you to shimmy, you respond with 'what frequency sir!?' And besides, I have more important duties.\"\n\n{CLEARCOLOR}Nate proceeds to point to his badge, tapping his finger with dramatic timing. \"Navigation Specialist\". The red triangle placed at a perfect right angle signifies his rank as an officer."
 	],
 	"actions": {
 		"Clean the shit": {
@@ -156,7 +156,7 @@
 	],
 	"actions": {
 		"Go to brief": {
-			"targetRoom": "mission brief",
+			"targetRoom": "mission brief toilet",
 			"requiredKeys": [],
 			"bannedKeys": [],
 			"giveKeys": [],
@@ -169,7 +169,6 @@
 	"x": 2586.1877,
 	"y": 237.84766,
 	"story": [
-		"text:toilets::{FAST}[#fcfb72ff]\"It's so good of you to join us. You certainly took your time to get up here ehh?\"\n\n{CLEARCOLOR}You remain silent. You're used to this sort of abuse from the administrator. You did your job and that's enough justification for being late in your mind despite the hazing in front of everyone.",
 		"text:::{FAST}The command module is packed with the entire crew in attendance. You quickly glance at the safety message posted above the entrance: \"Meeting room occupancy must not exceed a maximum of 15\". You smirk and chuckle to yourself quietly.\n\n[#fcfb72ff]\"As you may know, our probe has returned back with some bizarre data about the derilect craft...\"\n\n{CLEARCOLOR}Jennifer, the Adminstrator, begins her speech seeming to not care that everyone else was still in their private conversations. Your focus wanes as your gaze slowly drifts over to your friend, Nate. He is with the rest of the officers, poorly concealing his laughter about something hilarious he just said. The others look like shy school girls, blushing in his presence.\n\n[#fcfb72ff]\"...and of course it's not aliens. It's never aliens...\"\n\n{CLEARCOLOR}Jennifer drones on and on. You pretend to be paying attention, but you know it's not relevant to you. You're [/]the help[/]. Nothing really matters to a temp worker with such a low station like you. All because of a misunderstanding at the academy. The name badge adorning your ship-wear draws your attention. No perfect right-triangle. No symbols. Nothing. Just the label \"MAINTENANCE\".\n\n[#fcfb72ff]\"...though our intercept team has not been able to respond for some time now...\"\n\n[#6a86fdff]\"Lunch. What is lunch? It's supposed to be a meal that is consumed at about midday.\" {CLEARCOLOR}That's what the Earth history book that Nate gave you said. You continue to daydream, thinking to yourself: [#6a86fdff]\"But there is no day or night here. Not in space. Just the constant drone of one nych after the next.\"\n\n[#fcfb72ff]\"...and our current plan is to dock with vessel, but we'll maintain quarantine protocols for now...\"\n\n{CLEARCOLOR}Something she said almost brought you out of your stupor, but you retreat back into your thoughts instead. You imagine what a day with Nate would be like. Outside of duty. Free from responsibility. He must be a swell guy.\n\n[#fcfb72ff]\"That concludes the mission briefing. Any questions?\""
 	],
 	"actions": {
@@ -287,7 +286,7 @@
 	"x": 3806.0933,
 	"y": 263.5807,
 	"story": [
-		"text:::{FAST}[%375]Constellations[%]\n\n...which brings us toTextra Tettingerus A.\n\nThe distanct red glow from this star system can be seen from miles away. Ancient peoples used to worship this star as it was consistently visible to the naked eye. Always rising above their world's horizon, it guided them north (the most important cardinal direction). Unfortunately the star was obscured by the many layers of trash they put into orbit with their primitive space flight techniques. Ultimately, the planet's poles flipped thus eliminating the need for cardinal directions and their future was forever changed.\n\n[#6a86fdff] \"That was truly compelling. I can't wait to tell Nate about what I read.\"\n\n{CLEARCOLOR}Your eyes grow heavy as you reach for the straps of your sleeping lattice..."
+		"text:::{FAST}[%375]Constellations[%]\n\n...which brings us to Textra Tettingerus A.\n\nThe distinct red glow from this star system can be seen from miles away. Ancient peoples used to worship this star as it was consistently visible to the naked eye. Always rising above their world's horizon, it guided them north (the most important cardinal direction). It also helped that the constellation formed a clear arrow in the night sky. Unfortunately the star was obscured by the many layers of trash they put into orbit with their primitive space flight techniques. In a sick twist of fate, the planet's poles eventually flipped thus eliminating the need for cardinal directions. Their future was forever changed.\n\n[#6a86fdff] \"That was truly compelling. I can't wait to tell Nate about what I read.\"\n\n{CLEARCOLOR}Your eyes grow heavy as you reach for the straps of your sleeping lattice..."
 	],
 	"actions": {
 		"Sleep": {
@@ -304,7 +303,7 @@
 	"x": 3812.4507,
 	"y": 20.931671,
 	"story": [
-		"text:::{FAST}[%375]Space Flight Navigation[%]\n\n...thereby nullifying any thrust you hoped to achieve! If I catch any of you rookies trying to pull a Grundyville maneuver, I'll string you up myself and castrate you with my teeth!\"\n\n\"But sir! We were firing those guns at full blast. We nearly melted the gattlin' pods doing it!\"\n\n\"That's why you eject  your heat dampeners behind you and use the shockwave to get the fuck out of there, ca-det!\"\n\n\"Sir, yes sir!\"\n\n[#6a86fdff] \"What the hell did I just read? I have to ask Nate about this nych-turn.\"\n\n{CLEARCOLOR}Your eyes grow heavy as you reach for the straps of your sleeping lattice..."
+		"text:::{FAST}[%375]Space Flight Navigation[%]\n\n...thereby nullifying any thrust you hoped to achieve! If I catch any of you rookies trying to pull a Grundyville maneuver, I'll string you up myself and castrate you with my teeth!\"\n\n\"But sir! We were firing those guns at full blast. We nearly melted the gattlin' pods doing it!\"\n\n\"That's why you eject  your heat dampeners behind you and ride the shockwave when they blow to get the fuck out of there, ca-det!\"\n\n\"Sir, yes sir!\"\n\n\"You're lucky they made these fighters dummy proof or your ass would be brass!\"\n\n[#6a86fdff] \"What the hell did I just read? I have to ask Nate about this nych-turn.\"\n\n{CLEARCOLOR}Your eyes grow heavy as you reach for the straps of your sleeping lattice..."
 	],
 	"actions": {
 		"Sleep": {
@@ -430,8 +429,8 @@
 	}
 },
 "run with coffee": {
-	"x": 6114.664,
-	"y": 189.93834,
+	"x": 6121.63,
+	"y": 175.13593,
 	"story": [
 		"text:::{FAST}You're clever. You put that coffee in your wrist mount for a purpose, and that purpose was to save your ass. You aim carefully and hit the eject button. FWIM! Usually it launches right into your mouth like a tasty urine treat, but this time your goal is clear: to smack right into the eye of this villain. And it would have worked too if it weren't for the cramped space of the freezer. The coffee lands ineffectually on the floor, dispersing against the creature's feet. You can hear a faint whimper as it dissolves. The creature looks a little surprised and confused at what just happened.\n\nSo, you decide to just get the fuck out. You begin by casually stepping backwards and gently graduating to a full turn and sprint towards the exit. In your panic, you didn't think to close the door behind you. This probably worked to your favor as this monstrosity is fast. Way fast. With every bound you take, it takes two. If it weren't for all the beefs, it surely would have overtaken you. Nevertheless, you make it out of the mess-hall and mash the close button as you fall out the doorway.\n\nTHUMP THUMP THUMP. It sure sounds pissed that you locked it in the room. THUMP THUMP THUMP. These are industrialized doors, but you're not sure if they will withstand such abuse. With the blood crazed horror now behind you, you decide to just keep running. You run your ass off. Down the hall. Where is everybody? Up the ladder to command. Gosh, if only Nate was here. He would protect me..."
 	],
@@ -453,7 +452,7 @@
 		"text:::{FAST}[#6a86fdff]\"Come on, come on, open gaw-gamut!\"\n\n{CLEARCOLOR}ACCESS DENIED\n\nThe door to command is sealed.\n\n[#6a86fdff]\"Please!\"\n\n{CLEARCOLOR}ACCESS DENIED\n\nPressing your nechrometer to the door usually opens it. You should have access to the entire ship. Maintenance work knows no bounds. It seems someone has overridden access to the door. So you begin banging.\n\n[#6a86fdff]\"Let me in! Let me in! Or I'll... Or I'll vent the atmosphere in the room!\"\n\n{CLEARCOLOR}And just like that, the door opens abruptly. It seems your bluff has paid off. Truly, the worst you could ever do is make it slightly more toasty by a few degrees.\n\n[#b357ffff]{SHAKE}\"GAW!\"{ENDSHAKE}\n\n{CLEARCOLOR}There is Nate, arms perched over his head with a pipe gripped firmly in his hands.\n\n[#6a86fdff]\"Nate, it's me! What the fuck?\"\n\n[#b357ffff]\"Oh shit, it's you. Come in. Quickly!\"\n\n[#fcfb72ff]\"No! How do you know they're not infected? How do you know that they are not one of {CROWD}THEM!?{ENDCROWD}\n\n[#b357ffff]\"Fuck that. We're friends. Besides, we need them.\"\n\n{CLEARCOLOR}You spend no time for debate. You dash in and punch the close button as you enter."
 	],
 	"actions": {
-		"Embrace nate, your friend": {
+		"Embrace Nate, your friend": {
 			"targetRoom": "embrace",
 			"requiredKeys": [],
 			"bannedKeys": [],
@@ -484,11 +483,11 @@
 	"x": 7430.998,
 	"y": 289.23798,
 	"story": [
-		"text:::{FAST}[#b357ffff]\"So that brings us to you. You're the only one that can survive in the reactor room. That suit protects you against all forms of radiation. The exposed core would otherwise kill any of us. I'm not sure if it will have an affect on any of {CROWD}THEM{ENDCROWD}, however. You can let go of me now.\"\n\n{CLEARCOLOR}You withdraw, timidly.\n\n[#b357ffff]\"You won't go alone though. Jennifer will join you.\"\n\n[#fcfb72ff]\"Like fuck I'm going with them.\"\n\n{CLEARCOLOR}You've always despised Jennifer. Her slick, blonde hair and plump tits don't nearly compensate for her rotten attitude. Her high-beefin', smug look as she gets all the attention from the men on the ship. It's despicable.\n\n[#b357ffff]\"I'm the ships navigator. I need to stay here to guide the ship.\"\n\n{CLEARCOLOR}You know Jennifer is jealous of what you have with Nate. Sometimes you imagine Nate in bed with her, succumbing to her advances. The thought fills you with anger.\n\n[#6a86fdff]\"I'll go. Jennifer comes too.\"\n\n[#fcfb72ff]\"Okay, hotshot. So how are we getting to the reactor?\""
+		"text:::{FAST}[#b357ffff]\"So that brings us to you. You're the only one that can survive in the reactor room. That suit protects you against all forms of radiation. The exposed core would otherwise kill any of us. I'm not sure if it will have an affect on any of [#ff0000ff]{CROWD}THEM{ENDCROWD}[#b357ffff], however... You can let go of me now.\"\n\n{CLEARCOLOR}You withdraw, timidly.\n\n[#b357ffff]\"You won't go alone though. Jennifer will join you.\"\n\n[#fcfb72ff]\"Like fuck I'm going with them.\"\n\n{CLEARCOLOR}You've always despised Jennifer. Her slick, blonde hair and plump tits don't nearly compensate for her rotten attitude. You can just picture her high-beefin', smug look as she gets all the attention from the men on the ship. It's despicable.\n\n[#b357ffff]\"I'm the ships navigator. I need to stay here to guide the ship.\"\n\n{CLEARCOLOR}You know Jennifer is jealous of what you have with Nate. Sometimes you imagine Nate in bed with her, succumbing to her advances. The thought fills you with anger.\n\n[#6a86fdff]\"I'll go. Jennifer comes too.\"\n\n[#fcfb72ff]\"Okay, hotshot. So how are we getting to the reactor?\""
 	],
 	"actions": {
 		"Fight our way through": {
-			"targetRoom": "room 24",
+			"targetRoom": "fight prep",
 			"requiredKeys": [
 				"rituals"
 			],
@@ -498,7 +497,7 @@
 			"removeAllKeys": false
 		},
 		"Space walk": {
-			"targetRoom": "room 25",
+			"targetRoom": "walk prep",
 			"requiredKeys": [
 				"constellations"
 			],
@@ -508,7 +507,7 @@
 			"removeAllKeys": false
 		},
 		"Fly the short range fighter": {
-			"targetRoom": "room 26",
+			"targetRoom": "fighter prep",
 			"requiredKeys": [
 				"navigation"
 			],
@@ -519,22 +518,384 @@
 		}
 	}
 },
-"room 24": {
+"fight prep": {
 	"x": 7845.1523,
 	"y": 474.517,
-	"story": [],
-	"actions": {}
+	"story": [
+		"text:::{FAST}[#6a86fdff]\"We're gonna go straight to it. Run through the lower levels between here and the reactor. I've done that distance dozens of times.\"\n\n[#fcfb72ff]\"That's suicide! Do you know how many of {CROWD}[#ff0000ff]THEM{ENDCROWD} [#fcfb72ff]there are? Loads!\"\n\n[#6a86fdff]\"That's right, the odds are going to be stacked against us. But I figure the two of us can take on one of them if we had to. It'll be like that old Earth show, 'Saved by the Bell'. Hit them on the head until they are concussed.\"\n\n{CLEARCOLOR}Nate nods knowingly. [#b357ffff]\"Yeah, I was able to subdue one by smacking it across the temple with this.\"\n\n{CLEARCOLOR}He brandishes his trusty pipe that he apparently ripped out from a mourde.\n\n[#b357ffff]\"They're tough though. And surprisingly fast for their size. Be careful.\"\n\n{CLEARCOLOR}You take the pipe, brushing your fingers against his palm very lightly as you do so. His touch is electric. You try to keep your composure while you nearly melt where you stand. You just love an assertive, dominant male.\n\n[#b357ffff]\"Oh, and here. Use this two-way hologrammer. You can see me and I can see you.\"\n\n[#6a86fdff]\"Thanks babe,\" {CLEARCOLOR}you say under your breath.\n\n[#b357ffff]\"What was that?\"\n\n[#6a86fdff]\"Thank you!\"\n\n[#fcfb72ff]\"What the shit am I supposed to use then?\"\n\n{CLEARCOLOR}With everyone looking around and seeing nothing obvious to use as a weapon, Nate begins to ponder. Index finger diagonal across his chin, thumb extended, he finds his Eureka moment.\n\n[#b357ffff]\"There is a weapons locker on your way. Only ultrasonics though. We can't risk a hull breach in space.\""
+	],
+	"actions": {
+		"Depart": {
+			"targetRoom": "fight prep 2",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
 },
-"room 25": {
+"walk prep": {
 	"x": 7851.207,
 	"y": 292.87085,
-	"story": [],
-	"actions": {}
+	"story": [
+		"text:::{FAST}[#6a86fdff]\"We're gonna do a space walk. We even have an airlock right here in command. Gravity boots and all the gear we need for it too.\"\n\n[#fcfb72ff]\"That's mental! I refuse! I... I'm scared of space. And I've never been out on a walk before.\"\n\n[#b357ffff]\"Your plan is sound. You'll avoid the creatures and be able to access the reactor from maintence hatch, but Jennifer does seem like a liability out there.\"\n\n{CLEARCOLOR}The fact that Nate agrees with you fills your heart with an intoxicating glee.\n\n[#b357ffff]\"You're gonna have to get out there on your own.\"\n\n{CLEARCOLOR}Your heart sinks to a new low.\n\n[#b357ffff]\"It's easy to get turned around out there, so be careful!\"\n\n{CLEARCOLOR}You heard that? He cares about your well being. Soon, when this is all over, he'll cradle you in his arms and you will be his. You try to hide your smile at this thought, but it creeps through nevertheless.\n\n[#b357ffff]\"Oh, and here. Use this two-way hologrammer. You can see me and I can see you.\"\n\n[#6a86fdff]\"Thanks babe,\" {CLEARCOLOR}you say under your breath.\n\n[#b357ffff]\"What was that?\"\n\n[#6a86fdff]\"Thank you!\"\n\n[#fcfb72ff]\"What the shit am I supposed to do then?\"\n\n{CLEARCOLOR}As the question rings in the air, Nate begins to ponder. Index finger diagonal across his chin, thumb extended, he finds his Eureka moment.\n\n[#b357ffff]\"Ahh, yes! Crawl through access ducts and see if you can find any other survivors. We need everyone in the command module when we're ready to take off.\"\n\n[#fcfb72ff]\"I shouldn't have said anything...\""
+	],
+	"actions": {
+		"Depart": {
+			"targetRoom": "walk prep 2",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
 },
-"room 26": {
+"fighter prep": {
 	"x": 7842.73,
 	"y": 91.84906,
-	"story": [],
+	"story": [
+		"text:::{FAST}[#6a86fdff]\"We're gonna fly to it.\"\n\n[#fcfb72ff]\"Are you daft? There's only one pilot between us and he needs to stay here!\"\n\n[#6a86fdff]\"That's may be true, but those fighters are made to be completely dummy proof. I read about it in a book.\"\n\n{CLEARCOLOR}Nate nods knowingly. [#b357ffff]\"Yeah, and I can walk you through it once you launch.\"\n\n{CLEARCOLOR}He pantomimes the movement of the craft whizzing through space.\n\n[#b357ffff]\"Those crafts are touchy though. Be careful to not expend too much fuel.\"\n\n{CLEARCOLOR}You try to pay attention to everything he is saying, but your efforts are in vain. Your focus is drawn to Nate's perfect mouth. When he talks, his impressive jaw muscles tense up and catch your eye. You daydream about the sort of mouth exercises he must do to have such pronounced definition.\n\n[#b357ffff]\"Oh, and here. Use this two-way hologrammer. You can see me and I can see you.\"\n\n[#6a86fdff]\"Thanks babe,\" {CLEARCOLOR}you say under your breath.\n\n[#b357ffff]\"What was that?\"\n\n[#6a86fdff]\"Thank you!\"\n\n[#fcfb72ff]\"Those fighters are single occupancy. Why am I tagging along?\"\n\n{CLEARCOLOR}It's clear to everyone who has read about Space Flight Navigation, but Nate pretends to ponder as to not appear rude. Index finger diagonal across his chin, thumb extended, he plays at finding his Eureka moment.\n\n[#b357ffff]\"Someone needs to open the bay doors. You can't do it from inside the craft.\""
+	],
+	"actions": {
+		"Depart": {
+			"targetRoom": "fighter prep 2",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"fight prep 2": {
+	"x": 8273.169,
+	"y": 478.34326,
+	"story": [
+		"text:::{FAST}The doors of the command module close behind you with a clean schlick sound. The coast is clear. No sign of ne'er-do-wells.\n\n[#fcfb72ff]\"Let's fucking go already!\"\n\n{CLEARCOLOR}This dumb bitch is going to get you killed. Looking at her, you realize that she looks a bit like your ex. Your eyes trace the curves of her profile as she prepares herself for the fight of her life. A tight, athletic build and yet a thick, voluptuous ass. They could have been twins. Maybe this is why you hate her so much.\n\nJennifer did have a point though. Do you proceed quickly or do you go forward carefully? This question races across the surface of your smooth brain. The repercussions of which may determine your fate!"
+	],
+	"actions": {
+		"Sprint": {
+			"targetRoom": "sprint",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Stealth": {
+			"targetRoom": "stealth",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"sprint": {
+	"x": 8633.234,
+	"y": 636.07935,
+	"story": [
+		"text:::{FAST}The two of you rush to your goal. Sure, your footfalls land heavy and reverberate throughout the ship, but Jennifer clops around like an overgrown torp! It's a miracle that you haven't faced any opposition. And just then as you were thinking this thought (yes, this very thought you are reading right now) you spot it. Past the junction: a shape. No, two shapes bounding towards you. It's two of the creatures galloping on all fours coming at you full tilt.\nYou panic. You weren't ready to take on two. In fact, you weren't ready to even take on one. You were showing out for you beloved Nate. This cold realization washes over you like a soapy wet shower after a long workout.\n\n[#6a86fdff]\"RUN!\"\n\n[#fcfb72ff]\"AHHHHHHH!!!\"\n\n[#ff0000ff]{SHAKE}\"fALAhFLoooFFOOle!\"{ENDSHAKE}\n\n{CLEARCOLOR}The creatures shriek and scream as they crash through the corridor. Jennifer, that lackluster aristo who deigns physical labor and looks very much like your ex who ruined your life, takes off in the opposite direction.\n\n[#6a86fdff]\"No wait, over here!\"\n\n[#fcfb72ff]\"AHHHHHHH!!! FUCK!!!\"\n\n{CLEARCOLOR}Her screams draw the monsters toward her. You take this opportunity to dash away around the corner and then straight through to the main gangway leading to the reactor. No time to stop for the weapons. No time to check on Jennifer. Can't even turn to see the monsters chasing you. You run. You run your ass off."
+	],
+	"actions": {
+		"Enter the reactor room": {
+			"targetRoom": "reactor room",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"stealth": {
+	"x": 8637.755,
+	"y": 479.64798,
+	"story": [
+		"text:::{FAST}The two of you move slowly and stealthily to your goal. Yes, you're moving only incrementally as you check every corner, but Jennifer is moving at a lame cratterin's pace! It's a miracle that one of those things haven't happened upon you. And just then as you were thinking this thought (yes, this very thought you are reading right now) you spot it. Past the junction: a shape. No, two shapes bounding towards you. It's two of the creatures galloping on all fours coming at you full tilt.\nYou panic. You weren't ready to take on two. In fact, you weren't ready to even take on one. You were showing out for you beloved Nate. This cold realization washes over you like a soapy wet shower after a long workout.\n\n[#6a86fdff]\"RUN!\"\n\n[#fcfb72ff]\"AHHHHHHH!!!\"\n\n[#ff0000ff]{SHAKE}\"fALAhFLoooFFOOle!\"{ENDSHAKE}\n\n{CLEARCOLOR}The creatures shriek and scream as they crash through the corridor. Jennifer, that lackluster aristo who deigns physical labor and looks very much like your ex who ruined your life, takes off in the opposite direction.\n\n[#6a86fdff]\"No wait, over here!\"\n\n[#fcfb72ff]\"AHHHHHHH!!! FUCK!!!\"\n\n{CLEARCOLOR}Her screams draw the monsters toward her. You take this opportunity to dash away around the corner and then straight through to the main gangway leading to the reactor. No time to stop for the weapons. No time to check on Jennifer. Can't even turn to see the monsters chasing you. You run. You run your ass off."
+	],
+	"actions": {
+		"Enter the reactor room": {
+			"targetRoom": "reactor room",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"reactor room": {
+	"x": 9137.881,
+	"y": 270.36856,
+	"story": [
+		"text:::{FAST}Though the reactor is fairly large, the control room itself is a modestly sized space with square walls. There is a single blast door leading to the rest of the ship. It remains sealed. You take a moment to study the panel: various buttons blink with the full spectrum of the rainbow and monitors tick with indecipherable codes. What captures your attention is the giant lever aligned to the right side. Its label: [*]HARD REBOOT[*].  It seems rather convenient for the plot, but it's time to wrap this all up. A curious panel is situated to the left: [*]POWER DISTRIBUTION[*].\n\nYou decide to try your hologrammer: [#6a86fdff]\"Nate. I'm in the reactor room. What do I do?\"\n\n[#b357ffff]\"I've been trying to get a hold of you. What happened? Never mind that. It's very important that you listen to me. Just simply pull the lever. Do not. I repeat. Do not press anything else on the panel\"\n\n{CLEARCOLOR}You were about to blindly comply. You would do anything for Nate. He is your best friend. Actually, you trust him like a lover. A deeply intimate lover. Hand outstretched, your fingers curled nearly touching the lever you hear a crack at the door. Without hesitation, you rush to it and brace against it with all your might. The gears squeak under the pressure, the door buckles and nearly flies off its rails. You harness a strength inside you that you never knew you had.\n\n[#6a86fdff]\"HHHHHAAAAAAAAAAAAGH!\"\n\n[#fcfb72ff]\"It's me, Jennifer! Open the door! Stop fighting me!\"\n\n{CLEARCOLOR}You can barely hear her through the partially opened crack of the entrance.\n\n[#fcfb72ff]\"Let me in!\"\n\n[#6a86fdff]\"I think its jammed.\"\n\n[#fcfb72ff]\"Don't pull that lever. I swear to gaw, don't pull that fucking lever!\"\n\n{CLEARCOLOR}How bizarre! Wasn't the whole point of this mission to restart the reactor so you all can make it back to the station?\n\n[#6a86fdff]\"Hey, why are you here? Aren't you going to be poisoned by the radiation?\"\n\n[#fcfb72ff]\"He lied. He sent you here to die. I've seen the schematics. As soon as you pull that lever, the control room will be absolutely flooded with xeno-rays! There's no protection against that!\"\n\n{CLEARCOLOR}You have no reason to believe this lying cunt. There must be some angle here. She's always wanted your man, Nate. She must want to come in here to kill you and take him as her own. Yes, that stupid slag is just a jealous whore. A doubt enters your mind though. What if she was right? You raise Nate on the hologrammer:\n\n[#6a86fdff]\"Nate, Jennifer says you're trying to kill me. She says my suit won't protect me against the xeno-rays.\"\n\n[#b357ffff]\"Jennifer is a torp fucking bitch. She lies!\"\n\n{CLEARCOLOR}Nate agreeing with your suspicions gives you great joy. When all this blows over, you'll be reunited with your true love. You two can discard this harlot together. But why did he immediately turn to hostility? Why no explanation? There is no time to think about that. Jennifer is forcing her way in. If you don't make a decision quickly, she'll make it for you.\n\n[#fcfb72ff]\"Look at the meter! The xenos are off the charts!\"\n\n{CLEARCOLOR}Jennifer sticks her head through the small gap she has made in the door. Her enormous breasts prevent her from proceeding further.\n\n[#fcfb72ff]\"Please, I beg you. Don't do it.\""
+	],
+	"actions": {
+		"Pull the lever": {
+			"targetRoom": "conclusion a",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Examine the panel": {
+			"targetRoom": "conclusion b",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"walk prep 2": {
+	"x": 8275.86,
+	"y": 291.26614,
+	"story": [
+		"text:::{FAST}The chonky click of the pressure doors behind you signal a full, tight seal. The air has been vacated in this claustrophobic room, but thankfully your breating aparatus is fully functional. The airlock then opens to the great vastness of space. You decide to check in.\n\n[#6a86fdff]\"Hello? Am I coming through fine?\"\n\n[#b357ffff]\"...breaking up...very important...northern entrance...\"\n\n{CLEARCOLOR}You can't make out what Nate is saying through all the static, though he did indicate some \"northern entrance\". Apparently these hologrammers were only meant to operate through the confines of the ship. You start to panic. Why didn't you get the directions sorted before you left command? It's too late for that now. You're fully committed. You walk out onto the hull.\n\nBut the question remains. Which direction do you go? In a moment of genius, you recall the book you read last night. You can follow the constellations like the ancient Earthers! The details race across your mind's eye."
+	],
+	"actions": {
+		"Retro Raeleon Prime": {
+			"targetRoom": "raeleon",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Textra Tettingerus A": {
+			"targetRoom": "tettingerus",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Lyzle Minutia V.G.": {
+			"targetRoom": "lyzle",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"raeleon": {
+	"x": 8637.217,
+	"y": 356.57056,
+	"story": [
+		"text:::{FAST}Ahh yes, Retro Raeleon Prime. The distinct purple glow of this star was surely what you read about last nych. The constellation forms a giant phallic symbol. You walk in its general direction across the ships surface. Something is not right though. This is not the reactor bay entrance! You decide to turn back."
+	],
+	"actions": {
+		"Head back": {
+			"targetRoom": "walk again",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"tettingerus": {
+	"x": 8640.699,
+	"y": 248.60016,
+	"story": [
+		"text:::{FAST}Ahh yes, Textra Tettingerus A. The distinct red glow of this star was surely what you read about last nych. The constellation forms a convenient arrow. You hope this satisfies the requirement for a constellation puzzle as you will not deign to program a proper enigma. You walk in its general direction across the ships surface.\n\nThe going is tough. The boots grow heavy during your long trek, but they are the only thing preventing you from dying in the great dark emptiness of space.The constant acceleration of the ship means that anything not connected or tied down will fall away into nothingness. That's the only reasonable solution for artificial gravity. Those poor Earthers looked to the stars and imagined technological marvels that defeat the basic laws of physics.\n\nYou go on like this for some time, thinking a great many thinks. You even start a conversation with yourself. You know how these conversations usually go, however. The topic quickly shifts to that of Nate.\n\n[#6a86fdff]\"Nate, he's so dreamy isn't he? Wouldn't it be great if he would have a lay with you? You know, just like friends only, but really really close. Kinda like siblings! But not really siblings though, because that's gross. Not that you like him in that way, but you kinda do. You really shouldn't mention that to him though.\"\n\n{CLEARCOLOR}Then you start roleplaying.\n\n[#6a86fdff]\"[/]Oh yes, Nate here. Sure I'd like to lay with you like just friends. It's awfully hot in here, why don't we take our clothes off? Oh my, now it's too cold. Let's get under the sheets.[/]\"\n\n{CLEARCOLOR}At long last! The entrance to the reactor room... That was getting mildly uncomfortable."
+	],
+	"actions": {
+		"Enter the reactor room": {
+			"targetRoom": "reactor room",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"lyzle": {
+	"x": 8639.829,
+	"y": 144.98332,
+	"story": [
+		"text:::{FAST}Ahh yes, Lyzle Minutia V.G. The distinct cyan glow of this star was surely what you read about last nych. The constellation forms the face of an owl. You walk in its general direction across the ships surface. Something is not right though. This is not the reactor bay entrance! You decide to turn back."
+	],
+	"actions": {
+		"Head back": {
+			"targetRoom": "walk again",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"walk again": {
+	"x": 8255.837,
+	"y": 144.1126,
+	"story": [
+		"text:::{FAST}You find yourself back at where you started, roughly. Actually you're not sure now. Nate was right that you could get really turned around out here."
+	],
+	"actions": {
+		"Retro Raeleon Prime": {
+			"targetRoom": "raeleon",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Textra Tettingerus A": {
+			"targetRoom": "tettingerus",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Lyzle Minutia V.G.": {
+			"targetRoom": "lyzle",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"fighter prep 2": {
+	"x": 8251.416,
+	"y": 27.621025,
+	"story": [
+		"text:::{FAST}The doors of the command module close behind you with a clean schlick sound. The coast is clear. No sign of ne'er-do-wells.\n\n[#fcfb72ff]\"Let's get this over with. I can't believe I'm going along with this shit.\"\n\n{CLEARCOLOR}You don't pay much mind to this dumb bitch. Administrator. Pffff! It doesn't take much to be an adminstrator when you have your dear underlings do your bidding. If it weren't for these gammed enslaving contracts, you'd be lightyears away from her control. Maybe this is why you hate her so much.\n\nIt's not too far to the fighter bay and you don't expect much trouble..."
+	],
+	"actions": {
+		"Don't speak too soon": {
+			"targetRoom": "ambush",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"ambush": {
+	"x": 8636.708,
+	"y": 29.09732,
+	"story": [
+		"text:::{FAST}Fuck! A creature has been stalking you this whole time. You see it peering at both of you from a dark corner, waiting for inconceivable reasons. Waiting for the perfect moment to strike... Why didn't you think to bring any weapons with you?\n\n[#6a86fdff]\"RUN!\"\n\n[#fcfb72ff]\"AHHHHHHH!!!\"\n\n[#ff0000ff]{SHAKE}\"fALAhFLoooFFOOle!\"{ENDSHAKE}\n\n{CLEARCOLOR}The creature shrieks and scream as it crashes through the corridor. Jennifer, that lackluster aristo who derives pleasure from commanding others and is the source of all your troubles, takes off in the opposite direction.\n\n[#6a86fdff]\"No wait, you need to open the bay doors!\"\n\n[#fcfb72ff]\"AHHHHHHH!!! FUCK!!!\"\n\n{CLEARCOLOR}Her screams draw the monster toward her. You take this opportunity to dash away around the corner and then straight to the fighter craft. No time to engage the bay doors. No time to check on Jennifer. Can't even turn to see if the monster is chasing you. You run. You run your ass off."
+	],
+	"actions": {
+		"Start the ignition": {
+			"targetRoom": "heat dampener",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"conclusion a": {
+	"x": 9475.196,
+	"y": 361.24594,
+	"story": [
+		"text:::{FAST}That was a poor decision, but what do I know? I'm just the narrator. Anyway, you pull the lever. It resists you as if it didn't want to be pulled, but you persist anyway. With a loud CHUNK, it lands in its final resting position. You hear the enormous engines of the reactor chugging and pulling away. You raise Nate again:\n\n[#6a86fdff]\"I did it Nate. I pulled the lever. I didn't believe her for one second. I love you.\"\n\n[#b357ffff]\"I wish I could say the same. Sadly, the feeling is not mutual.\"\n\n[#6a86fdff]\"What!? Why would you say something so horrible?\"\n\n[#b357ffff]\"Honestly, I don't even know your name. You're just the dirty little brat that works in maintenance.\"\n\n{CLEARCOLOR}You do recall that every time he addressed you, it was always \"you\".\n\n[#b357ffff]\"I just stop to say hello as a matter of course. You're more like a puppy to me, actually\"\n\n[#6a86fdff]\"I risked everything for you. We were in love! You don't mean this. You don't mean to be this cruel.\"\n\n[#b357ffff]\"This was all in your head. You're sick. You should see the ship psychiatrist, though I'm sure he's dead already. Like you.\n\n[#6a86fdff]\"No! NOOOO!\"\n\n{CLEARCOLOR}Jennifer is finally able to break through the door. Taking heavy, deliberate strides directly at you, she questions menacingly,\n\n[#fcfb72ff]\"What the fuck did you do? WHAT THE FUCK DID YOU DO?\"\n\n{CLEARCOLOR}You can only stare at her in disbelief, tears streaming down your face. She holds you in her arms almost knowingly, cradling you against her bosom. The reactor ignites. The room is filled with white light, soon encompassing all you see. And then a deep, absolute blackness swallows you."
+	],
+	"actions": {
+		"Game Over": {
+			"targetRoom": "credits bad",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"conclusion b": {
+	"x": 9479.625,
+	"y": 184.09993,
+	"story": [
+		"text:::{FAST}I would applaud your choice here, but that's not my place. I'm merely the narrator. Anyway, you refrain from pulling the lever. You begin poking around the panel, trying to figure out just what the hell is going on.\n\n[#b357ffff]\"What are you doing? Pull the lever now!\"\n\n[#6a86fdff]\"Something is not right here. Give me a second to figure it out.\"\n\n[#b357ffff]\"I didn't take you for a bitch-ass. But here we are. I should have sent that cunt, Jennifer. At least she is competent enough to pull a fucking lever\"\n\n{CLEARCOLOR}Nate's behavior is out of the ordinary. So strange. The veneer of your blind love is starting to peel away. You're not one to take such abuse in stride. To turn the other ass cheek, so to speak. You redouble your efforts and continue investigating the panel. Yes, the xenos are at critical mass. There must be some credence in what Jennifer had to say.\n\n[#fcfb72ff]\"Come on, you better not have done anything stupid! I'm nearly in. Thanks for helping, geesh!\"\n\n{CLEARCOLOR}Your scrutiny finally arrives at the Power Distribution panel. There are various switches here indicating on and off states. Waste Disposal, Recreational Room, Mess Hall, Command Module. The sticky note attached below states in no unclear words. \"DO NOT TOUCH, DISABLING POWER DEACTIVATES LIFE SUPPORT!!!\"\n\nSuddenly, you know what you are going to do. You hit the button.\n\n[#b357ffff]\"What the fuck!? Gaw-gammed, low-born, cratterin eating whore! You shut the power off to the command module! Turn it back on. TURN IT BACK ON!\"\n\n{CLEARCOLOR}Your finger is still trembling as it hovers over the button. You pull back.\n\n[#b357ffff]\"If this door would open, I'd come over there and kill you myself! If this door... if this door... open... I can't breathe... I can't...\"\n\n{CLEARCOLOR}You shut off the hologrammer. It's in this moment Jennifer finally breaks through the door. She storms toward you.\n\n[#fcfb72ff]\"Just what the fuck did you do?\"\n\nWith tears streaming down your face, you turn inelegantly to Jennifer and stare at her with dead eyes.\n\n[#6a86fdff]\"It's better Nate than lever.\""
+	],
+	"actions": {
+		"Game Over": {
+			"targetRoom": "credits",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"credits": {
+	"x": 9876.728,
+	"y": 183.32605,
+	"story": [
+		"text:::[%375]THE LEVER[%]\n\nWritten by Raeleus\n\nVery, very loosely inspired by The Longest Joke in the World: longestjokeintheworld.com\n\nA very special thanks to Tommy Ettinger who created Textra Typist and provided technical support for this game.\n\nSpecial thanks to Rafa for creating Typing Label.\n\nMade for the Themed Horror Game Jam #6: itch.io/jam/themed-horror-game-jam-6\n\nThanks for playing! You may shut your console off or press F5 to start from the beginning."
+	],
+	"actions": {}
+},
+"heat dampener": {
+	"x": 9000.11,
+	"y": 30.6022,
+	"story": [
+		"text:::{FAST}You're entering the fighter bay and sure as shit one of {CROWD}[#ff0000ff]THEM{CLEARCOLOR}{ENDCROWD} is hot in your trail. You dodge left. You dodge right. These creatures are a bit uncoordinated. It trips up over itself and loses its footing. Despite this, you narrowly dodge a wild swing from one of its claws.\n\n[#ff0000ff]{SHAKE}\"RaWoooooofh!\"{ENDSHAKE}\n\n{CLEARCOLOR}You get a good look at the thing. There is no way this used to be one of your crewmates. Boils on the skin bursting with puss. Protruding bones where none should be. And the reproductive organs gone.\n\nYou don't have time to process this horror you've witnessed. You're busy hopping into the cockpit of the short range fighter craft. But how are you going to take off? There is no sign of Jennifer and the bay doors remain shut. You close the swinging hatch just in time as the creature throws itself against the transparent metal.\n\nYou make the mistake of locking eyes with the beast. You see its scleras drip with yellow ooze. The very sight of you only enrages the monster further.\n\nYou're flipping switches left and right, hoping to turn on the machine. To do something. Anything. The creature begins to pound the hatch. Though these crafts are hardened against ballistic assault, you can't help but think the animal's wild fervor will somehow puncture the hull and leave you to suffocate to death.\n\nThen you remember the hologrammer! \"Nate, come in! Nate I'm in the craft!\" Nothing but static. It seems these hologrammers don't do well with the electrical interference of the vessel. You continue to press buttons, turn dials, rub orbs.\n\nAn electronic voice chirps up: \"weapon systems online\". Yippee! You grab what appears to be a trigger and let loose a hailstorm of bullets. You witness the sheer devastation of the deck, but the creature is not in range of your firepower. You tug on the joystick into the direction of the baddie, though you are only met with the clanging of the guns against their housing.\n\nThis whole time you've been pulling on the trigger. An amazing light show of sparks and fire continues to erupt before your eyes. A meter beeps \"heat level critical\".\n\nIt's all coming back to you now. The book! It talked about ejecting the heat dampeners to cause an explosion. Surely that would be devastating to the ship, but with the craft's current orientation it will give you an exit out of the bay.\n\nYou pull the release. WWOOOMP! You have never heard such a deafening wallop before in your entire life. The craft rocks violently from the explosion. The atmosphere of the room immediately escapes to the vast emptiness of space. First, the creature is peeled off of the fighter and thrust into areas unknown. Then the craft begins to bias to its side and is finally shot out into the great darkness.\n\nNow, after being given time to study the controls, you are finally able to activate your rockets and guide the craft to dock with the reactor maintenance hatch."
+	],
+	"actions": {
+		"Enter the reactor room": {
+			"targetRoom": "reactor room",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"mission brief toilet": {
+	"x": 2570.899,
+	"y": 376.1258,
+	"story": [
+		"text:::{FAST}[#fcfb72ff]\"It's so good of you to join us. You certainly took your time to get up here ehh?\"\n\n{CLEARCOLOR}You remain silent. You're used to this sort of abuse from the administrator. You did your job and that's enough justification for being late in your mind despite the hazing in front of everyone.\n\nThe command module is packed with the entire crew in attendance. You quickly glance at the safety message posted above the entrance: \"Meeting room occupancy must not exceed a maximum of 15\". You smirk and chuckle to yourself quietly.\n\n[#fcfb72ff]\"As you may know, our probe has returned back with some bizarre data about the derilect craft...\"\n\n{CLEARCOLOR}Jennifer, the Adminstrator, begins her speech seeming to not care that everyone else was still in their private conversations. Your focus wanes as your gaze slowly drifts over to your friend, Nate. He is with the rest of the officers, poorly concealing his laughter about something hilarious he just said. The others look like shy school girls, blushing in his presence.\n\n[#fcfb72ff]\"...and of course it's not aliens. It's never aliens...\"\n\n{CLEARCOLOR}Jennifer drones on and on. You pretend to be paying attention, but you know it's not relevant to you. You're [/]the help[/]. Nothing really matters to a temp worker with such a low station like you. All because of a misunderstanding at the academy. The name badge adorning your ship-wear draws your attention. No perfect right-triangle. No symbols. Nothing. Just the label \"MAINTENANCE\".\n\n[#fcfb72ff]\"...though our intercept team has not been able to respond for some time now...\"\n\n[#6a86fdff]\"Lunch. What is lunch? It's supposed to be a meal that is consumed at about midday.\" {CLEARCOLOR}That's what the Earth history book that Nate gave you said. You continue to daydream, thinking to yourself: [#6a86fdff]\"But there is no day or night here. Not in space. Just the constant drone of one nych after the next.\"\n\n[#fcfb72ff]\"...and our current plan is to dock with vessel, but we'll maintain quarantine protocols for now...\"\n\n{CLEARCOLOR}Something she said almost brought you out of your stupor, but you retreat back into your thoughts instead. You imagine what a day with Nate would be like. Outside of duty. Free from responsibility. He must be a swell guy.\n\n[#fcfb72ff]\"That concludes the mission briefing. Any questions?\""
+	],
+	"actions": {
+		"Find Nate": {
+			"targetRoom": "find nate",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [],
+			"removeKeys": [],
+			"removeAllKeys": false
+		},
+		"Grab a coffee": {
+			"targetRoom": "grab a coffee",
+			"requiredKeys": [],
+			"bannedKeys": [],
+			"giveKeys": [
+				"coffee"
+			],
+			"removeKeys": [],
+			"removeAllKeys": false
+		}
+	}
+},
+"credits bad": {
+	"x": 9881.555,
+	"y": 362.8051,
+	"story": [
+		"text:::[%375]THE LEVER[%]\n\nWritten by Raeleus\n\nYou got the bad ending! Normally, I'd let you leave at this point, but the story is not over. Press F5 to reboot your console and try again!"
+	],
 	"actions": {}
 }
 }

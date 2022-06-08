@@ -32,7 +32,7 @@ dependencies {
 	implementation "com.github.tommyettinger:gdx-backend-gwt:1.100.1:sources"
 	implementation "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
 	implementation project(':core')
-	implementation "com.github.tommyettinger:textratypist:0.1.2:sources"
+	implementation "com.github.tommyettinger:textratypist:62bffa6ca2:sources"
 	implementation "com.github.tommyettinger:regexodus:0.1.13:sources"
 	api 'com.github.raeleus.TenPatch:tenpatch:5.2.2:sources'
 	api "com.github.intrigus.gdx-freetype-gwt:gdx-freetype-gwt:1.9.10.1"
